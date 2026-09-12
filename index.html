@@ -7,6 +7,152 @@
   <title>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</title>
   <style>
 
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
 div.column{flex: auto; overflow-x: auto;}
@@ -21,141 +167,30 @@ vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
-  <style type="text/css">
-
-body {
-line-height: 1.6;
-font-family: 'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
-}
-h1, h2, h3 { line-height: 1.3; margin-top: 1.4em; }
-table { border-collapse: collapse; margin: 1em 0; width: 100%; }
-th, td { border: 1px solid #bbb; padding: 0.35em 0.6em; text-align: left; vertical-align: top; }
-th { background: #eee; }
-blockquote { border-left: 3px solid #ccc; margin: 1em 0; padding: 0.2em 1em; color: #444; }
-pre { background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 6px; padding: 0.7em 0.9em; overflow-x: auto; }
-code { background: rgba(0,0,0,0.05); padding: 0.1em 0.3em; border-radius: 3px; }
-pre code { background: none; padding: 0; }
-
-pre, pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
-code, pre { font-family: 'SFMono-Regular',Consolas,'D2Coding','Noto Sans Mono CJK KR',monospace; }
-figure { text-align: center; margin: 1.2em 0; }
-figcaption { font-size: 0.9em; color: #555; }
-
-@media (prefers-color-scheme: dark) {
-body { background: #1a1a1a; color: #ddd; }
-pre { background: #2b2b2b; border-color: #444; }
-code { background: rgba(255,255,255,0.08); }
-pre code { background: none; }
-th { background: #333; }
-blockquote { color: #bbb; border-left-color: #555; }
-
-.kw { color: #c792ea; } 
-.dt { color: #82aaff; } 
-.co { color: #888; } 
-.st { color: #c3e88d; } 
-.fu { color: #82aaff; } 
-.op { color: #89ddff; } 
-.cf { color: #c792ea; } 
-.va { color: #f78c6c; } 
-.dv { color: #f78c6c; } 
-
-div.meta, div.ingredients, div.tip, div.warning, div.conversion { background: #2b2b2b; }
-div.nutrition { border-color: #bbb; }
-div.nutrition th { border-bottom-color: #bbb; }
-div.nutrition td { border-bottom-color: #555; }
-}
-
-
-div.meta {
-border: 1px solid #999;
-border-radius: 6px;
-background: #f5f5f5;
-padding: 0.6em 0.9em;
-margin: 1em 0;
-font-size: 0.92em;
-}
-div.meta p { margin: 0.2em 0; }
-div.meta strong { display: inline-block; min-width: 5em; }
-
-div.ingredients {
-border-left: 4px solid #6a8;
-background: #f3f8f4;
-padding: 0.6em 0.9em;
-margin: 1em 0;
-}
-div.ingredients > p:first-child { font-weight: bold; margin-top: 0; }
-
-div.steps { margin: 1em 0; }
-div.steps ol { padding-left: 1.4em; }
-div.steps ol > li { margin-bottom: 0.6em; }
-
-div.tip {
-border-left: 4px solid #4a90d9;
-background: #eef4fb;
-padding: 0.5em 0.9em;
-margin: 1em 0;
-}
-
-div.warning {
-border-left: 4px solid #d9534f;
-background: #fcf0f0;
-padding: 0.5em 0.9em;
-margin: 1em 0;
-}
-
-div.itinerary {
-margin: 1em 0;
-}
-div.itinerary table {
-border-collapse: collapse;
-width: 100%;
-}
-div.itinerary th, div.itinerary td {
-border: 1px solid #bbb;
-padding: 0.35em 0.5em;
-text-align: left;
-vertical-align: top;
-}
-div.itinerary th { background: #eee; }
-
-div.nutrition {
-border: 2px solid #333;
-border-radius: 4px;
-padding: 0.5em 0.8em;
-margin: 1em 0;
-font-size: 0.9em;
-}
-div.nutrition > p:first-child { font-weight: bold; margin-top: 0; }
-div.nutrition table { border-collapse: collapse; width: 100%; margin: 0.4em 0; }
-div.nutrition th, div.nutrition td {
-border: none;
-border-bottom: 1px solid #ccc;
-padding: 0.25em 0.4em;
-text-align: left;
-}
-div.nutrition th { background: none; border-bottom: 2px solid #333; }
-
-div.conversion {
-border-left: 4px solid #b8860b;
-background: #faf6ec;
-padding: 0.5em 0.9em;
-margin: 1em 0;
-font-size: 0.92em;
-}
-div.conversion > p:first-child { font-weight: bold; margin-top: 0; }
-
-ul.task-list { list-style: none; padding-left: 1em; }
-ul.task-list li { margin-bottom: 0.3em; }
-</style>
 <style>
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{max-width:46em;margin:0 auto;padding:0 1.2em;line-height:1.75;font-size:17px}
-nav#TOC{background:#f7f6f2;border:1px solid #e2ded2;border-radius:8px;padding:1em 1.4em;margin:1.5em 0}
-nav#TOC ul{list-style:none;padding-left:1em}
-img,svg{max-width:100%;height:auto}
-table{display:block;overflow-x:auto;border-collapse:collapse}
-th,td{border:1px solid #ddd;padding:.4em .6em}
-@media (prefers-color-scheme: dark){body{background:#111820;color:#dcd8cc}nav#TOC{background:#1a232e;border-color:#2a3644}th,td{border-color:#333}}
+body{max-width:46em;margin:0 auto;padding:0 1.2em;line-height:1.78;font-size:17px;color:#2b2b28;background:#faf9f6;font-family:'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif}
+h1{margin-top:2.2em;line-height:1.3}
+a{color:#8a6320;text-decoration:none;border-bottom:1px solid #d9c9a3}
+a:hover{color:#5f4415;border-bottom-color:#8a6320}
+nav#TOC{background:#f3efe6;border:1px solid #e0d8c4;border-radius:10px;padding:1.1em 1.5em;margin:1.6em 0}
+nav#TOC ul{list-style:none;padding-left:1em;margin:.2em 0}
+nav#TOC a{border-bottom:none;line-height:2}
+img,svg{max-width:100%;height:auto;display:block;margin:1.2em auto}
+table{display:block;overflow-x:auto;border-collapse:collapse;margin:1.2em 0}
+th,td{border:1px solid #ddd6c4;padding:.45em .7em}
+th{background:#f3efe6}
+blockquote{border-left:3px solid #c9a55a;margin-left:0;padding-left:1.1em;color:#5a544a}
+@media (prefers-color-scheme: dark){
+ body{background:#10161f;color:#d8d4c8}
+ a{color:#e3b45f;border-bottom-color:#6b5426}
+ a:hover{color:#f0cc85;border-bottom-color:#e3b45f}
+ nav#TOC{background:#18212d;border-color:#2a3644}
+ th,td{border-color:#33405083}
+ th{background:#18212d}
+ blockquote{border-left-color:#a3803c;color:#a8a396}
+ img[src$=".svg"],svg{background:#faf9f6;border-radius:8px;padding:8px}
+}
 </style></head>
 <body>
 <header id="title-block-header">
@@ -711,6 +746,18 @@ NANDA가 낸 보고서는 통합된 AI 파일럿 중 5퍼센트만이 실질적 
 무엇을 등록할지의 기준. 돌릴 수 있는 자원. 성과를 성과로 인정하는 제도.
 그리고 폐기의 규칙. 아이디어가 계속 아래에서 온다는 것을 전제로 깔고,
 그것이 조직 자산이 되는 경로를 위에서 놓는 일이다.</p>
+<pre class="mermaid"><code>flowchart TB
+  S[현장의 씨앗들 — 자발적 제안과 각자의 에이전트]
+  S --&gt;|체계가 없으면| X[개인의 성과에서 멈춘다]
+  S --&gt;|거두는 체계를 지나면| H[조직의 자산이 된다]
+  subgraph G[위가 공급하는 것]
+    C1[기준 — 무엇을 등록할지]
+    C2[자원 — 무엇으로 돌릴지]
+    C3[제도 — 성과를 인정하는 규칙]
+    C4[폐기 — 내보내는 규칙]
+  end
+  G -.-&gt; H</code></pre>
+<p>그림 1. 씨앗은 아래에서 오고, 체계는 위에서 온다</p>
 <p>말이 근사하니 한 번 의심하고 넘어가자. 근거가 있는 이야기인가.</p>
 <h2 id="ai는-조직을-고치지-않는다.-증폭할-뿐이다">AI는 조직을 고치지
 않는다. 증폭할 뿐이다</h2>
@@ -2695,6 +2742,22 @@ Agent Mining이라는 이름으로 에이전트의 의사결정과 추론 로직
 않는다. 이 비대칭은 구조적이다. 만들 때는 만드는 사람이 있고 예산이 있고
 성과가 있는데, 내보낼 때는 셋 다 없다. 왜 그런지, 그리고 그 구조를
 어떻게 뒤집는지는 10장에서 정면으로 다룬다.</p>
+<pre class="mermaid"><code>flowchart LR
+  subgraph A[순순히 채워지는 일곱 칸]
+    F1[1 디지털 신원]
+    F2[2 권한 범위]
+    F3[3 데이터 민감도]
+    F4[4 행위 범위]
+    F5[5 사람의 개입 지점]
+    F6[6 감사와 추적성]
+    F7[7 업무 연속성]
+  end
+  subgraph E[늘 비어 있는 칸]
+    F8[8 재심사와 폐기 기준]
+  end
+  A ~~~ E</code></pre>
+<p>그림 1. 여덟 칸의 등록부 — 들이는 일곱 칸은 채워지고, 내보내는 한
+칸은 비어 있다</p>
 <p>그런데 여덟 칸을 한꺼번에 요구하면 어떻게 될까? 첫 회차에 등록률이
 떨어진다. 만드는 사람 입장에서 여덟 칸은 결재 서류처럼 보이고, 결재
 서류처럼 보이는 순간 다음 주로 미뤄진다. 그래서 처음에는 세 칸으로
@@ -3635,6 +3698,14 @@ allowed autonomy.” (중요한 점은, 더 높은 역량이 자동으로 더 �
 organization is prepared to accept.” (에이전트는 조직이 받아들일 준비가
 된 것보다 높은 허용 자율성으로 운영되어서는 안 된다.)</p>
 </blockquote>
+<pre class="mermaid"><code>flowchart TB
+  C[ACL — 할 수 있는 것, 에이전트의 내재 역량]
+  A[AAL — 해도 되는 것, 조직이 허가한 범위]
+  C --&gt; D{배치 등급 결정}
+  A --&gt; D
+  D --&gt;|둘 중 낮은 쪽을 따른다| P[운영 자율성]
+  C -.역량이 높아도 허가가 자동으로 오르지 않는다.-&gt; A</code></pre>
+<p>그림 1. 두 축의 분리 — 배치는 역량이 아니라 허가가 정한다</p>
 <p>허용 자율성 쪽은 사람의 역할로 다섯 칸이 된다.</p>
 <table>
 <colgroup>
@@ -4786,6 +4857,14 @@ y명분에 겨우 1명분을 절감했다고요? 그게 말이 됩니까?” 아
 감축을 논하는 일은 순서가 반대여야 한다.</strong> 숫자가 먼저 쌓이고, 그
 숫자로 무엇을 하는지 지켜본 경험이 신뢰를 만든 다음에야 활용의 범위를
 넓힐 수 있다. 순서를 거꾸로 하면 숫자 자체가 안 모인다.</p>
+<pre class="mermaid"><code>flowchart TB
+  M[측정 체계] --&gt; N[절감 숫자]
+  N --&gt;|감축으로 읽히면| U[과소 보고]
+  U --&gt; B[측정 붕괴 — 숫자가 안 모인다]
+  N --&gt;|재투자 선언이 믿기면| T[신뢰 축적]
+  T --&gt; M2[다음 분기, 더 정확한 숫자]
+  M2 --&gt; M</code></pre>
+<p>그림 1. 같은 숫자라도 어떻게 읽히느냐가 측정의 운명을 정한다</p>
 <p>실무적으로는 도입 초기 몇 년 동안 <strong>재투자를 기본값으로
 명시적으로 선언</strong>하는 형태가 된다. 여기서 “명시적으로”가
 중요하다. 말하지 않은 기본값은 기본값이 아니다. 사람들은 말해지지 않은

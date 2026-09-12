@@ -70,6 +70,6 @@
 ## 책 정보
 
 - 형식: EPUB 3 (epubcheck 검증 통과)
-- 본문 그림 6점 (SVG)
+- 본문 그림 10점 (SVG)
 - 제작: [book-writer 하네스](https://github.com/tobyilee/book-writer) v1.11.0
 - 라이선스: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ko) — 저작자 표시 · 비영리 · 동일조건변경허락

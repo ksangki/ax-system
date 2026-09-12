@@ -13,6 +13,7 @@
 - **웹 버전**: [ksangki.github.io/ax-system](https://ksangki.github.io/ax-system/)
 - **EPUB**: [`epub/` 폴더에서 다운로드](epub/)
 - **책 소개**: [BOOK.md](BOOK.md)
+- **발표 자료**: [1시간 발표용 슬라이드 25장](https://ksangki.github.io/ax-system/presentation/)
 
 ## 차례
 

@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>디지털 워커의 시대 — 1시간 발표 자료</title>
+<style>
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  :root{
+    --bg:#0b1520; --surface:#141f2c; --line:#26374a;
+    --text:#ece8dc; --muted:#a9a291; --dim:#6d696;
+    --gold:#d9a441; --gold-dim:#a87f3a; --red:#e06c5a; --green:#7fb069;
+    --pad:clamp(2rem,5vw,4.5rem);
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif;
+       scroll-snap-type:y mandatory;overflow-y:scroll;height:100vh}
+  section.slide{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
+       padding:var(--pad);position:relative;border-bottom:1px solid var(--line)}
+  .kicker{color:var(--gold);font-size:.95rem;letter-spacing:.14em;font-weight:700;margin-bottom:1rem;text-transform:uppercase}
+  h1{font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.25;font-weight:800}
+  h2{font-size:clamp(1.5rem,3.8vw,2.5rem);line-height:1.32;font-weight:800;margin-bottom:1.4rem}
+  h3{font-size:1.15rem;color:var(--gold);margin:1.4rem 0 .5rem}
+  p,li{font-size:clamp(1rem,1.9vw,1.25rem);line-height:1.75;color:var(--text)}
+  .muted{color:var(--muted)} .gold{color:var(--gold)} .red{color:var(--red)} .green{color:var(--green)}
+  ul{padding-left:1.3em;margin:.6em 0} li{margin:.45em 0}
+  .num{position:absolute;top:1.2rem;right:1.6rem;color:var(--dim);font-size:.85rem;font-variant-numeric:tabular-nums}
+  .cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:1.4rem 0}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem}
+  .card b{color:var(--gold);display:block;margin-bottom:.4rem;font-size:1.05rem}
+  .card p{font-size:1rem;color:var(--muted)}
+  .big{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;color:var(--gold);line-height:1.15;margin:.6rem 0}
+  .quote{border-left:4px solid var(--gold);padding:.6rem 0 .6rem 1.3rem;margin:1.4rem 0;font-size:clamp(1.15rem,2.4vw,1.6rem);line-height:1.6;font-weight:600}
+  .src{color:var(--dim);font-size:.85rem;margin-top:.7rem}
+  table{border-collapse:collapse;margin:1.2rem 0;width:100%;max-width:60rem}
+  th,td{border:1px solid var(--line);padding:.6rem .9rem;font-size:clamp(.9rem,1.7vw,1.1rem);text-align:left;line-height:1.5}
+  th{background:var(--surface);color:var(--gold)}
+  .vs{display:grid;gap:1rem;grid-template-columns:1fr 1fr;margin:1.4rem 0}
+  @media(max-width:720px){.vs{grid-template-columns:1fr}}
+  .vs .card{min-height:8rem}
+  .foot{position:fixed;bottom:.8rem;right:1.2rem;color:var(--dim);font-size:.8rem;z-index:9}
+  .toc li{margin:.3em 0}
+  .arrow{color:var(--gold-dim)}
+  kbd{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:.1em .5em;font-size:.85em}
+</style>
+</head>
+<body>
+
+<section class="slide" id="s1">
+  <p class="kicker">1시간 발표</p>
+  <h1>디지털 워커의 시대,<br>AI 에이전트를 조직의 성과로 만드는 체계</h1>
+  <p class="muted" style="margin-top:1.6rem">바텀업이 만든 씨앗을, 탑다운이 거두는 법</p>
+  <p style="margin-top:2.5rem">김상기 · AX 3부작 처방편</p>
+  <p class="src">이동: <kbd>↓</kbd>/<kbd>Space</kbd> 다음 · <kbd>↑</kbd> 이전</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">문제</p>
+  <h2>목록은 수백 건인데, 성과는 어디에 있나</h2>
+  <ul>
+    <li>어느 조직이든 AI 과제 목록은 빠르게 <b>수백 건</b>으로 불어난다 — 구성원이 만들고, 각자 돌리고, 각자 자랑한다</li>
+    <li>개인 생산성은 분명 올랐다는데, <b>조직 지표는 그대로</b>다</li>
+    <li>파일럿은 파일럿에서 멈춘다</li>
+  </ul>
+  <p class="quote">"이제 위에서 정해서 밀어붙이자" — 이 발표는 그 처방이 왜 틀렸는지에서 시작한다</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">증거</p>
+  <h2>채택은 인터넷보다 빨랐다. 그런데</h2>
+  <div class="cards">
+    <div class="card"><b>도입 속도</b><p>생성형 AI의 업무 채택 속도는 PC·인터넷보다 빨랐다</p></div>
+    <div class="card"><b>절감 실측</b><p>그런데 자기보고된 업무시간 절감은 평균 약 1.4% 수준 (Bick et al., 근로자 조사)</p></div>
+    <div class="card"><b>파일럿 정체</b><p>기업 GenAI 파일럿 다수가 측정 가능한 손익 효과 없이 멈춘다는 조사 (MIT NANDA, 방법론 논쟁 있음)</p></div>
+  </div>
+  <p class="muted">개인은 배웠다. 조직은 남기지 못했다. — 격차는 도구가 아니라 <b>체계</b>에 있다</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">반전</p>
+  <h2>그래서 위에서 정하면 되는가 — 아니다</h2>
+  <ul>
+    <li>실제로 조직 업무를 수행하는 에이전트 후보의 <b>압도적 다수는 현장의 자발적 제안</b>에서 나온다</li>
+    <li>하향식 강제 도입은 우회와 그림자 사용을 낳는다 — 과잉 제한도 같은 실패를 만든다</li>
+    <li>절차 표준화조차 "위에서 찍어 누르면" 실패한다는 것이 현장의 결론</li>
+  </ul>
+  <p class="quote">바텀업이 씨앗을 만든다.<br>그러나 씨앗은 저절로 수확되지 않는다.<br><span class="gold">탑다운이 할 일은 지시가 아니라 거두는 체계다.</span></p>
+</section>
+
+<section class="slide">
+  <p class="kicker">관통선</p>
+  <h2>거두는 체계가 공급하는 네 가지</h2>
+  <div class="cards">
+    <div class="card"><b>기준</b><p>무엇을 조직 자산으로 등록할지 가르는 관문</p></div>
+    <div class="card"><b>자원</b><p>돌릴 수 있는 인프라·예산·권한</p></div>
+    <div class="card"><b>제도</b><p>성과를 성과로 인정하는 규칙</p></div>
+    <div class="card"><b>폐기 규칙</b><p>내보내는 법 — 아무도 설계하지 않는 칸</p></div>
+  </div>
+  <p class="muted">아이디어는 계속 아래에서 온다는 것이 <b>전제</b>다. 위가 공급하는 것은 과제 목록이 아니다.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">실증</p>
+  <h2>중앙이 무엇을 공급하면 현장이 사는가</h2>
+  <p>DORA 2025: <b>AI는 증폭기다</b> — 최대 수익은 도구가 아니라 근본 조직 시스템에서 온다</p>
+  <ul>
+    <li>고성숙 조직만 불균형한 편익을 얻는다: <b>버전 관리 · 관측성 · 내부 플랫폼</b></li>
+    <li>되돌릴 수 있게, 볼 수 있게, 다시 만들지 않게 — 전부 <b>기준·자원·제도</b>다</li>
+    <li>이 발표가 다룰 등록부·감사 로그·폐기 규칙이 하는 일과 같다. 대상만 코드에서 에이전트로 바뀐다</li>
+  </ul>
+  <p class="src">DORA State of AI-assisted Software Development 2025</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">지도</p>
+  <h2>체계를 세우다 부딪히는 아홉 개의 벽</h2>
+  <ul class="toc">
+    <li>1 <span class="arrow">→</span> 목록은 있는데 <b>실체를 모른다</b> — 재고 조사</li>
+    <li>2 <span class="arrow">→</span> 가리려니 <b>정의가 없다</b> — 관문·판별</li>
+    <li>3 <span class="arrow">→</span> 절차가 <b>적혀 있지 않다</b> — SOP</li>
+    <li>4 <span class="arrow">→</span> 적어도 <b>기계가 못 읽는다</b> — 변환</li>
+    <li>5 <span class="arrow">→</span> 등록하려니 <b>적을 칸이 없다</b> — 스키마</li>
+    <li>6 <span class="arrow">→</span> <b>청구서가 막는다</b> — 계층과 위임</li>
+    <li>7 <span class="arrow">→</span> <b>통제 기준이 없다</b> — 자율성 등급</li>
+    <li>8 <span class="arrow">→</span> <b>성과를 못 잰다</b> — FTE 환산</li>
+    <li>9 <span class="arrow">→</span> 재면 <b>현장이 숨긴다</b> — 그리고 폐기</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 1·2 — 재고 조사</p>
+  <h2>세어보면 다 있는데, 대보면 없다</h2>
+  <p>"AI 과제"라는 이름표는 실체를 보장하지 않는다. 목록을 한 건씩 열면 — 기존 자동화, 데이터 분석, 아이디어 문장 하나.</p>
+  <h3>다섯 관문으로 거른다</h3>
+  <p><b>생성형인가</b> → <b>행위하는가</b>(쓰기·발송·처리) → <b>산출물이 실재하는가</b> → <b>조직의 업무인가</b> → <b>무게가 있는가</b>(되돌릴 수 없는 일)</p>
+  <p class="muted" style="margin-top:1rem">마지막에 남는 것은 처음 목록의 아주 일부다. 줄어든 게 아니라 <b>정리된 것</b> — 보고 프레임을 미리 잡아라.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 1·2 — 판별</p>
+  <h2>통제는 세 질문으로 정한다</h2>
+  <table>
+    <tr><th></th><th>질문</th><th>아니라면</th></tr>
+    <tr><td><b>전제</b></td><td>우리 조직의 업무인가</td><td>대상 아님</td></tr>
+    <tr><td><b>①</b></td><td>실제로 행동하는가 (쓰기·발송·처리)</td><td>가볍게 등록만</td></tr>
+    <tr><td><b>②</b></td><td>스스로 도는가 (사람은 예외에만)</td><td>보통 등록</td></tr>
+    <tr><td><b>③</b></td><td>되돌릴 수 없는 일인가 (돈·대외·민감)</td><td>등록 + 모니터링</td></tr>
+  </table>
+  <p class="quote">통제의 강도는 <span class="gold">똑똑한 정도가 아니라 되돌릴 수 없음의 정도</span>로 정한다</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 3 — SOP</p>
+  <h2>적힌 절차와 실제로 하는 일은 왜 다른가</h2>
+  <ul>
+    <li>절차의 두 얼굴: <b>적힌 것</b>(ostensive)과 <b>실제 수행</b>(performative)은 애초에 다른 물건이다 (Feldman &amp; Pentland 2003)</li>
+    <li>"Confluence는 문서가 죽으러 가는 곳" — 5년에 걸쳐 여러 실무자가 독립적으로 남긴 냉소</li>
+    <li>같은 절차 문서가 조직에 따라 <b>힘이 되기도, 족쇄가 되기도</b> 한다 (enabling vs coercive — Adler &amp; Borys 1996)</li>
+  </ul>
+  <p class="muted">묻어야 할 것은 "절차를 줄일까 늘릴까"가 아니라 <b>"어느 유형으로 만들 것인가"</b>다.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 4 — 변환</p>
+  <h2>사람의 절차를 기계가 읽는 절차로</h2>
+  <ul>
+    <li>SOP를 프롬프트 시퀀스로 옮기는 방법론은 이미 실증됐다 (MetaGPT — ICLR 2024)</li>
+    <li>단, <b>절차를 줬는데 안 지켜지는</b> 문제의 절반은 절차 쪽에 있다 — 산출물 기준·짧은 명령형·점진 공개</li>
+    <li>기획자가 직접 쓸 수 있는 범위가 생각보다 넓다 — 코드가 아니라 <b>구조화된 문서</b>까지</li>
+  </ul>
+  <p class="quote">SOP는 이 체계의 <span class="gold">입장권</span>이다 — 절차가 적히지 않은 에이전트는 등록 자격이 없다</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 5 — 등록</p>
+  <h2>등록한다는 건 여덟 칸을 채운다는 뜻이다</h2>
+  <div class="vs">
+    <div class="card"><b>순순히 채워지는 일곱 칸</b><p>① 디지털 신원 ② 권한 범위 ③ 데이터 민감도 ④ 행위 범위 ⑤ 사람의 개입 지점 ⑥ 감사·추적성 ⑦ 업무 연속성</p></div>
+    <div class="card" style="border-color:var(--red)"><b class="red">늘 비어 있는 칸</b><p>⑧ 재심사와 폐기 기준 — 들이는 법은 다들 설계하고, 내보내는 법은 아무도 설계하지 않는다</p></div>
+  </div>
+  <p><b class="gold">78%</b>의 조직이 AI 신원의 생성·제거에 대한 문서화된 정책이 없다 <span class="src">— Cloud Security Alliance, 2026-05</span></p>
+  <p class="muted">시작은 세 칸부터: 신원 · 스폰서 · 행위 범위. 결재 서류처럼 보이는 순간 등록은 다음 주로 미뤄진다.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 6 — 청구서</p>
+  <h2>제도는 청구서에 부딪혀 모양이 잡힌다</h2>
+  <ul>
+    <li>"사람과 똑같은 계정을 주자" → 계정 수만큼 <b>상용 SaaS 라이선스 과금</b>이 따라온다</li>
+    <li>해법: 에이전트에게 <b>전용 식별 체계</b>, 권한은 <b>책임지는 사람에게서 위임</b></li>
+    <li>이 우회는 타협이 아니라 더 옳은 설계다 — <b>책임의 종착점이 언제나 사람으로</b> 남기 때문</li>
+  </ul>
+  <p class="quote">좋은 제도는 대개 이상 앞에서가 아니라 <span class="gold">청구서 앞에서</span> 모양을 갖춘다</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 6 — 해외 사례</p>
+  <h2>같은 발상, 갈린 운명</h2>
+  <div class="vs">
+    <div class="card"><b class="green">Deutsche Bank (2020)</b><p>디지털 직원 'Yi'에게 <b>사번과 전용 이메일</b>을 부여 — 공식 보도자료로 확인된 유일한 사번 사례. 단, LLM 이전 RPA 시대의 일</p></div>
+    <div class="card"><b>BNY (2025~)</b><p>디지털 직원에게 부여한 것은 <b>user ID·로그인·페르소나</b> — 사번이 아니라 계정. 인사 시스템 등재는 미확인</p></div>
+    <div class="card" style="border-color:var(--red)"><b class="red">Lattice (2024)</b><p>"AI 직원에게 정식 employee record를" 발표 → <b>3일 만에 철회</b></p></div>
+    <div class="card" style="border-color:var(--green)"><b class="green">Workday (2026)</b><p>Agent System of Record 출시 — 에이전트를 직원<b>처럼</b>(like) 관리하되 인사 레코드와 분리. 살아남은 프레이밍</p></div>
+  </div>
+  <p class="muted">교훈: 사람 제도의 문법을 <b>어디까지 빌리고 어디서 끊는가</b>가 설계의 핵심이다</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 6 — 지형</p>
+  <h2>에이전트 신원은 이미 제품이 됐다</h2>
+  <ul>
+    <li><b>Microsoft Entra Agent ID</b> (GA 2026-05) — 에이전트에 디렉터리 신원 + Owner·Sponsor·Manager 3역할 + 후원자 퇴사 시 승계</li>
+    <li><b>Okta Agent SSO</b> (GA 2026-08) — "사람 직원과 나란히, 퍼스트클래스 신원으로 등록"</li>
+    <li>규제도 등록을 요구한다 — EU AI Act(고위험 등록), 미 연방 AI 인벤토리(36필드), 중국 알고리즘 등록제, 한국 AI 기본법</li>
+  </ul>
+  <p class="muted">사람 직원과 같은 통제를 AI 에이전트에 적용하는 조직은 <b>34%</b>뿐 <span class="src">— Okta, AI Agents at Work 2026 (7개국 조사)</span></p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 7 — 통제</p>
+  <h2>할 수 있는 것과 해도 되는 것</h2>
+  <div class="vs">
+    <div class="card"><b>ACL — 할 수 있는 것</b><p>에이전트의 내재 역량. 모델과 도구가 정한다</p></div>
+    <div class="card"><b>AAL — 해도 되는 것</b><p>조직이 허가한 범위. 책임을 감수할 의사가 정한다</p></div>
+  </div>
+  <p class="quote">"더 높은 역량이 자동으로 더 높은 허용 자율성을 뜻하지 않는다"<span class="src">— ExxonMobil 연구진의 이원 등급 체계 (2026)</span></p>
+  <ul>
+    <li>배치는 <b>둘 중 낮은 쪽</b>을 따른다 — 역량 4급을 3급 자리에 두는 것은 결함이 아니라 거버넌스 선택</li>
+    <li>실무 프레임들이 수렴한다: Gartner 4단계 비례 거버넌스, CSA L0~L5</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 7 — 근거</p>
+  <h2>승인 게이트만으로는 안 되는 이유</h2>
+  <div class="cards">
+    <div class="card"><b class="red">93%</b><p>사용자가 권한 프롬프트를 승인하는 비율 — "승인이 많아질수록 주의는 줄어든다" (Anthropic 자체 계측, 2026)</p></div>
+    <div class="card"><b class="green">84%</b><p>샌드박싱(환경 통제)이 권한 프롬프트 자체를 줄인 비율 (같은 회사 자체 보고, 2025)</p></div>
+  </div>
+  <p class="muted">승인 축이 형식화로 무너진 자리에서, <b>환경 축이 질문 자체를 없앤다</b>. 통제는 사람의 클릭이 아니라 구조에 심어라.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 8 — 측정</p>
+  <h2>투입은 재고 있다. 성과는 무엇으로 재나</h2>
+  <h3>두 단 환산</h3>
+  <p>(1단) 에이전트 처리량 → 사람이 했다면 걸렸을 시간 <span class="arrow">→</span> (2단) 그 시간 → FTE</p>
+  <h3>두 계수 — 이중 할인이 아니다</h3>
+  <table>
+    <tr><th>계수</th><th>보정하는 것</th><th>예</th></tr>
+    <tr><td><b>신뢰도</b></td><td>이 숫자를 믿을 수 있나</td><td>실측 100% · 표본 할인 · 자기보고 절반</td></tr>
+    <tr><td><b>자율성</b></td><td>이 중 에이전트 몫이 얼마인가</td><td>사람 검토가 남아 있으면 100%가 아니다</td></tr>
+  </table>
+  <p class="muted">자기보고 등급에는 <b>폐지 시한</b>을 못 박는다 — 실측으로 옮겨갈 유인을 만드는 게 목적이다</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 8 — 함정</p>
+  <h2>첫 설계 결정은 기술이 아니라 기준선이다</h2>
+  <p>같은 370개 효과크기의 메타분석(Nature Human Behaviour 2024)에서 —</p>
+  <div class="vs">
+    <div class="card"><b class="green">+0.64</b><p>사람+AI vs <b>사람 단독</b> (증강) — 단, 이 낙관적 수치는 출판 편향 검정을 통과하지 못했다</p></div>
+    <div class="card"><b class="red">−0.23</b><p>사람+AI vs <b>둘 중 나은 쪽</b> (시너지) — 이 부정적 수치가 검정을 통과했다</p></div>
+  </div>
+  <p class="quote">대부분의 보고서는 전자를 재고 후자를 주장한다</p>
+  <p class="muted">답은 "사람을 빼라"가 아니다 — <b>AI가 못 보는 정보를 사람이 쥔 공정</b>에서만 시너지가 난다. 공정 설계의 문제다.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 9 — 이 발표의 클라이맥스</p>
+  <h2>절감분은 누구의 것인가</h2>
+  <table>
+    <tr><th>사용처</th><th>현장의 반응</th></tr>
+    <tr><td><b>재투자</b> — 확보한 시간을 더 가치 있는 일로</td><td class="green">협조적</td></tr>
+    <tr><td><b>품질·처리량</b> — 같은 인원으로 더 많이</td><td>중립</td></tr>
+    <tr><td><b>감축</b> — 정원 조정</td><td class="red">강한 저항</td></tr>
+  </table>
+  <p class="quote"><span class="red">절감이 감원으로 읽히는 순간, 현장은 숫자를 숨긴다.</span><br>그러면 측정 체계 자체가 붕괴한다.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">벽 9 — 도구</p>
+  <h2>측정보다 먼저 선언할 것</h2>
+  <h3>측정 결과 사용 제한 선언 (초안)</h3>
+  <ul>
+    <li>이 체계의 절감 수치는 <b>인력 조정의 근거로 쓰지 않는다</b> — 기한 명시, 재논의 없으면 자동 연장</li>
+    <li>확보된 시간의 기본 용도는 <b>재투자</b>다 — 바꾸려면 공개 논의</li>
+    <li>말하지 않은 기본값은 기본값이 아니다 — 사람들은 말해지지 않은 것을 최악으로 해석한다</li>
+  </ul>
+  <p class="muted">측정을 정확하게 만드는 것보다 <b>이 숫자가 어디에 쓰이지 않는지</b>를 먼저 선언하라. 순서가 성패를 가른다.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">마지막 벽 — 폐기</p>
+  <h2>아무도 설계하지 않은 마지막 칸</h2>
+  <ul>
+    <li>내보내는 절차는 <b>이미 설계돼 있다 — 도구 안에.</b> 조직이 아직 켜지 않았을 뿐</li>
+    <li>Entra의 승계 워크플로, EU AI Act의 'recalled' 상태값, 미 연방 인벤토리의 'Retired' 필드</li>
+    <li>그런데 <b>실제 폐기 절차를 공개한 조직은 찾지 못했다</b> — 부재 자체가 발견이다</li>
+  </ul>
+  <p class="quote">잘 거두는 체계는 <span class="gold">잘 거두어들이는</span> 체계이기도 하다 — 수확과 철수, 거두다의 두 뜻</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">실행</p>
+  <h2>다음 주에 시작한다면 — 순서</h2>
+  <ul>
+    <li><b>1주차</b> — 기존 목록 10건을 다섯 관문에 통과시켜 본다 (한 건에 5분)</li>
+    <li><b>1개월</b> — 세 칸 등록부(신원·스폰서·행위 범위)를 연다. 여덟 칸은 열만 만들어 둔다</li>
+    <li><b>1분기</b> — 판별 3질문으로 통제 차등, 고위험 건만 승인 게이트 + 환경 통제</li>
+    <li><b>측정 시작 전</b> — 사용 제한 선언부터. 숫자보다 신뢰가 먼저다</li>
+    <li><b>등록의 조건</b> — 절차(SOP) 없는 에이전트는 받지 않는다. 그게 입장권이다</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <p class="kicker">요약</p>
+  <h2>기억할 세 문장</h2>
+  <p class="quote">① 씨앗은 아래에서 온다. 위가 공급할 것은 목록이 아니라 <span class="gold">기준·자원·제도·폐기 규칙</span>이다.</p>
+  <p class="quote">② 통제의 강도는 똑똑한 정도가 아니라 <span class="gold">되돌릴 수 없음의 정도</span>로 정한다.</p>
+  <p class="quote">③ 절감이 감원으로 읽히는 순간 숫자는 숨는다 — <span class="gold">측정보다 선언이 먼저</span>다.</p>
+</section>
+
+<section class="slide">
+  <p class="kicker">더 읽기</p>
+  <h1 style="font-size:clamp(1.6rem,4vw,2.6rem)">디지털 워커의 시대,<br>AI 에이전트를 조직의 성과로 만드는 체계</h1>
+  <p style="margin-top:1.5rem">김상기 · v1.0.0 · CC BY-NC-SA 4.0</p>
+  <ul style="margin-top:1rem">
+    <li>웹에서 읽기 — <b>ksangki.github.io/ax-system</b></li>
+    <li>EPUB — 저장소 <b>epub/</b> 폴더</li>
+    <li>AX 3부작 — 『AX를 만들다』(실전기) · 『나는 이 게임을 안다』(진단) · 이 책(처방)</li>
+  </ul>
+  <p class="muted" style="margin-top:2rem">각 장이 남긴 아홉 개의 워크시트는 부록 A에 있습니다. 감사합니다.</p>
+</section>
+
+<div class="foot" id="counter"></div>
+<script>
+const slides=[...document.querySelectorAll('section.slide')];
+slides.forEach((s,i)=>{const n=document.createElement('div');n.className='num';n.textContent=(i+1)+' / '+slides.length;s.appendChild(n)});
+let cur=0;
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){cur=slides.indexOf(e.target);document.getElementById('counter').textContent=(cur+1)+' / '+slides.length}}),{threshold:.6});
+slides.forEach(s=>io.observe(s));
+addEventListener('keydown',e=>{
+  if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();slides[Math.min(cur+1,slides.length-1)].scrollIntoView({behavior:'smooth'})}
+  if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();slides[Math.max(cur-1,0)].scrollIntoView({behavior:'smooth'})}
+});
+</script>
+</body>
+</html>
