@@ -178,8 +178,9 @@ nav#TOC{background:#f3efe6;border:1px solid #e0d8c4;border-radius:10px;padding:1
 nav#TOC ul{list-style:none;padding-left:1em;margin:.2em 0}
 nav#TOC a,nav#TOC a:visited{border-bottom:none;line-height:2;color:#8a6320}
 img,svg{max-width:100%;height:auto;display:block;margin:1.2em auto}
-table{display:block;overflow-x:auto;border-collapse:collapse;margin:1.4em auto;width:max-content;max-width:min(64rem,94vw)}
-@media(min-width:50rem){table{margin-left:50%;transform:translateX(-50%)}}
+/* 표: 본문 왼쪽 선에 맞추고 오른쪽으로만 펼친다 (본문 폭은 유지) */
+table{display:block;overflow-x:auto;border-collapse:collapse;margin:1.4em 0;width:max-content;max-width:100%}
+@media(min-width:50rem){table{max-width:calc(50vw + 21em)}}
 table col{width:auto!important}
 th,td{border:1px solid #ddd6c4;padding:.5em .8em;vertical-align:top}
 th{background:#f3efe6}
