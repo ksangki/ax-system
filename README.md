@@ -32,6 +32,6 @@
 
 ## 책 정보
 
-- 저자: 김상기 · v1.0.0 (2026) · 한국어 · EPUB 3 (epubcheck 검증)
+- 저자: 김상기 · 웹 v1.3.0 · EPUB v1.2.0 (2026) · 한국어 · EPUB 3 (epubcheck 검증)
 - 라이선스: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ko)
 - 제작: [book-writer 하네스](https://github.com/tobyilee/book-writer) v1.11.0
