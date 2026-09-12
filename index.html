@@ -178,9 +178,11 @@ nav#TOC{background:#f3efe6;border:1px solid #e0d8c4;border-radius:10px;padding:1
 nav#TOC ul{list-style:none;padding-left:1em;margin:.2em 0}
 nav#TOC a,nav#TOC a:visited{border-bottom:none;line-height:2;color:#8a6320}
 img,svg{max-width:100%;height:auto;display:block;margin:1.2em auto}
-table{display:block;overflow-x:auto;border-collapse:collapse;margin:1.2em 0;table-layout:auto}
+/* 표: 내용 폭에 맞추고, 본문 폭보다 넓으면 뷰포트 기준 가운데로 펼친다 */
+table{display:block;overflow-x:auto;border-collapse:collapse;margin:1.4em auto;width:max-content;max-width:min(64rem,94vw)}
+@media(min-width:50rem){table{margin-left:50%;transform:translateX(-50%)}}
 table col{width:auto!important}
-th,td{border:1px solid #ddd6c4;padding:.45em .7em}
+th,td{border:1px solid #ddd6c4;padding:.5em .8em;vertical-align:top}
 th{background:#f3efe6}
 blockquote{border-left:3px solid #c9a55a;margin-left:0;padding-left:1.1em;color:#5a544a}
 @media (prefers-color-scheme: dark){
