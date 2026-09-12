@@ -1280,6 +1280,60 @@ washing)</strong> — 기존 챗봇과 자동화 도구, 예전 RPA에 에이전
 아무것도 걸러지지 않고, 빡빡하게 잡으면 정작 중요한 것까지 함께
 떨어진다. 그리고 떨어진 쪽에서 항의가 들어왔을 때 “기준에 안
 맞아서요”로는 설명이 되지 않는다.</p>
+<p>그렇다고 정의 없이 가자는 말은 아니다. 참조점은 필요하고, 좋은
+참조점은 이미 나와 있다. 에이전트를 만드는 회사들이 각자 정의를
+걸어두었고, 나란히 놓으면 쓸모가 있다.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>출처</th>
+<th>정의</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenAI, 『A Practical Guide to Building Agents』 (2025)</td>
+<td>“Agents are systems that <strong>independently</strong> accomplish
+tasks on your behalf.” — 사용자를 대신해 과업을 독립적으로 완수하는
+시스템 (강조는 원문)</td>
+</tr>
+<tr>
+<td>Anthropic, 「Building Effective Agents」 (2024-12)</td>
+<td>“Agents are systems where LLMs dynamically direct their own
+processes and tool usage, maintaining control over how they accomplish
+tasks.” — LLM이 자기 프로세스와 도구 사용을 동적으로 지휘하며 과업 수행
+방식의 통제권을 쥔 시스템. 미리 짜인 경로를 따르는 워크플로(workflow)와
+명시적으로 구분한다</td>
+</tr>
+<tr>
+<td>Google, 에이전트 백서 (2024)</td>
+<td>“an application that attempts to achieve a goal by observing the
+world and acting upon it using the tools that it has at its disposal” —
+가진 도구로 세계를 관찰하고 그에 작용하여 목표를 달성하려는 애플리케이션
+(백서 원문 PDF는 미접근 — 문면은 독립된 2차 문헌 다수로 교차
+확인했다)</td>
+</tr>
+</tbody>
+</table>
+<p>문장은 제각각이지만 셋이 가리키는 곳은 같다. <strong>목표</strong>가
+있고, 도구로 외부에 <strong>작용</strong>하며 — 읽고 보여주기만 하는 게
+아니라 — 그 과정을 <strong>스스로 결정</strong>한다. 그리고 셋 다 무엇이
+아닌지도 함께 말한다. OpenAI의 가이드는 정의 바로 아래에 이렇게 못
+박는다. LLM을 쓰더라도 그것으로 실행 흐름을 제어하지 않으면 — 단순 챗봇,
+단발 호출, 분류기라면 — 에이전트가 아니다.</p>
+<p>이 공통분모를 손에 들면 흔한 목록의 정체가 미리 보인다. 대시보드는
+관찰만 하고 작용하지 않는다. 규칙 기반 알람은 작용하지만 스스로 결정하지
+않는다. 음성이나 이미지 처리를 자동화한 것은 정해진 경로를 벗어나지
+않는다. 셋 다 훌륭한 도구이고 값을 내고 있을 것이다. 다만 세 정의 중
+어느 것으로도 에이전트는 아니다.</p>
+<p>그런데 이 좋은 정의들을 실제 목록에 대보면 곧 한계가 온다.
+“독립적으로”는 어디부터인가. 사람이 마지막에 한 번 승인하면 독립이
+깨지는가. “동적으로 지휘한다”는 분기 하나면 충분한가. 정의는 방향을
+주지만, 판정은 해주지 않는다.</p>
 <p>그래서 방향을 바꿔보자. <strong>한 번에 거르지 말고, 관문을 여러 개
 세워 단계적으로 좁힌다.</strong> 실제로 작동한 관문의 순서는 대략
 이렇다.</p>
