@@ -168,24 +168,28 @@ vertical-align: middle;
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 </style>
 <style>
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{max-width:46em;margin:0 auto;padding:0 1.2em;line-height:1.78;font-size:17px;color:#2b2b28;background:#faf9f6;font-family:'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:#faf9f6}
+body{max-width:46em;margin:0 auto;padding:0 1.2em 3em;line-height:1.78;font-size:17px;color:#2b2b28;background:#faf9f6;font-family:'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif}
+h1,h2,h3{color:#23211d}
 h1{margin-top:2.2em;line-height:1.3}
-a{color:#8a6320;text-decoration:none;border-bottom:1px solid #d9c9a3}
+a,a:visited{color:#8a6320;text-decoration:none;border-bottom:1px solid #d9c9a3}
 a:hover{color:#5f4415;border-bottom-color:#8a6320}
 nav#TOC{background:#f3efe6;border:1px solid #e0d8c4;border-radius:10px;padding:1.1em 1.5em;margin:1.6em 0}
 nav#TOC ul{list-style:none;padding-left:1em;margin:.2em 0}
-nav#TOC a{border-bottom:none;line-height:2}
+nav#TOC a,nav#TOC a:visited{border-bottom:none;line-height:2;color:#8a6320}
 img,svg{max-width:100%;height:auto;display:block;margin:1.2em auto}
 table{display:block;overflow-x:auto;border-collapse:collapse;margin:1.2em 0}
 th,td{border:1px solid #ddd6c4;padding:.45em .7em}
 th{background:#f3efe6}
 blockquote{border-left:3px solid #c9a55a;margin-left:0;padding-left:1.1em;color:#5a544a}
 @media (prefers-color-scheme: dark){
+ html{background:#10161f}
  body{background:#10161f;color:#d8d4c8}
- a{color:#e3b45f;border-bottom-color:#6b5426}
+ h1,h2,h3{color:#ece8dc}
+ a,a:visited{color:#e3b45f;border-bottom-color:#6b5426}
  a:hover{color:#f0cc85;border-bottom-color:#e3b45f}
  nav#TOC{background:#18212d;border-color:#2a3644}
+ nav#TOC a,nav#TOC a:visited{color:#e3b45f}
  th,td{border-color:#334050}
  th{background:#18212d}
  blockquote{border-left-color:#a3803c;color:#a8a396}
@@ -3733,6 +3737,27 @@ becoming over time much less diligent in their supervision.” (승인을
 행위에만 남기고, 나머지는 애초에 닿을 수 없게 만든다.</strong> 그리고
 등급표에 위협 모델 열을 둔다. 이 등급에서 무엇이 잘못될 수 있는지를 적지
 않으면 등급은 이름표에 그친다.</p>
+<p>남는 질문이 하나 있다. 승인을 소수 행위로 줄이고 나머지를 구조로
+막았다고 하자. 그렇게 쌓이는 전수 실행 로그는 누가 읽는가. 3장에서
+심사의 재료가 진술에서 로그로 바뀐다고 했는데, 전수 로그는 사람이 읽을
+수 있는 양이 아니다.</p>
+<p>그래서 실무는 검증하는 에이전트를 따로 세우는 쪽으로 간다. 작업
+에이전트의 실행 기록을 적힌 절차와 대조하고, 어긋난 것만 골라 올리는
+역할이다. 다만 조건이 둘 붙는다. 첫째, <strong>검증자는 작업자와 다른
+곳에서 틀려야 한다.</strong> 8장에서 팀 성과를 가르는 것이 정확도가
+아니라 틀리는 지점의 차이라는 실증을 보게 될 텐데, 그 논리가 여기 먼저
+적용된다. 같은 모델을 같은 맥락으로 불러 받아 낸 “검증했음”은 복창에
+가깝다. 다른 모델 계열을 쓰든 입력을 다르게 주든 — 이를테면 검증자에게는
+절차 원문과 규칙만 주고 작업자의 사정은 주지 않는 식으로 — 틀림의 상관을
+끊어야 한다. 둘째, <strong>검증 에이전트도 등록부에 오르는
+에이전트다.</strong> 등급이 매겨지고 판정 로그가 남는다. 그래야
+“검증자는 누가 검증하나”라는 회귀가 감사 가능성에서 끊긴다.</p>
+<p>그러면 사람의 자리는 사라지는가. 사라지지 않고 이동한다. 건별 검증은
+위에서 본 대로 사람이 감당할 수 없는 일이 됐다. 사람이 하는 일은 검증
+체계를 설계하는 것, 검증자의 판정을 표본으로 감사하는 것, 그리고
+검증자가 올려 보낸 예외를 판정하는 것이다. 조금 뒤에 이 장의 명제로 다시
+만나겠지만, 여기서도 통제는 실행의 순간에서 설계의 순간으로 옮겨
+간다.</p>
 <h2 id="할-수-있는-것과-해도-되는-것">할 수 있는 것과 해도 되는 것</h2>
 <p>자율성 이야기가 헛도는 이유는 두 가지가 계속 섞이기 때문이다.
 기술적으로 가능한 범위와 조직이 허용할 범위다.</p>
