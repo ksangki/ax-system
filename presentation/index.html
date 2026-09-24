@@ -3,346 +3,1052 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>디지털 워커의 시대 — 1시간 발표 자료</title>
+<title>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계 — 1시간 발표 자료</title>
 <style>
-  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-  :root{
-    --bg:#0b1520; --surface:#141f2c; --line:#26374a;
-    --text:#ece8dc; --muted:#a9a291; --dim:#6d696;
-    --gold:#d9a441; --gold-dim:#a87f3a; --red:#e06c5a; --green:#7fb069;
-    --pad:clamp(2rem,5vw,4.5rem);
-  }
-  *{box-sizing:border-box;margin:0}
-  body{background:var(--bg);color:var(--text);font-family:'Apple SD Gothic Neo','Pretendard','Noto Sans KR',sans-serif;
-       scroll-snap-type:y mandatory;overflow-y:scroll;height:100vh}
-  section.slide{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;
-       padding:var(--pad);position:relative;border-bottom:1px solid var(--line)}
-  .kicker{color:var(--gold);font-size:.95rem;letter-spacing:.14em;font-weight:700;margin-bottom:1rem;text-transform:uppercase}
-  h1{font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.25;font-weight:800}
-  h2{font-size:clamp(1.5rem,3.8vw,2.5rem);line-height:1.32;font-weight:800;margin-bottom:1.4rem}
-  h3{font-size:1.15rem;color:var(--gold);margin:1.4rem 0 .5rem}
-  p,li{font-size:clamp(1rem,1.9vw,1.25rem);line-height:1.75;color:var(--text)}
-  .muted{color:var(--muted)} .gold{color:var(--gold)} .red{color:var(--red)} .green{color:var(--green)}
-  ul{padding-left:1.3em;margin:.6em 0} li{margin:.45em 0}
-  .num{position:absolute;top:1.2rem;right:1.6rem;color:var(--dim);font-size:.85rem;font-variant-numeric:tabular-nums}
-  .cards{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin:1.4rem 0}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.3rem}
-  .card b{color:var(--gold);display:block;margin-bottom:.4rem;font-size:1.05rem}
-  .card p{font-size:1rem;color:var(--muted)}
-  .big{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;color:var(--gold);line-height:1.15;margin:.6rem 0}
-  .quote{border-left:4px solid var(--gold);padding:.6rem 0 .6rem 1.3rem;margin:1.4rem 0;font-size:clamp(1.15rem,2.4vw,1.6rem);line-height:1.6;font-weight:600}
-  .src{color:var(--dim);font-size:.85rem;margin-top:.7rem}
-  table{border-collapse:collapse;margin:1.2rem 0;width:100%;max-width:60rem}
-  th,td{border:1px solid var(--line);padding:.6rem .9rem;font-size:clamp(.9rem,1.7vw,1.1rem);text-align:left;line-height:1.5}
-  th{background:var(--surface);color:var(--gold)}
-  .vs{display:grid;gap:1rem;grid-template-columns:1fr 1fr;margin:1.4rem 0}
-  @media(max-width:720px){.vs{grid-template-columns:1fr}}
-  .vs .card{min-height:8rem}
-  .foot{position:fixed;bottom:.8rem;right:1.2rem;color:var(--dim);font-size:.8rem;z-index:9}
-  .toc li{margin:.3em 0}
-  .arrow{color:var(--gold-dim)}
-  kbd{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:.1em .5em;font-size:.85em}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+:root{
+ --bg:#0d1620; --panel:#16222e; --panel2:#1c2b3a; --line:#2a3b4d;
+ --text:#f2efe6; --muted:#a9a291; --dim:#6f7b88;
+ --gold:#d9a441; --gold-d:#a87f3a; --cream:#e8e2d2; --red:#e06c5a; --green:#7fb069;
+ --pad:clamp(2rem,4.5vw,4.2rem);
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);
+ font-family:'Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+ scroll-snap-type:y mandatory;overflow-y:scroll;height:100vh}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.progress-bar{position:fixed;top:0;left:0;right:0;height:3px;background:#0a1017;z-index:99}
+.progress-fill{height:100%;background:var(--gold);width:0;transition:width .2s}
+.slide{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;
+ justify-content:center;padding:var(--pad);position:relative;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;font-weight:700;text-transform:uppercase;margin-bottom:.9rem}
+.eyebrow.gold{color:var(--gold)} .eyebrow.cream{color:var(--muted)}
+.content-title{font-size:clamp(1.5rem,3.4vw,2.5rem);font-weight:800;line-height:1.3}
+.neon-bar{height:3px;width:110px;background:var(--gold);margin:1.1rem 0 1.4rem;border-radius:2px}
+.neon-bar.small{width:64px;height:2px}
+.lead{color:var(--muted);font-size:clamp(.95rem,1.7vw,1.15rem);line-height:1.7;margin-bottom:1.2rem;max-width:60rem}
+.foot-note{color:var(--muted);font-size:clamp(.88rem,1.5vw,1.02rem);line-height:1.7;margin-top:1.3rem;max-width:64rem}
+.foot-note b,.lead b{color:var(--cream)}
+.src{color:var(--dim);font-size:.85em}
+.gold-t{color:var(--gold)}
+/* cover */
+.cover{justify-content:center;background:radial-gradient(1200px 600px at 50% 0%,#16222e 0%,#0d1620 70%)}
+.cover-wrap{max-width:62rem}
+.cover-title{font-size:clamp(2.6rem,7vw,5rem);font-weight:800;line-height:1.1;letter-spacing:-.01em}
+.cover-title.end{font-size:clamp(2.2rem,5.5vw,3.8rem)}
+.cover-sub{color:var(--cream);font-size:clamp(1.05rem,2.2vw,1.6rem);margin-top:.8rem;line-height:1.45}
+.cover-quote{font-size:clamp(1rem,1.9vw,1.3rem);line-height:1.7;color:var(--text);margin:.4rem 0 1rem}
+.cover-by{color:var(--muted);font-size:clamp(.85rem,1.5vw,1rem);line-height:1.6;margin-top:.8rem}
+.cover-meta{display:flex;gap:1.4rem;flex-wrap:wrap;color:var(--dim);font-size:.9rem;margin-top:1.8rem}
+.corner{position:absolute;width:26px;height:26px;border:2px solid var(--gold-d);opacity:.5}
+.corner.tl{top:26px;left:26px;border-right:0;border-bottom:0}
+.corner.tr{top:26px;right:26px;border-left:0;border-bottom:0}
+.corner.bl{bottom:26px;left:26px;border-right:0;border-top:0}
+.corner.br{bottom:26px;right:26px;border-left:0;border-top:0}
+/* divider */
+.div{background:linear-gradient(120deg,#16222e 0%,#0d1620 65%)}
+.div-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2.4rem;align-items:center}
+.div-title{font-size:clamp(1.9rem,4.4vw,3.1rem);font-weight:800;line-height:1.2;margin:.2rem 0 .9rem}
+.div-sub{color:var(--muted);font-size:clamp(.95rem,1.7vw,1.15rem);line-height:1.7}
+.div-art{width:100%;border-radius:14px;box-shadow:0 18px 44px rgba(0,0,0,.45)}
+/* cards */
+.grid{display:grid;gap:1rem}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem}
+.card-num{color:var(--gold);font-size:.8rem;font-weight:700;margin-bottom:.5rem}
+.card-h{font-weight:700;font-size:clamp(1rem,1.7vw,1.18rem);line-height:1.4;margin-bottom:.45rem}
+.card-sub{color:var(--muted);font-size:clamp(.85rem,1.4vw,.98rem);line-height:1.6}
+.card-sub .gate,.gate{display:inline-block;margin-top:.6rem;color:var(--gold);font-size:.92em}
+/* quote */
+.bigq{border-left:4px solid var(--gold);padding:.4rem 0 .4rem 1.4rem;margin:.6rem 0 1rem;
+ font-size:clamp(1.15rem,2.5vw,1.85rem);line-height:1.6;font-weight:600;max-width:64rem}
+.q-src{color:var(--dim);font-size:.92rem;line-height:1.6;margin-bottom:.9rem}
+.after{color:var(--muted);font-size:clamp(.9rem,1.6vw,1.08rem);line-height:1.7;max-width:62rem}
+.after b{color:var(--cream)}
+/* table */
+.deck-table{border-collapse:collapse;width:100%;max-width:72rem;margin:.4rem 0}
+.deck-table th,.deck-table td{border:1px solid var(--line);padding:.62rem .9rem;text-align:left;
+ font-size:clamp(.85rem,1.45vw,1.05rem);line-height:1.55;vertical-align:top}
+.deck-table th{background:var(--panel);color:var(--gold);font-weight:700}
+.deck-table td b{color:var(--cream)}
+/* list */
+.big-list{padding-left:1.3rem;max-width:66rem}
+.big-list li{font-size:clamp(.95rem,1.75vw,1.2rem);line-height:1.75;margin:.5rem 0}
+.big-list b{color:var(--cream)}
+/* stats */
+.stat-row{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));max-width:72rem}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem}
+.stat-n{color:var(--gold);font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:800;line-height:1.1;margin-bottom:.5rem}
+.stat-l{color:var(--muted);font-size:clamp(.85rem,1.4vw,1rem);line-height:1.6}
+.stat-l b{color:var(--cream)}
+/* figure */
+.deck-fig{margin:.3rem 0;max-width:62rem}
+.deck-fig img{width:100%;background:#f7f3ea;border-radius:12px;padding:10px}
+.deck-fig figcaption{color:var(--dim);font-size:.88rem;margin-top:.6rem;text-align:center}
+/* chrome */
+.page-num{position:absolute;top:1.5rem;right:1.8rem;color:var(--dim);font-size:.8rem}
+.page-section{position:absolute;top:1.5rem;left:1.8rem;color:var(--dim);font-size:.8rem;letter-spacing:.08em}
+.page-footer{position:absolute;bottom:1.2rem;left:1.8rem;right:1.8rem;display:flex;justify-content:space-between;
+ gap:1rem;color:#4e5a66;font-size:.75rem}
+.cover .page-num{top:3.5rem;right:3.6rem} .cover .page-section{top:3.5rem;left:3.6rem}
+.cover .page-footer{bottom:3.2rem;left:3.6rem;right:3.6rem}
+@media(max-width:900px){
+ .grid-3,.grid-4,.grid-5{grid-template-columns:1fr}
+ .div-wrap{grid-template-columns:1fr}
+ .div-art{max-height:34vh;object-fit:cover}
+ .page-footer{display:none}
+ .slide{min-height:auto;padding:2.2rem 1.2rem 3rem}
+}
+@media print{
+ body{height:auto;overflow:visible;background:#fff;color:#111}
+ .slide{page-break-after:always;min-height:auto;border:none;background:#fff;color:#111}
+ .card,.stat,.deck-table th{background:#f4f1e8!important;border-color:#ccc!important}
+ .cover,.div{background:#fff!important}
+ .cover-title,.div-title,.content-title,.card-h{color:#111}
+ .card-sub,.lead,.foot-note,.div-sub,.after{color:#444}
+ .progress-bar{display:none}
+}
 </style>
 </head>
 <body>
-
-<section class="slide" id="s1">
-  <p class="kicker">1시간 발표</p>
-  <h1>디지털 워커의 시대,<br>AI 에이전트를 조직의 성과로 만드는 체계</h1>
-  <p class="muted" style="margin-top:1.6rem">바텀업이 만든 씨앗을, 탑다운이 거두는 법</p>
-  <p style="margin-top:2.5rem">김상기 · AX 3부작 처방편</p>
-  <p class="src">이동: <kbd>↓</kbd>/<kbd>Space</kbd> 다음 · <kbd>↑</kbd> 이전</p>
-</section>
-
-<section class="slide">
-  <p class="kicker">문제</p>
-  <h2>목록은 수백 건인데, 성과는 어디에 있나</h2>
-  <ul>
-    <li>어느 조직이든 AI 과제 목록은 빠르게 <b>수백 건</b>으로 불어난다 — 구성원이 만들고, 각자 돌리고, 각자 자랑한다</li>
-    <li>개인 생산성은 분명 올랐다는데, <b>조직 지표는 그대로</b>다</li>
-    <li>파일럿은 파일럿에서 멈춘다</li>
-  </ul>
-  <p class="quote">"이제 위에서 정해서 밀어붙이자" — 이 발표는 그 처방이 왜 틀렸는지에서 시작한다</p>
-</section>
-
-<section class="slide">
-  <p class="kicker">증거</p>
-  <h2>채택은 인터넷보다 빨랐다. 그런데</h2>
-  <div class="cards">
-    <div class="card"><b>도입 속도</b><p>생성형 AI의 업무 채택 속도는 PC·인터넷보다 빨랐다</p></div>
-    <div class="card"><b>절감 실측</b><p>그런데 자기보고된 업무시간 절감은 평균 약 1.4% 수준 (Bick et al., 근로자 조사)</p></div>
-    <div class="card"><b>파일럿 정체</b><p>기업 GenAI 파일럿 다수가 측정 가능한 손익 효과 없이 멈춘다는 조사 (MIT NANDA, 방법론 논쟁 있음)</p></div>
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+<main>
+<section class="slide cover" id="s1" data-n="1">
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="cover-wrap">
+    <div class="eyebrow gold">AX 3부작 · 처방편</div>
+    <h1 class="cover-title">디지털 워커의 시대</h1>
+    <p class="cover-sub">AI 에이전트를 조직의 성과로 만드는 체계</p>
+    <div class="neon-bar gold"></div>
+    <p class="cover-quote">"바텀업이 씨앗을 만든다. 그러나 씨앗은 저절로 수확되지 않는다."</p>
+    <p class="cover-by">— 탑다운이 할 일은 지시가 아니라 거두는 체계다</p>
+    <div class="cover-meta">
+      <span>김상기 · 1시간 발표</span>
+      <span class="mono dim">ksangki/ax-system · v1.3.0</span>
+    </div>
   </div>
-  <p class="muted">개인은 배웠다. 조직은 남기지 못했다. — 격차는 도구가 아니라 <b>체계</b>에 있다</p>
+  <div class="page-num mono">001 / 56</div>
+  <div class="page-section mono">OPENING / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">반전</p>
-  <h2>그래서 위에서 정하면 되는가 — 아니다</h2>
-  <ul>
-    <li>실제로 조직 업무를 수행하는 에이전트 후보의 <b>압도적 다수는 현장의 자발적 제안</b>에서 나온다</li>
-    <li>하향식 강제 도입은 우회와 그림자 사용을 낳는다 — 과잉 제한도 같은 실패를 만든다</li>
-    <li>절차 표준화조차 "위에서 찍어 누르면" 실패한다는 것이 현장의 결론</li>
-  </ul>
-  <p class="quote">바텀업이 씨앗을 만든다.<br>그러나 씨앗은 저절로 수확되지 않는다.<br><span class="gold">탑다운이 할 일은 지시가 아니라 거두는 체계다.</span></p>
+<section class="slide content" id="s2" data-n="2">
+  <div class="eyebrow cream">ABOUT THIS TALK</div>
+  <h2 class="content-title">이 발표가 답하려는 하나의 질문</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">AI 과제 목록은 이미 수백 건이다</div>
+        <div class="card-sub">공모를 한 번 띄우면 목록은 빠르게 분다. 보고 자리에서도 훌륭하게 작동한다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">그런데 조직 성과로는 옮겨가지 않는다</div>
+        <div class="card-sub">개인 생산성은 올랐다는데 조직 지표는 그대로다. 파일럿은 파일럿에서 멈춘다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">그래서, 위에서 무엇을 내려보내야 하는가</div>
+        <div class="card-sub">이 발표는 그 질문에 대한 답이다. 정답은 과제 목록이 아니다.</div>
+      </div></div>
+  
+  <div class="page-num mono">002 / 56</div>
+  <div class="page-section mono">OPENING / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">관통선</p>
-  <h2>거두는 체계가 공급하는 네 가지</h2>
-  <div class="cards">
-    <div class="card"><b>기준</b><p>무엇을 조직 자산으로 등록할지 가르는 관문</p></div>
-    <div class="card"><b>자원</b><p>돌릴 수 있는 인프라·예산·권한</p></div>
-    <div class="card"><b>제도</b><p>성과를 성과로 인정하는 규칙</p></div>
-    <div class="card"><b>폐기 규칙</b><p>내보내는 법 — 아무도 설계하지 않는 칸</p></div>
+<section class="slide content" id="s3" data-n="3">
+  <div class="eyebrow cream">THREE PROMISES</div>
+  <h2 class="content-title">이 발표가 지키는 세 가지</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">구호가 아니라 순서로</div>
+        <div class="card-sub">"역량의 시대" 같은 선언은 한 문단이면 충분하다. 그다음의 지루한 이야기를 한다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">숫자에는 라벨을 붙인다</div>
+        <div class="card-sub">벤더 자체 계측인지 동료평가 논문인지 익명 게시물인지 밝힌다. 라벨 없는 수치는 쓰지 않는다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">현장의 냉소를 예고로 쓴다</div>
+        <div class="card-sub">"AX팀을 만드는 순간 실패한다"는 말부터 먼저 인용하고 시작한다.</div>
+      </div></div>
+  
+  <div class="page-num mono">003 / 56</div>
+  <div class="page-section mono">OPENING / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s4" data-n="4">
+  <div class="eyebrow cream">THE CYNICISM</div>
+  <h2 class="content-title">먼저 인용하고 시작하는 문장</h2>
+  <div class="neon-bar gold small"></div>
+  <blockquote class="bigq">“AX팀을 만들어놓고 ‘너희가 AX팀이니까 빨리 AI로 자동화해봐’가 문제라는 말 같아요.<br>도메인 현업자가 주도하고 AX기술자가 서포트하면서 AI를 도입하는 게 가장 좋을 것 같은데.”</blockquote>
+  <p class="q-src">— GeekNews 사용자 <span class='mono'>snisty</span>, 2026-04-09 토픽의 댓글. 개인의 공개 발언이며 조사 데이터가 아니다.</p><p class="after">반박할 말을 찾지 못했다. 동의하기 때문이다. 그리고 그 처방이 이 발표가 도달하는 결론과 같다.</p>
+  <div class="page-num mono">004 / 56</div>
+  <div class="page-section mono">OPENING / 04</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s5" data-n="5">
+  <div class="eyebrow cream">AGENDA</div>
+  <h2 class="content-title">오늘 1시간 동안</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <ul class="big-list"><li><b>PART 1 전향</b> — 바텀업이 벽에 부딪혔다면, 위가 할 일은 정말 '정해서 밀어붙이는 것'인가</li><li><b>PART 2 절차</b> — 체계의 입장권은 SOP다. 사람의 절차를 기계가 읽는 절차로</li><li><b>PART 3 등록</b> — 여덟 칸, 청구서의 벽, 그리고 '할 수 있는 것'과 '해도 되는 것'</li><li><b>PART 4 성과</b> — 무엇과 비교할 것인가, 그리고 절감분은 누구의 것인가</li><li><b>PART 5 폐기</b> — 아무도 설계하지 않는 마지막 칸</li><li><b>실행</b> — 90일 로드맵과 세 개의 Gate</li></ul>
+  <p class="foot-note">각 PART는 다음 주에 바로 쓸 수 있는 도구를 하나씩 남깁니다.</p>
+  <div class="page-num mono">005 / 56</div>
+  <div class="page-section mono">OPENING / 05</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide div" id="s6" data-n="6">
+  <div class="div-wrap">
+    <div class="div-text">
+      <div class="eyebrow gold">PART 1</div>
+      <h2 class="div-title">전향 — 위가 할 일은 따로 있다</h2>
+      <p class="div-sub">개인은 배웠는데 조직은 남기지 못했다. 그 격차는 도구가 아니라 체계에 있다.</p>
+    </div>
+    <img class="div-art" src="../assets/illustrations/part-1-harvest.webp" alt="현장의 씨앗을 위의 체계가 물길과 수확 장치로 받치는 삽화" />
   </div>
-  <p class="muted">아이디어는 계속 아래에서 온다는 것이 <b>전제</b>다. 위가 공급하는 것은 과제 목록이 아니다.</p>
+  <div class="page-num mono">006 / 56</div>
+  <div class="page-section mono">DIAGNOSIS / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">실증</p>
-  <h2>중앙이 무엇을 공급하면 현장이 사는가</h2>
-  <p>DORA 2025: <b>AI는 증폭기다</b> — 최대 수익은 도구가 아니라 근본 조직 시스템에서 온다</p>
-  <ul>
-    <li>고성숙 조직만 불균형한 편익을 얻는다: <b>버전 관리 · 관측성 · 내부 플랫폼</b></li>
-    <li>되돌릴 수 있게, 볼 수 있게, 다시 만들지 않게 — 전부 <b>기준·자원·제도</b>다</li>
-    <li>이 발표가 다룰 등록부·감사 로그·폐기 규칙이 하는 일과 같다. 대상만 코드에서 에이전트로 바뀐다</li>
-  </ul>
-  <p class="src">DORA State of AI-assisted Software Development 2025</p>
+<section class="slide content" id="s7" data-n="7">
+  <div class="eyebrow cream">THE GAP</div>
+  <h2 class="content-title">채택은 인터넷보다 빨랐다. 그런데</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">도입 속도</div>
+        <div class="card-sub">생성형 AI의 업무 채택 속도는 과거 어떤 기술보다 빨랐다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">절감 실측</div>
+        <div class="card-sub">그런데 자기보고된 업무시간 절감은 평균 1.4% 수준에 머물렀다. <span class='src'>Bick et al., 근로자 조사</span></div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">파일럿 정체</div>
+        <div class="card-sub">기업 GenAI 파일럿 다수가 손익 효과 없이 멈춘다. <span class='src'>MIT NANDA — 편의표본, 방법론 논쟁 있음</span></div>
+      </div></div>
+  <p class="foot-note">세 숫자의 출처 성격이 각각 다릅니다. 그 차이를 밝히는 것이 이 발표의 규율입니다.</p>
+  <div class="page-num mono">007 / 56</div>
+  <div class="page-section mono">DIAGNOSIS / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">지도</p>
-  <h2>체계를 세우다 부딪히는 아홉 개의 벽</h2>
-  <ul class="toc">
-    <li>1 <span class="arrow">→</span> 목록은 있는데 <b>실체를 모른다</b> — 재고 조사</li>
-    <li>2 <span class="arrow">→</span> 가리려니 <b>정의가 없다</b> — 관문·판별</li>
-    <li>3 <span class="arrow">→</span> 절차가 <b>적혀 있지 않다</b> — SOP</li>
-    <li>4 <span class="arrow">→</span> 적어도 <b>기계가 못 읽는다</b> — 변환</li>
-    <li>5 <span class="arrow">→</span> 등록하려니 <b>적을 칸이 없다</b> — 스키마</li>
-    <li>6 <span class="arrow">→</span> <b>청구서가 막는다</b> — 계층과 위임</li>
-    <li>7 <span class="arrow">→</span> <b>통제 기준이 없다</b> — 자율성 등급</li>
-    <li>8 <span class="arrow">→</span> <b>성과를 못 잰다</b> — FTE 환산</li>
-    <li>9 <span class="arrow">→</span> 재면 <b>현장이 숨긴다</b> — 그리고 폐기</li>
-  </ul>
+<section class="slide content" id="s8" data-n="8">
+  <div class="eyebrow cream">THE WRONG TURN</div>
+  <h2 class="content-title">그래서 위에서 정하면 되는가 — 아니다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">씨앗은 아래에서 온다</div>
+        <div class="card-sub">최종 관문을 통과한 후보의 압도적 다수가 현장의 자발적 제안에서 나왔다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">강제는 우회를 부른다</div>
+        <div class="card-sub">하향식 강제 도입은 섀도 사용을 낳는다. 과잉 제한도 같은 실패를 만든다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">표준화조차 그렇다</div>
+        <div class="card-sub">절차 표준화를 위에서 찍어 누르면 실패한다는 것이 현장의 결론이다.</div>
+      </div></div>
+  
+  <div class="page-num mono">008 / 56</div>
+  <div class="page-section mono">DIAGNOSIS / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 1·2 — 재고 조사</p>
-  <h2>세어보면 다 있는데, 대보면 없다</h2>
-  <p>"AI 과제"라는 이름표는 실체를 보장하지 않는다. 목록을 한 건씩 열면 — 기존 자동화, 데이터 분석, 아이디어 문장 하나.</p>
-  <h3>다섯 관문으로 거른다</h3>
-  <p><b>생성형인가</b> → <b>행위하는가</b>(쓰기·발송·처리) → <b>산출물이 실재하는가</b> → <b>조직의 업무인가</b> → <b>무게가 있는가</b>(되돌릴 수 없는 일)</p>
-  <p class="muted" style="margin-top:1rem">마지막에 남는 것은 처음 목록의 아주 일부다. 줄어든 게 아니라 <b>정리된 것</b> — 보고 프레임을 미리 잡아라.</p>
+<section class="slide content" id="s9" data-n="9">
+  <div class="eyebrow cream">THE PIVOT</div>
+  <h2 class="content-title">이 발표의 관통선</h2>
+  <div class="neon-bar gold small"></div>
+  <blockquote class="bigq">바텀업이 씨앗을 만든다.<br>그러나 씨앗은 저절로 수확되지 않는다.<br><span class='gold-t'>탑다운이 할 일은 지시가 아니라 거두는 체계다.</span></blockquote>
+  <p class="after">초기 구상은 "바텀업은 한계에 부딪혔으니 탑다운으로 전향한다"였습니다. 현장 데이터가 그 문장을 지지하지 않아 고쳤습니다.</p>
+  <div class="page-num mono">009 / 56</div>
+  <div class="page-section mono">DIAGNOSIS / 04</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 1·2 — 판별</p>
-  <h2>통제는 세 질문으로 정한다</h2>
-  <table>
-    <tr><th></th><th>질문</th><th>아니라면</th></tr>
-    <tr><td><b>전제</b></td><td>우리 조직의 업무인가</td><td>대상 아님</td></tr>
-    <tr><td><b>①</b></td><td>실제로 행동하는가 (쓰기·발송·처리)</td><td>가볍게 등록만</td></tr>
-    <tr><td><b>②</b></td><td>스스로 도는가 (사람은 예외에만)</td><td>보통 등록</td></tr>
-    <tr><td><b>③</b></td><td>되돌릴 수 없는 일인가 (돈·대외·민감)</td><td>등록 + 모니터링</td></tr>
-  </table>
-  <p class="quote">통제의 강도는 <span class="gold">똑똑한 정도가 아니라 되돌릴 수 없음의 정도</span>로 정한다</p>
+<section class="slide content" id="s10" data-n="10">
+  <div class="eyebrow cream">WHAT COMES DOWN</div>
+  <h2 class="content-title">위가 공급하는 것은 과제 목록이 아니다</h2>
+  <div class="neon-bar gold small"></div>
+  <figure class="deck-fig"><img src="../figures/fig-01.svg" alt="그림 1. 씨앗은 아래에서 오고, 체계는 위에서 온다" /><figcaption>그림 1. 씨앗은 아래에서 오고, 체계는 위에서 온다</figcaption></figure>
+  <p class="foot-note">기준 · 자원 · 제도 · 폐기 규칙 — 넷이다. 아이디어는 계속 아래에서 온다는 것이 전제다.</p>
+  <div class="page-num mono">010 / 56</div>
+  <div class="page-section mono">DIAGNOSIS / 05</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 3 — SOP</p>
-  <h2>적힌 절차와 실제로 하는 일은 왜 다른가</h2>
-  <ul>
-    <li>절차의 두 얼굴: <b>적힌 것</b>(ostensive)과 <b>실제 수행</b>(performative)은 애초에 다른 물건이다 (Feldman &amp; Pentland 2003)</li>
-    <li>"Confluence는 문서가 죽으러 가는 곳" — 5년에 걸쳐 여러 실무자가 독립적으로 남긴 냉소</li>
-    <li>같은 절차 문서가 조직에 따라 <b>힘이 되기도, 족쇄가 되기도</b> 한다 (enabling vs coercive — Adler &amp; Borys 1996)</li>
-  </ul>
-  <p class="muted">묻어야 할 것은 "절차를 줄일까 늘릴까"가 아니라 <b>"어느 유형으로 만들 것인가"</b>다.</p>
+<section class="slide content" id="s11" data-n="11">
+  <div class="eyebrow cream">EVIDENCE</div>
+  <h2 class="content-title">중앙이 무엇을 공급하면 현장이 사는가</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <ul class="big-list"><li>DORA 2025: <b>AI는 증폭기다</b> — 최대 수익은 도구가 아니라 근본 조직 시스템에 대한 전략적 집중에서 온다</li><li>고성숙 조직만 불균형한 편익을 얻는다 — <b>버전 관리 · 관측성 · 내부 플랫폼</b></li><li>되돌릴 수 있게, 볼 수 있게, 다시 만들지 않게 — 전부 기준·자원·제도다</li><li>이 발표가 설계할 등록부·감사 로그·폐기 규칙이 하는 일과 같다. 대상만 코드에서 에이전트로 바뀐다</li></ul>
+  <p class="foot-note">출처: DORA State of AI-assisted Software Development 2025</p>
+  <div class="page-num mono">011 / 56</div>
+  <div class="page-section mono">DIAGNOSIS / 06</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 4 — 변환</p>
-  <h2>사람의 절차를 기계가 읽는 절차로</h2>
-  <ul>
-    <li>SOP를 프롬프트 시퀀스로 옮기는 방법론은 이미 실증됐다 (MetaGPT — ICLR 2024)</li>
-    <li>단, <b>절차를 줬는데 안 지켜지는</b> 문제의 절반은 절차 쪽에 있다 — 산출물 기준·짧은 명령형·점진 공개</li>
-    <li>기획자가 직접 쓸 수 있는 범위가 생각보다 넓다 — 코드가 아니라 <b>구조화된 문서</b>까지</li>
-  </ul>
-  <p class="quote">SOP는 이 체계의 <span class="gold">입장권</span>이다 — 절차가 적히지 않은 에이전트는 등록 자격이 없다</p>
-</section>
-
-<section class="slide">
-  <p class="kicker">벽 5 — 등록</p>
-  <h2>등록한다는 건 여덟 칸을 채운다는 뜻이다</h2>
-  <div class="vs">
-    <div class="card"><b>순순히 채워지는 일곱 칸</b><p>① 디지털 신원 ② 권한 범위 ③ 데이터 민감도 ④ 행위 범위 ⑤ 사람의 개입 지점 ⑥ 감사·추적성 ⑦ 업무 연속성</p></div>
-    <div class="card" style="border-color:var(--red)"><b class="red">늘 비어 있는 칸</b><p>⑧ 재심사와 폐기 기준 — 들이는 법은 다들 설계하고, 내보내는 법은 아무도 설계하지 않는다</p></div>
+<section class="slide div" id="s12" data-n="12">
+  <div class="div-wrap">
+    <div class="div-text">
+      <div class="eyebrow gold">OVERVIEW</div>
+      <h2 class="div-title">한눈에 보는 운영체계</h2>
+      <p class="div-sub">발견에서 폐기까지, 아홉 단계. 각 단계는 앞 단계의 산출물을 입력으로 받는다.</p>
+    </div>
+    
   </div>
-  <p><b class="gold">78%</b>의 조직이 AI 신원의 생성·제거에 대한 문서화된 정책이 없다 <span class="src">— Cloud Security Alliance, 2026-05</span></p>
-  <p class="muted">시작은 세 칸부터: 신원 · 스폰서 · 행위 범위. 결재 서류처럼 보이는 순간 등록은 다음 주로 미뤄진다.</p>
+  <div class="page-num mono">012 / 56</div>
+  <div class="page-section mono">THE SYSTEM / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 6 — 청구서</p>
-  <h2>제도는 청구서에 부딪혀 모양이 잡힌다</h2>
-  <ul>
-    <li>"사람과 똑같은 계정을 주자" → 계정 수만큼 <b>상용 SaaS 라이선스 과금</b>이 따라온다</li>
-    <li>해법: 에이전트에게 <b>전용 식별 체계</b>, 권한은 <b>책임지는 사람에게서 위임</b></li>
-    <li>이 우회는 타협이 아니라 더 옳은 설계다 — <b>책임의 종착점이 언제나 사람으로</b> 남기 때문</li>
-  </ul>
-  <p class="quote">좋은 제도는 대개 이상 앞에서가 아니라 <span class="gold">청구서 앞에서</span> 모양을 갖춘다</p>
+<section class="slide content" id="s13" data-n="13">
+  <div class="eyebrow cream">LIFECYCLE 01–04</div>
+  <h2 class="content-title">발견 → 표준화 → 등록 → 인증</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">DISCOVER 발견</div>
+        <div class="card-sub">후보 목록을 다섯 관문으로 가린다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">STANDARDIZE 표준화</div>
+        <div class="card-sub">실제 업무를 SOP로 적고 기계가 읽게 한다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">REGISTER 등록</div>
+        <div class="card-sub">목적·Owner·업무·시스템을 기록한다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">CERTIFY 역량 인증</div>
+        <div class="card-sub">무엇을 안정적으로 할 수 있는지 검증한다.</div>
+      </div></div>
+  
+  <div class="page-num mono">013 / 56</div>
+  <div class="page-section mono">THE SYSTEM / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 6 — 해외 사례</p>
-  <h2>같은 발상, 갈린 운명</h2>
-  <div class="vs">
-    <div class="card"><b class="green">Deutsche Bank (2020)</b><p>디지털 직원 'Yi'에게 <b>사번과 전용 이메일</b>을 부여 — 공식 보도자료로 확인된 유일한 사번 사례. 단, LLM 이전 RPA 시대의 일</p></div>
-    <div class="card"><b>BNY (2025~)</b><p>디지털 직원에게 부여한 것은 <b>user ID·로그인·페르소나</b> — 사번이 아니라 계정. 인사 시스템 등재는 미확인</p></div>
-    <div class="card" style="border-color:var(--red)"><b class="red">Lattice (2024)</b><p>"AI 직원에게 정식 employee record를" 발표 → <b>3일 만에 철회</b></p></div>
-    <div class="card" style="border-color:var(--green)"><b class="green">Workday (2026)</b><p>Agent System of Record 출시 — 에이전트를 직원<b>처럼</b>(like) 관리하되 인사 레코드와 분리. 살아남은 프레이밍</p></div>
+<section class="slide content" id="s14" data-n="14">
+  <div class="eyebrow cream">LIFECYCLE 05–09</div>
+  <h2 class="content-title">권한 → 운영 → 측정 → 보상 → 폐기</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-5">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">AUTHORIZE 권한</div>
+        <div class="card-sub">데이터·도구·행동의 허용 범위를 정한다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">OPERATE 운영</div>
+        <div class="card-sub">실행·로그·비용·감사·중지 절차를 돌린다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">MEASURE 측정</div>
+        <div class="card-sub">시간·FTE·품질·ROI를 함께 본다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">REWARD 보상·재배치</div>
+        <div class="card-sub">절감분을 성과로 인정하고 새 역량에 쓴다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">05</div>
+        <div class="card-h">RETIRE 폐기</div>
+        <div class="card-sub">권한을 회수하고 계정을 닫고 기록을 남긴다.</div>
+      </div></div>
+  <p class="foot-note">가운데를 관통하는 것이 <b>Agent Registry · Agent ID</b> — 단계가 아니라 전 생애주기를 꿰는 기반입니다.</p>
+  <div class="page-num mono">014 / 56</div>
+  <div class="page-section mono">THE SYSTEM / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s15" data-n="15">
+  <div class="eyebrow cream">NINE WALLS</div>
+  <h2 class="content-title">체계를 세우다 부딪히는 아홉 개의 벽</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <ul class="big-list"><li>목록은 있는데 <b>실체를 모른다</b> → 재고 조사</li><li>가리려니 <b>정의가 없다</b> → 관문·판별</li><li>절차가 <b>적혀 있지 않다</b> → SOP</li><li>적어도 <b>기계가 못 읽는다</b> → 변환</li><li>등록하려니 <b>적을 칸이 없다</b> → 스키마</li><li><b>청구서가 막는다</b> → 계층과 위임</li><li><b>통제 기준이 없다</b> → 자율성 등급</li><li><b>성과를 못 잰다</b> → FTE 환산</li><li>재면 <b>현장이 숨긴다</b> → 그리고 폐기</li></ul>
+  
+  <div class="page-num mono">015 / 56</div>
+  <div class="page-section mono">THE SYSTEM / 04</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide div" id="s16" data-n="16">
+  <div class="div-wrap">
+    <div class="div-text">
+      <div class="eyebrow gold">PART 2</div>
+      <h2 class="div-title">절차 — 체계의 입장권</h2>
+      <p class="div-sub">적힌 절차와 실제로 하는 일은 원래 다르다. 그 간극이 광맥이다.</p>
+    </div>
+    <img class="div-art" src="../assets/illustrations/part-2-procedure.webp" alt="문서에 적힌 절차와 실제 업무의 흔적이 하나의 경로로 합쳐지는 삽화" />
   </div>
-  <p class="muted">교훈: 사람 제도의 문법을 <b>어디까지 빌리고 어디서 끊는가</b>가 설계의 핵심이다</p>
+  <div class="page-num mono">016 / 56</div>
+  <div class="page-section mono">PROCEDURE / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 6 — 지형</p>
-  <h2>에이전트 신원은 이미 제품이 됐다</h2>
-  <ul>
-    <li><b>Microsoft Entra Agent ID</b> (GA 2026-05) — 에이전트에 디렉터리 신원 + Owner·Sponsor·Manager 3역할 + 후원자 퇴사 시 승계</li>
-    <li><b>Okta Agent SSO</b> (GA 2026-08) — "사람 직원과 나란히, 퍼스트클래스 신원으로 등록"</li>
-    <li>규제도 등록을 요구한다 — EU AI Act(고위험 등록), 미 연방 AI 인벤토리(36필드), 중국 알고리즘 등록제, 한국 AI 기본법</li>
-  </ul>
-  <p class="muted">사람 직원과 같은 통제를 AI 에이전트에 적용하는 조직은 <b>34%</b>뿐 <span class="src">— Okta, AI Agents at Work 2026 (7개국 조사)</span></p>
+<section class="slide content" id="s17" data-n="17">
+  <div class="eyebrow cream">INVENTORY</div>
+  <h2 class="content-title">세어보면 다 있는데, 대보면 없다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">이름표는 실체를 보장하지 않는다</div>
+        <div class="card-sub">목록을 한 건씩 열면 기존 자동화, 데이터 분석, 아이디어 문장 하나가 섞여 있다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">빅테크의 정의는 한 곳을 가리킨다</div>
+        <div class="card-sub">목표가 있고, 도구로 외부에 작용하며, 그 과정을 스스로 결정한다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">그래서 흔한 목록의 정체가 보인다</div>
+        <div class="card-sub">대시보드는 관찰만 한다. 룰 기반 알람은 스스로 결정하지 않는다.</div>
+      </div></div>
+  
+  <div class="page-num mono">017 / 56</div>
+  <div class="page-section mono">PROCEDURE / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 7 — 통제</p>
-  <h2>할 수 있는 것과 해도 되는 것</h2>
-  <div class="vs">
-    <div class="card"><b>ACL — 할 수 있는 것</b><p>에이전트의 내재 역량. 모델과 도구가 정한다</p></div>
-    <div class="card"><b>AAL — 해도 되는 것</b><p>조직이 허가한 범위. 책임을 감수할 의사가 정한다</p></div>
+<section class="slide content" id="s18" data-n="18">
+  <div class="eyebrow cream">DEFINITIONS</div>
+  <h2 class="content-title">무엇을 에이전트라 부를 것인가 — 세 정의</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <table class="deck-table"><thead><tr><th>출처</th><th>정의의 핵심</th></tr></thead><tbody><tr><td>OpenAI (2025)</td><td>사용자를 대신해 과업을 <b>독립적으로</b> 완수하는 시스템. LLM을 쓰더라도 실행 흐름을 제어하지 않으면 에이전트가 아니다</td></tr><tr><td>Anthropic (2024-12)</td><td>LLM이 자기 프로세스와 도구 사용을 <b>동적으로 지휘</b>하며 수행 방식의 통제권을 쥔 시스템. 미리 짜인 워크플로와 구분</td></tr><tr><td>Google 백서 (2024)</td><td>가진 도구로 세계를 <b>관찰하고 그에 작용</b>하여 목표를 달성하려는 애플리케이션</td></tr></tbody></table>
+  <p class="foot-note">정의는 방향을 준다. 그러나 판정은 해주지 않는다 — 그래서 관문이 필요하다.</p>
+  <div class="page-num mono">018 / 56</div>
+  <div class="page-section mono">PROCEDURE / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s19" data-n="19">
+  <div class="eyebrow cream">TOOL 01</div>
+  <h2 class="content-title">재고 조사의 다섯 관문</h2>
+  <div class="neon-bar gold small"></div>
+  <figure class="deck-fig"><img src="../figures/fig-02.svg" alt="그림 2. 재고 조사의 다섯 관문" /><figcaption>그림 2. 재고 조사의 다섯 관문</figcaption></figure>
+  <p class="foot-note">관문의 순서가 곧 정의다. 값싼 판정을 앞에, 비싼 판정을 뒤에 둔다.</p>
+  <div class="page-num mono">019 / 56</div>
+  <div class="page-section mono">PROCEDURE / 04</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s20" data-n="20">
+  <div class="eyebrow cream">TOOL 02</div>
+  <h2 class="content-title">실무자에게는 질문 셋이면 된다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <table class="deck-table"><thead><tr><th></th><th>묻는 것</th><th>아니라면</th></tr></thead><tbody><tr><td>전제</td><td>우리 조직의 업무인가</td><td>대상 아님</td></tr><tr><td>①</td><td>실제로 <b>행동</b>하는가 (쓰기·발송·처리)</td><td>가볍게 등록만</td></tr><tr><td>②</td><td><b>스스로</b> 도는가 (사람은 예외에만)</td><td>보통 등록</td></tr><tr><td>③</td><td><b>되돌릴 수 없는</b> 일인가 (돈·대외·민감)</td><td>등록 + 모니터링</td></tr></tbody></table>
+  <p class="foot-note">통제의 강도는 <b>똑똑한 정도가 아니라 되돌릴 수 없음의 정도</b>로 정합니다.</p>
+  <div class="page-num mono">020 / 56</div>
+  <div class="page-section mono">PROCEDURE / 05</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s21" data-n="21">
+  <div class="eyebrow cream">THE API WALL</div>
+  <h2 class="content-title">붙일 곳이 없는 시스템은, 에이전트에게는 존재하지 않는다</h2>
+  <div class="neon-bar gold small"></div>
+  <blockquote class="bigq">“All teams will henceforth expose their data and functionality through service interfaces. (…) Anyone who doesn't do this will be fired.”</blockquote>
+  <p class="q-src">— 아마존 창업자 제프 베이조스의 2002년 전후 지시. 스티브 예기의 2011년 회고 문면이 정본처럼 유통된다.</p><p class="after">과제 목록을 내리지 않았습니다. <b>모든 시스템에 붙일 곳이 있어야 한다는 기준 하나</b>를 내리고 예외를 봉쇄했습니다 — 씨앗을 고르는 대신 밭을 갈았습니다.</p>
+  <div class="page-num mono">021 / 56</div>
+  <div class="page-section mono">PROCEDURE / 06</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s22" data-n="22">
+  <div class="eyebrow cream">WRITTEN VS DONE</div>
+  <h2 class="content-title">적힌 절차와 실제로 하는 일</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">두 얼굴은 원래 다르다</div>
+        <div class="card-sub">적힌 것은 일반화된 것이고, 실제 수행은 특정한 것이다. <span class='src'>Feldman &amp; Pentland 2003</span></div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">문서가 죽는 이유</div>
+        <div class="card-sub">"Confluence는 문서가 죽으러 가는 곳" — 5년에 걸쳐 여러 사람이 같은 말을 남겼다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">간극은 광맥이다</div>
+        <div class="card-sub">문서에 없는 지식이 실행 안에 남아 있다는 뜻이다. 아직 아무도 꺼내지 않았을 뿐이다.</div>
+      </div></div>
+  
+  <div class="page-num mono">022 / 56</div>
+  <div class="page-section mono">PROCEDURE / 07</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s23" data-n="23">
+  <div class="eyebrow cream">TOOL 03</div>
+  <h2 class="content-title">발견 → 대조 → 개선의 닫힌 루프</h2>
+  <div class="neon-bar gold small"></div>
+  <figure class="deck-fig"><img src="../figures/fig-03.svg" alt="그림 3. 프로세스 마이닝의 세 축이 그대로 작업 순서가 된다" /><figcaption>그림 3. 프로세스 마이닝의 세 축이 그대로 작업 순서가 된다</figcaption></figure>
+  <p class="foot-note">실행이 문서를 갱신하는 경로를 만들면 문서가 산다. 없으면 발행되는 순간부터 늙는다.</p>
+  <div class="page-num mono">023 / 56</div>
+  <div class="page-section mono">PROCEDURE / 08</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s24" data-n="24">
+  <div class="eyebrow cream">THE GATEWAY</div>
+  <h2 class="content-title">에이전트에게는 길목이 하나다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">모델 호출이 단일 관문</div>
+        <div class="card-sub">사람의 절차는 시스템마다 로그를 심어야 했다. 에이전트는 어떤 시스템을 상대하든 모델을 반드시 부른다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">관측이 공짜에 가까워진다</div>
+        <div class="card-sub">누가·언제·무엇을 하려고 불렀는지가 그 길목에서 저절로 남는다. A2A 호출 관계도 동적으로 그려진다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">막을 곳도 하나다</div>
+        <div class="card-sub">권한 규칙을 걸면 환경 통제가 되고, 차단 스위치를 달면 킬 스위치의 집행 지점이 된다.</div>
+      </div></div>
+  <p class="foot-note">심사의 재료도 바뀝니다 — <b>진술 대신 로그, 표본 대신 전수, 연 단위 주기 대신 상시 대조.</b></p>
+  <div class="page-num mono">024 / 56</div>
+  <div class="page-section mono">PROCEDURE / 09</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide div" id="s25" data-n="25">
+  <div class="div-wrap">
+    <div class="div-text">
+      <div class="eyebrow gold">PART 3</div>
+      <h2 class="div-title">등록 — 조직에 자리를 만든다</h2>
+      <p class="div-sub">등록은 이름표가 아니라 책임과 권한의 연결이다.</p>
+    </div>
+    <img class="div-art" src="../assets/illustrations/part-3-registry.webp" alt="디지털 워커가 신원과 권한과 비용이 연결된 조직 등록부에 들어오는 삽화" />
   </div>
-  <p class="quote">"더 높은 역량이 자동으로 더 높은 허용 자율성을 뜻하지 않는다"<span class="src">— ExxonMobil 연구진의 이원 등급 체계 (2026)</span></p>
-  <ul>
-    <li>배치는 <b>둘 중 낮은 쪽</b>을 따른다 — 역량 4급을 3급 자리에 두는 것은 결함이 아니라 거버넌스 선택</li>
-    <li>실무 프레임들이 수렴한다: Gartner 4단계 비례 거버넌스, CSA L0~L5</li>
-  </ul>
+  <div class="page-num mono">025 / 56</div>
+  <div class="page-section mono">REGISTRY / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 7 — 근거</p>
-  <h2>승인 게이트만으로는 안 되는 이유</h2>
-  <div class="cards">
-    <div class="card"><b class="red">93%</b><p>사용자가 권한 프롬프트를 승인하는 비율 — "승인이 많아질수록 주의는 줄어든다" (Anthropic 자체 계측, 2026)</p></div>
-    <div class="card"><b class="green">84%</b><p>샌드박싱(환경 통제)이 권한 프롬프트 자체를 줄인 비율 (같은 회사 자체 보고, 2025)</p></div>
+<section class="slide content" id="s26" data-n="26">
+  <div class="eyebrow cream">CASE STUDY</div>
+  <h2 class="content-title">사흘과 2년을 가른 것</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <table class="deck-table"><thead><tr><th></th><th>래티스 (2024-07, 사흘 만에 철회)</th><th>워크데이 (2025 발표 → 2026 출시)</th></tr></thead><tbody><tr><td>배치 위치</td><td>인사 시스템 안, 사람 직원과 같은 레코드</td><td>별도 에이전트 레지스트리 (연동하되 분리)</td></tr><tr><td>부르는 말</td><td>"AI 직원(employees)"</td><td>"에이전트", "디지털 노동"</td></tr><tr><td>프레이밍</td><td>사람과 동렬</td><td>"직원<b>처럼</b>(like employees) 통치한다"</td></tr><tr><td>관리 축</td><td>인사 평가 축에 편입</td><td>비용·ROI·접근권한·상태</td></tr></tbody></table>
+  <p class="foot-note">결정적인 것은 조사 하나였습니다 — 직원<b>으로</b> 만들지 않고 직원<b>처럼</b> 통치했습니다.</p>
+  <div class="page-num mono">026 / 56</div>
+  <div class="page-section mono">REGISTRY / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s27" data-n="27">
+  <div class="eyebrow cream">TOOL 04</div>
+  <h2 class="content-title">등록한다는 건 여덟 칸을 채운다는 뜻이다</h2>
+  <div class="neon-bar gold small"></div>
+  <figure class="deck-fig"><img src="../figures/fig-04.svg" alt="그림 4. 여덟 칸의 등록부" /><figcaption>그림 4. 여덟 칸의 등록부</figcaption></figure>
+  <p class="foot-note">앞의 일곱은 순순히 채워집니다. <b>마지막 한 칸이 늘 비어 있습니다.</b></p>
+  <div class="page-num mono">027 / 56</div>
+  <div class="page-section mono">REGISTRY / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s28" data-n="28">
+  <div class="eyebrow cream">GRANULARITY</div>
+  <h2 class="content-title">행위마다 허용 수준을 따로 적는다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-4">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">제안만</div>
+        <div class="card-sub">실행은 못 한다. 결과를 사람이 옮겨야 다음이 진행된다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">조회</div>
+        <div class="card-sub">읽기만 한다. 상태를 바꾸지 않는다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">승인 후 실행</div>
+        <div class="card-sub">사람이 건건이 승인해야 실행된다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">04</div>
+        <div class="card-h">한도 내 자동</div>
+        <div class="card-sub">미리 정한 범위 안에서는 스스로 실행한다.</div>
+      </div></div>
+  <p class="foot-note">한 칸에 "실행 가능"이라고만 적으면, <b>가장 위험한 행위가 가장 안전한 행위와 같은 권한</b>을 얻습니다.</p>
+  <div class="page-num mono">028 / 56</div>
+  <div class="page-section mono">REGISTRY / 04</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s29" data-n="29">
+  <div class="eyebrow cream">THE INVOICE</div>
+  <h2 class="content-title">제도는 청구서에 부딪혀 모양이 잡힌다</h2>
+  <div class="neon-bar gold small"></div>
+  <blockquote class="bigq">사번을 주면 계정이 생기고, 계정이 생기면 <span class='gold-t'>상용 SaaS 라이선스가 계정 수만큼 과금된다.</span></blockquote>
+  <p class="after">해법: 에이전트에게 전용 식별 체계를 주고 <b>책임지는 사람의 사번에 매핑</b>한다. 타협처럼 보이지만 책임의 종착점이 사람으로 남아 오히려 더 옳은 설계가 됩니다.</p>
+  <div class="page-num mono">029 / 56</div>
+  <div class="page-section mono">REGISTRY / 05</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s30" data-n="30">
+  <div class="eyebrow cream">TWO LAYERS</div>
+  <h2 class="content-title">두 계층과 책임자 매핑</h2>
+  <div class="neon-bar gold small"></div>
+  <figure class="deck-fig"><img src="../figures/fig-06.svg" alt="그림 6. 전부에게 식별자, 자격 갖춘 것에만 사번" /><figcaption>그림 6. 전부에게 식별자, 자격 갖춘 것에만 사번</figcaption></figure>
+  <p class="foot-note">1계층은 관측을 위한 식별자, 2계층은 생산성 관리를 위한 사번입니다.</p>
+  <div class="page-num mono">030 / 56</div>
+  <div class="page-section mono">REGISTRY / 06</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s31" data-n="31">
+  <div class="eyebrow cream">THE LANDSCAPE</div>
+  <h2 class="content-title">에이전트 신원은 이미 제품이 됐다</h2>
+  <div class="neon-bar gold small"></div>
+  <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n">GA</div>
+        <div class="stat-l">Microsoft Entra Agent ID — 디렉터리 신원 + Owner·Sponsor·Manager 3역할</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">GA</div>
+        <div class="stat-l">Okta Agent SSO — "사람 직원과 나란히 퍼스트클래스 신원으로 등록"</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">34%</div>
+        <div class="stat-l">사람 직원과 같은 통제를 AI 에이전트에 적용하는 조직 <span class='src'>Okta, 7개국 조사 2026</span></div>
+      </div></div>
+  <p class="foot-note">규제도 등록을 요구합니다 — EU AI Act, 미 연방 AI 인벤토리, 중국 알고리즘 등록제, 한국 AI 기본법.</p>
+  <div class="page-num mono">031 / 56</div>
+  <div class="page-section mono">REGISTRY / 07</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s32" data-n="32">
+  <div class="eyebrow cream">THE MIDDLE</div>
+  <h2 class="content-title">중간 등급이 가장 위험하다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">28%가 충돌했다</div>
+        <div class="card-sub">테스트트랙 106명 실험. 눈은 장애물을 보고 손은 핸들에 있었는데도. <span class='src'>Victor et al. 2018</span></div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">잘 만들수록 감독이 어려워진다</div>
+        <div class="card-sub">자율성이 높아질수록 사람의 상황 인식은 낮아진다. <span class='src'>Endsley 2017, Human Factors</span></div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">여섯 갈래가 같은 결론에 닿는다</div>
+        <div class="card-sub">중간 등급을 안전하게 만드는 조건들이 하나같이 중간 등급의 편익을 없앤다.</div>
+      </div></div>
+  
+  <div class="page-num mono">032 / 56</div>
+  <div class="page-section mono">AUTONOMY / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s33" data-n="33">
+  <div class="eyebrow cream">THE APPROVAL TRAP</div>
+  <h2 class="content-title">승인 게이트는 왜 외양만 남는가</h2>
+  <div class="neon-bar gold small"></div>
+  <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n">93%</div>
+        <div class="stat-l">사용자가 권한 프롬프트를 승인하는 비율 — "승인이 많아질수록 주의는 줄어든다" <span class='src'>Anthropic 자체 계측 2026-05</span></div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">84%</div>
+        <div class="stat-l">샌드박싱이 권한 프롬프트 자체를 줄인 비율 <span class='src'>같은 회사 자체 보고 2025-10</span></div>
+      </div></div>
+  <p class="foot-note">승인 축이 무너진 자리에서 <b>환경 축이 질문 자체를 없앴습니다.</b> 통제는 클릭이 아니라 구조에 심습니다.</p>
+  <div class="page-num mono">033 / 56</div>
+  <div class="page-section mono">AUTONOMY / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s34" data-n="34">
+  <div class="eyebrow cream">TOOL 05</div>
+  <h2 class="content-title">할 수 있는 것과 해도 되는 것</h2>
+  <div class="neon-bar gold small"></div>
+  <figure class="deck-fig"><img src="../figures/fig-07.svg" alt="그림 7. 두 축의 분리 — 배치는 역량이 아니라 허가가 정한다" /><figcaption>그림 7. 두 축의 분리 — 배치는 역량이 아니라 허가가 정한다</figcaption></figure>
+  <p class="foot-note">"더 높은 역량이 자동으로 더 높은 허용 자율성을 뜻하지 않는다." 배치는 둘 중 낮은 쪽을 따릅니다.</p>
+  <div class="page-num mono">034 / 56</div>
+  <div class="page-section mono">AUTONOMY / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s35" data-n="35">
+  <div class="eyebrow cream">DELIBERATE CHOICE</div>
+  <h2 class="content-title">낮춘 것이 결론일 수 있다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">C4를 A3로 낮췄다</div>
+        <div class="card-sub">기술적으로 가능했지만 통제되지 않은 작업이 하류를 오염시킬 수 있어서.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">"결함이 아니라 의도된 거버넌스 선택"</div>
+        <div class="card-sub">낮은 등급을 '아직 덜 된 상태'로 취급하는 순간 로드맵이 위험을 밀어붙인다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">그리고 높은 등급이 더 필요한 것도 아니다</div>
+        <div class="card-sub">역량은 평범해도 <b>여러 부서가 실제로 쓰는 범용 에이전트</b>가 조직엔 먼저 값을 낸다.</div>
+      </div></div>
+  
+  <div class="page-num mono">035 / 56</div>
+  <div class="page-section mono">AUTONOMY / 04</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s36" data-n="36">
+  <div class="eyebrow cream">WHO VERIFIES</div>
+  <h2 class="content-title">전수 로그는 누가 읽는가</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">사람은 못 읽는다</div>
+        <div class="card-sub">심사의 재료가 전수 로그가 됐는데, 그 양은 사람이 감당할 수 없다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">검증 에이전트를 세운다</div>
+        <div class="card-sub">단, <b>작업자와 다른 곳에서 틀려야</b> 한다. 같은 모델·같은 맥락의 '검증했음'은 복창이다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">검증자도 등록부에 오른다</div>
+        <div class="card-sub">그래야 "검증자는 누가 검증하나"가 감사 가능성에서 끊긴다.</div>
+      </div></div>
+  <p class="foot-note">사람의 자리는 사라지지 않고 이동합니다 — <b>체계 설계 · 표본 감사 · 예외 판정.</b></p>
+  <div class="page-num mono">036 / 56</div>
+  <div class="page-section mono">AUTONOMY / 05</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide div" id="s37" data-n="37">
+  <div class="div-wrap">
+    <div class="div-text">
+      <div class="eyebrow gold">PART 4</div>
+      <h2 class="div-title">성과 — 세는 법과 그 대가</h2>
+      <p class="div-sub">무엇을 재느냐보다, 잰 숫자를 어디에 쓰느냐가 먼저다.</p>
+    </div>
+    <img class="div-art" src="../assets/illustrations/part-4-measure.webp" alt="절감 시간과 품질을 저울에 올리고 새로운 업무 역량으로 돌려보내는 삽화" />
   </div>
-  <p class="muted">승인 축이 형식화로 무너진 자리에서, <b>환경 축이 질문 자체를 없앤다</b>. 통제는 사람의 클릭이 아니라 구조에 심어라.</p>
+  <div class="page-num mono">037 / 56</div>
+  <div class="page-section mono">MEASURE / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 8 — 측정</p>
-  <h2>투입은 재고 있다. 성과는 무엇으로 재나</h2>
-  <h3>두 단 환산</h3>
-  <p>(1단) 에이전트 처리량 → 사람이 했다면 걸렸을 시간 <span class="arrow">→</span> (2단) 그 시간 → FTE</p>
-  <h3>두 계수 — 이중 할인이 아니다</h3>
-  <table>
-    <tr><th>계수</th><th>보정하는 것</th><th>예</th></tr>
-    <tr><td><b>신뢰도</b></td><td>이 숫자를 믿을 수 있나</td><td>실측 100% · 표본 할인 · 자기보고 절반</td></tr>
-    <tr><td><b>자율성</b></td><td>이 중 에이전트 몫이 얼마인가</td><td>사람 검토가 남아 있으면 100%가 아니다</td></tr>
-  </table>
-  <p class="muted">자기보고 등급에는 <b>폐지 시한</b>을 못 박는다 — 실측으로 옮겨갈 유인을 만드는 게 목적이다</p>
+<section class="slide content" id="s38" data-n="38">
+  <div class="eyebrow cream">THE OPENING QUESTION</div>
+  <h2 class="content-title">1만 시간은 누구에게서 모인 것인가</h2>
+  <div class="neon-bar gold small"></div>
+  <blockquote class="bigq">“1만 시간은 근사하게 들린다. <span class='gold-t'>그런데 그건 직원 2만 명에게서 각각 30분씩이다.</span>”</blockquote>
+  <p class="q-src">— 자동화 업계 실무자의 서명 글. 조사 데이터가 아니라 경험담이다.</p><p class="after">한 사람의 5년치라면 정원 하나가 남습니다. 2만 명의 30분씩이라면 아무것도 남지 않습니다.</p>
+  <div class="page-num mono">038 / 56</div>
+  <div class="page-section mono">MEASURE / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 8 — 함정</p>
-  <h2>첫 설계 결정은 기술이 아니라 기준선이다</h2>
-  <p>같은 370개 효과크기의 메타분석(Nature Human Behaviour 2024)에서 —</p>
-  <div class="vs">
-    <div class="card"><b class="green">+0.64</b><p>사람+AI vs <b>사람 단독</b> (증강) — 단, 이 낙관적 수치는 출판 편향 검정을 통과하지 못했다</p></div>
-    <div class="card"><b class="red">−0.23</b><p>사람+AI vs <b>둘 중 나은 쪽</b> (시너지) — 이 부정적 수치가 검정을 통과했다</p></div>
+<section class="slide content" id="s39" data-n="39">
+  <div class="eyebrow cream">THE BASELINE</div>
+  <h2 class="content-title">첫 설계 결정은 기술이 아니라 기준선이다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <table class="deck-table"><thead><tr><th></th><th>증강 기준선 (인간 단독 대비)</th><th>시너지 기준선 (둘 중 나은 쪽 대비)</th></tr></thead><tbody><tr><td>효과크기</td><td><b>g = +0.64</b></td><td><b>g = −0.23</b></td></tr><tr><td>읽는 방식</td><td>담당자가 훨씬 잘하게 됐다</td><td>그 사람을 뺐으면 더 나았다</td></tr><tr><td>출판편향 검정</td><td>❌ 통과하지 못했다</td><td>✅ 통과했다</td></tr></tbody></table>
+  <p class="foot-note">같은 370개 효과크기입니다. 기준선만 바꿨습니다. <b>대부분의 보고서는 전자를 재고 후자를 주장합니다.</b> <span class='src'>Vaccaro et al., Nature Human Behaviour 2024</span></p>
+  <div class="page-num mono">039 / 56</div>
+  <div class="page-section mono">MEASURE / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s40" data-n="40">
+  <div class="eyebrow cream">NOT A HEADCOUNT CUT</div>
+  <h2 class="content-title">그렇다고 사람을 빼라는 뜻은 아니다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">조건은 정보 비대칭이다</div>
+        <div class="card-sub">인간이 AI가 못 보는 정보를 쥐고 있으면 팀이 AI 단독을 뚜렷하게 이긴다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">틀리는 지점이 성과를 가른다</div>
+        <div class="card-sub">단독 성능이 같은 두 AI를 사람과 짝지었더니 팀 성과가 41% 갈렸다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">그래서 질문이 바뀐다</div>
+        <div class="card-sub">"사람을 뺄까"가 아니라 "이 공정에서 사람이 쥔 정보가 무엇인가".</div>
+      </div></div>
+  <p class="foot-note">출처: Hemmer et al., <i>European Journal of Information Systems</i> 2025</p>
+  <div class="page-num mono">040 / 56</div>
+  <div class="page-section mono">MEASURE / 04</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s41" data-n="41">
+  <div class="eyebrow cream">TOOL 06</div>
+  <h2 class="content-title">두 단 환산과 두 계수</h2>
+  <div class="neon-bar gold small"></div>
+  <figure class="deck-fig"><img src="../figures/fig-08.svg" alt="그림 8. 처리량 → 시간 → FTE, 그리고 두 계수" /><figcaption>그림 8. 처리량 → 시간 → FTE, 그리고 두 계수</figcaption></figure>
+  <p class="foot-note"><b>신뢰도</b>는 '이 숫자를 믿을 수 있나', <b>자율성</b>은 '이 중 에이전트 몫이 얼마인가'. 곱해 쓰지만 이중 할인이 아닙니다.</p>
+  <div class="page-num mono">041 / 56</div>
+  <div class="page-section mono">MEASURE / 05</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s42" data-n="42">
+  <div class="eyebrow cream">MEASUREMENT DISCIPLINE</div>
+  <h2 class="content-title">재는 자리에서 지킬 것</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <ul class="big-list"><li><b>평균 성공률 하나로 판정하지 않는다</b> — "몇 번을 연달아 시켜 한 번도 안 틀렸는가"가 더 쓸모 있다</li><li><b>과업 수준 이득을 조직 성과로 곱하지 않는다</b> — 과업 이득의 일부만 최종 산출물로 통과한다</li><li><b>자기보고 등급에는 폐지 시한을 못 박는다</b> — 실측으로 옮겨갈 유인을 만드는 것이 목적이다</li><li><b>자기 숫자부터 의심한다</b> — 우리가 인용하는 연구의 후속도 함께 본다</li></ul>
+  
+  <div class="page-num mono">042 / 56</div>
+  <div class="page-section mono">MEASURE / 06</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s43" data-n="43">
+  <div class="eyebrow cream">THE CLIMAX</div>
+  <h2 class="content-title">이 발표에서 가장 중요한 문장</h2>
+  <div class="neon-bar gold small"></div>
+  <blockquote class="bigq"><span class='gold-t'>절감이 곧 감원으로 읽히는 순간, 현장은 성과를 숨긴다.</span><br>그러면 측정 체계 자체가 붕괴한다.</blockquote>
+  <p class="after">측정이 정확해질수록 그 숫자의 위협도 정확해집니다. 도구를 개선할수록 숨길 유인이 커집니다.</p>
+  <div class="page-num mono">043 / 56</div>
+  <div class="page-section mono">PEOPLE / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s44" data-n="44">
+  <div class="eyebrow cream">TWO FATES</div>
+  <h2 class="content-title">같은 숫자, 두 개의 운명</h2>
+  <div class="neon-bar gold small"></div>
+  <figure class="deck-fig"><img src="../figures/fig-09.svg" alt="그림 9. 어떻게 읽히느냐가 측정의 운명을 정한다" /><figcaption>그림 9. 어떻게 읽히느냐가 측정의 운명을 정한다</figcaption></figure>
+  <p class="foot-note">감축으로 읽히면 과소 보고 → 측정 붕괴. 재투자 선언이 믿기면 신뢰 축적 → 더 정확한 숫자.</p>
+  <div class="page-num mono">044 / 56</div>
+  <div class="page-section mono">PEOPLE / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s45" data-n="45">
+  <div class="eyebrow cream">THREE USES</div>
+  <h2 class="content-title">절감분의 사용처는 셋뿐이다</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <table class="deck-table"><thead><tr><th>사용처</th><th>내용</th><th>현장의 반응</th></tr></thead><tbody><tr><td><b>재투자</b></td><td>확보한 시간을 새 일, 더 가치 있는 일로</td><td>협조적</td></tr><tr><td><b>품질·처리량</b></td><td>같은 인원으로 더 많이, 더 정확하게</td><td>중립</td></tr><tr><td><b>감축</b></td><td>정원 조정</td><td>강한 저항</td></tr></tbody></table>
+  <p class="foot-note">세 줄은 서로를 오염시킵니다. 첫 번째를 하겠다고 말해도 <b>세 번째가 가능하다는 것을 모두가 알면</b> 선언은 믿기지 않습니다.</p>
+  <div class="page-num mono">045 / 56</div>
+  <div class="page-section mono">PEOPLE / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s46" data-n="46">
+  <div class="eyebrow cream">TOOL 07</div>
+  <h2 class="content-title">측정보다 먼저 선언할 것</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <ul class="big-list"><li>이 체계의 절감 수치는 <b>인력 조정의 근거로 쓰지 않는다</b> — 기한 명시, 재논의 없으면 자동 연장</li><li>확보된 시간의 기본 용도는 <b>재투자</b>다 — 바꾸려면 공개 논의</li><li>수치는 조직 단위로만 집계하며 <b>개인별로 분해하지 않는다</b></li><li>이 체계는 에이전트의 활동을 기록한다 — <b>구성원 개인의 도구 사용 내역은 대상이 아니다</b></li></ul>
+  <p class="foot-note"><b>말하지 않은 기본값은 기본값이 아닙니다.</b> 사람들은 말해지지 않은 것을 최악으로 해석합니다.</p>
+  <div class="page-num mono">046 / 56</div>
+  <div class="page-section mono">PEOPLE / 04</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide div" id="s47" data-n="47">
+  <div class="div-wrap">
+    <div class="div-text">
+      <div class="eyebrow gold">PART 5</div>
+      <h2 class="div-title">끝 — 설계되지 않은 마지막 칸</h2>
+      <p class="div-sub">폐기는 삭제가 아니라, 권한을 거두고 기록을 남기는 운영 절차다.</p>
+    </div>
+    <img class="div-art" src="../assets/illustrations/part-5-retire.webp" alt="에이전트의 열쇠와 기록이 회수되고 다음 학습의 씨앗이 남는 삽화" />
   </div>
-  <p class="quote">대부분의 보고서는 전자를 재고 후자를 주장한다</p>
-  <p class="muted">답은 "사람을 빼라"가 아니다 — <b>AI가 못 보는 정보를 사람이 쥔 공정</b>에서만 시너지가 난다. 공정 설계의 문제다.</p>
+  <div class="page-num mono">047 / 56</div>
+  <div class="page-section mono">RETIRE / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 9 — 이 발표의 클라이맥스</p>
-  <h2>절감분은 누구의 것인가</h2>
-  <table>
-    <tr><th>사용처</th><th>현장의 반응</th></tr>
-    <tr><td><b>재투자</b> — 확보한 시간을 더 가치 있는 일로</td><td class="green">협조적</td></tr>
-    <tr><td><b>품질·처리량</b> — 같은 인원으로 더 많이</td><td>중립</td></tr>
-    <tr><td><b>감축</b> — 정원 조정</td><td class="red">강한 저항</td></tr>
-  </table>
-  <p class="quote"><span class="red">절감이 감원으로 읽히는 순간, 현장은 숫자를 숨긴다.</span><br>그러면 측정 체계 자체가 붕괴한다.</p>
+<section class="slide content" id="s48" data-n="48">
+  <div class="eyebrow cream">THE EMPTY CELL</div>
+  <h2 class="content-title">마지막 칸은 왜 비는가</h2>
+  <div class="neon-bar gold small"></div>
+  <div class="stat-row">
+      <div class="stat">
+        <div class="stat-n">78%</div>
+        <div class="stat-l">AI 아이덴티티를 만들거나 제거하는 <b>문서화된 정책이 없는</b> 조직 <span class='src'>CSA 2026-05</span></div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">51%</div>
+        <div class="stat-l">AI 아이덴티티의 <b>소유권이 불명확</b>하다고 답한 비율</div>
+      </div>
+      <div class="stat">
+        <div class="stat-n">0건</div>
+        <div class="stat-l">이 책이 찾은 <b>실제 조직의 공개 폐기 절차</b> — 검색어 7개, 확인 13곳</div>
+      </div></div>
+  <p class="foot-note">0건은 지어내지 않고 <b>부재 자체를 발견으로</b> 다뤘습니다.</p>
+  <div class="page-num mono">048 / 56</div>
+  <div class="page-section mono">RETIRE / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">벽 9 — 도구</p>
-  <h2>측정보다 먼저 선언할 것</h2>
-  <h3>측정 결과 사용 제한 선언 (초안)</h3>
-  <ul>
-    <li>이 체계의 절감 수치는 <b>인력 조정의 근거로 쓰지 않는다</b> — 기한 명시, 재논의 없으면 자동 연장</li>
-    <li>확보된 시간의 기본 용도는 <b>재투자</b>다 — 바꾸려면 공개 논의</li>
-    <li>말하지 않은 기본값은 기본값이 아니다 — 사람들은 말해지지 않은 것을 최악으로 해석한다</li>
-  </ul>
-  <p class="muted">측정을 정확하게 만드는 것보다 <b>이 숫자가 어디에 쓰이지 않는지</b>를 먼저 선언하라. 순서가 성패를 가른다.</p>
+<section class="slide content" id="s49" data-n="49">
+  <div class="eyebrow cream">THE CORRECTION</div>
+  <h2 class="content-title">초기 구상을 철회하며</h2>
+  <div class="neon-bar gold small"></div>
+  <blockquote class="bigq">도구는 이미 폐기를 설계했다.<br><span class='gold-t'>조직이 아직 안 켰다.</span></blockquote>
+  <p class="q-src">— Entra의 후원자 자동 승계, EU AI Act의 <span class='mono'>recalled</span>, 미 연방 인벤토리의 <span class='mono'>Retired</span>, 자율성 인증서의 갱신 요건</p><p class="after">"아무도 설계 안 했다"가 맞다면 처방은 간단합니다. 이미 설계돼 있는데 안 쓰인다면, 문제는 설계 능력이 아니라 <b>켜는 결정</b>입니다.</p>
+  <div class="page-num mono">049 / 56</div>
+  <div class="page-section mono">RETIRE / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">마지막 벽 — 폐기</p>
-  <h2>아무도 설계하지 않은 마지막 칸</h2>
-  <ul>
-    <li>내보내는 절차는 <b>이미 설계돼 있다 — 도구 안에.</b> 조직이 아직 켜지 않았을 뿐</li>
-    <li>Entra의 승계 워크플로, EU AI Act의 'recalled' 상태값, 미 연방 인벤토리의 'Retired' 필드</li>
-    <li>그런데 <b>실제 폐기 절차를 공개한 조직은 찾지 못했다</b> — 부재 자체가 발견이다</li>
-  </ul>
-  <p class="quote">잘 거두는 체계는 <span class="gold">잘 거두어들이는</span> 체계이기도 하다 — 수확과 철수, 거두다의 두 뜻</p>
+<section class="slide content" id="s50" data-n="50">
+  <div class="eyebrow cream">TOOL 08</div>
+  <h2 class="content-title">폐기 체크리스트 — 일곱 항목</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <ul class="big-list"><li>① 공식 폐기 워크플로 (누가 요청하고 누가 승인하는가)</li><li>② 자격 증명·토큰 즉시 폐기 (전부 목록에 있는가)</li><li>③ 아웃바운드 접근 제거 · ④ 인바운드 호출 차단</li><li>⑤ 메모리·데이터 정화 (보관·익명화·삭제를 구분했는가)</li><li>⑥ <b>감사 추적 보존 — 지우지 않고 남기는 유일한 항목</b></li><li>⑦ 폐기 후 잔여 리스크 모니터링</li></ul>
+  <p class="foot-note">이 표의 칸들은 벤더의 발명이 아니라 <b>규제 스키마가 이미 요구하는 자리</b>입니다.</p>
+  <div class="page-num mono">050 / 56</div>
+  <div class="page-section mono">RETIRE / 04</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">실행</p>
-  <h2>다음 주에 시작한다면 — 순서</h2>
-  <ul>
-    <li><b>1주차</b> — 기존 목록 10건을 다섯 관문에 통과시켜 본다 (한 건에 5분)</li>
-    <li><b>1개월</b> — 세 칸 등록부(신원·스폰서·행위 범위)를 연다. 여덟 칸은 열만 만들어 둔다</li>
-    <li><b>1분기</b> — 판별 3질문으로 통제 차등, 고위험 건만 승인 게이트 + 환경 통제</li>
-    <li><b>측정 시작 전</b> — 사용 제한 선언부터. 숫자보다 신뢰가 먼저다</li>
-    <li><b>등록의 조건</b> — 절차(SOP) 없는 에이전트는 받지 않는다. 그게 입장권이다</li>
-  </ul>
+<section class="slide content" id="s51" data-n="51">
+  <div class="eyebrow cream">THE CIRCUIT</div>
+  <h2 class="content-title">등록에서 폐기까지의 회로</h2>
+  <div class="neon-bar gold small"></div>
+  <figure class="deck-fig"><img src="../figures/fig-10.svg" alt="그림 10. 재심사는 사건에 걸고, 위험 등급에 따라 바닥 주기를 둔다" /><figcaption>그림 10. 재심사는 사건에 걸고, 위험 등급에 따라 바닥 주기를 둔다</figcaption></figure>
+  <p class="foot-note">삭제가 아니라 <b>묘비 처리</b> — 운영에서는 사라지고, 기록에서는 남습니다.</p>
+  <div class="page-num mono">051 / 56</div>
+  <div class="page-section mono">RETIRE / 05</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">요약</p>
-  <h2>기억할 세 문장</h2>
-  <p class="quote">① 씨앗은 아래에서 온다. 위가 공급할 것은 목록이 아니라 <span class="gold">기준·자원·제도·폐기 규칙</span>이다.</p>
-  <p class="quote">② 통제의 강도는 똑똑한 정도가 아니라 <span class="gold">되돌릴 수 없음의 정도</span>로 정한다.</p>
-  <p class="quote">③ 절감이 감원으로 읽히는 순간 숫자는 숨는다 — <span class="gold">측정보다 선언이 먼저</span>다.</p>
+<section class="slide div" id="s52" data-n="52">
+  <div class="div-wrap">
+    <div class="div-text">
+      <div class="eyebrow gold">ROADMAP</div>
+      <h2 class="div-title">90일 도입 로드맵</h2>
+      <p class="div-sub">전사 제도를 한 번에 완성하는 것이 목표가 아니다. 대표 업무 3~5개로 전 구간을 한 번 통과시킨다.</p>
+    </div>
+    
+  </div>
+  <div class="page-num mono">052 / 56</div>
+  <div class="page-section mono">EXECUTE / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<section class="slide">
-  <p class="kicker">더 읽기</p>
-  <h1 style="font-size:clamp(1.6rem,4vw,2.6rem)">디지털 워커의 시대,<br>AI 에이전트를 조직의 성과로 만드는 체계</h1>
-  <p style="margin-top:1.5rem">김상기 · v1.2.0 · CC BY-NC-SA 4.0</p>
-  <ul style="margin-top:1rem">
-    <li>웹에서 읽기 — <b>ksangki.github.io/ax-system</b></li>
-    <li>EPUB — 저장소 <b>epub/</b> 폴더</li>
-    <li>AX 3부작 — 『AX를 만들다』(실전기) · 『나는 이 게임을 안다』(진단) · 이 책(처방)</li>
-  </ul>
-  <p class="muted" style="margin-top:2rem">각 장이 남긴 아홉 개의 워크시트는 부록 A에 있습니다. 감사합니다.</p>
+<section class="slide content" id="s53" data-n="53">
+  <div class="eyebrow cream">90 DAYS</div>
+  <h2 class="content-title">세 구간, 세 개의 Gate</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">0–30일 · 발견과 기준</div>
+        <div class="card-sub">후보 판정 · 대표 업무와 Owner 선정 · 기준선 확보 · 등록 스키마 초안<br><b class='gate'>GATE 1 — 실체와 책임자가 확인됐는가</b></div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">31–60일 · 등록과 통제</div>
+        <div class="card-sub">SOP 작성 · Agent ID 발급 · 역량/권한 등급 분리 판정 · 최소 권한과 중지 수단<br><b class='gate'>GATE 2 — 제한된 운영을 허가할 수 있는가</b></div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">61–90일 · 운영과 증명</div>
+        <div class="card-sub">제한 범위 운영 · 로그 점검 · 측정 · 재투자 원칙 선언 · 폐기 리허설<br><b class='gate'>GATE 3 — 확대·보완·중단 중 하나를 결정했는가</b></div>
+      </div></div>
+  <p class="foot-note">30일마다 산출물보다 <b>결정 근거</b>를 남깁니다. 보완이나 중단도 정상적인 결과로 기록합니다.</p>
+  <div class="page-num mono">053 / 56</div>
+  <div class="page-section mono">EXECUTE / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
 </section>
-
-<div class="foot" id="counter"></div>
+<section class="slide content" id="s54" data-n="54">
+  <div class="eyebrow cream">NEXT WEEK</div>
+  <h2 class="content-title">다음 주에 할 수 있는 것</h2>
+  <div class="neon-bar gold small"></div>
+  
+  <div class="grid grid-3">
+      <div class="card">
+        <div class="card-num mono">01</div>
+        <div class="card-h">10건 × 5분</div>
+        <div class="card-sub">기존 목록 열 건을 다섯 관문에 통과시켜 본다. 떨어진 이유를 옆 칸에 적는다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">02</div>
+        <div class="card-h">세 칸부터</div>
+        <div class="card-sub">등록부는 신원·스폰서·행위 범위 세 칸으로 연다. 여덟 칸은 열만 만들어 둔다.</div>
+      </div>
+      <div class="card">
+        <div class="card-num mono">03</div>
+        <div class="card-h">선언이 먼저</div>
+        <div class="card-sub">측정을 시작하기 전에 '이 숫자를 어디에 쓰지 않을지'부터 문서로 남긴다.</div>
+      </div></div>
+  
+  <div class="page-num mono">054 / 56</div>
+  <div class="page-section mono">EXECUTE / 03</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide content" id="s55" data-n="55">
+  <div class="eyebrow cream">REMEMBER</div>
+  <h2 class="content-title">기억할 세 문장</h2>
+  <div class="neon-bar gold small"></div>
+  <blockquote class="bigq">① 씨앗은 아래에서 온다. 위가 공급할 것은 목록이 아니라 <span class='gold-t'>기준·자원·제도·폐기 규칙</span>이다.<br><br>② 통제의 강도는 똑똑한 정도가 아니라 <span class='gold-t'>되돌릴 수 없음의 정도</span>로 정한다.<br><br>③ 절감이 감원으로 읽히는 순간 숫자는 숨는다 — <span class='gold-t'>측정보다 선언이 먼저</span>다.</blockquote>
+  
+  <div class="page-num mono">055 / 56</div>
+  <div class="page-section mono">CLOSING / 01</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+<section class="slide cover" id="s56" data-n="56">
+  <div class="corner tl"></div><div class="corner tr"></div>
+  <div class="corner bl"></div><div class="corner br"></div>
+  <div class="cover-wrap">
+    <div class="eyebrow gold">감사합니다</div>
+    <h1 class="cover-title end">디지털 워커의 시대</h1>
+    <p class="cover-sub">AI 에이전트를 조직의 성과로 만드는 체계</p>
+    <div class="neon-bar gold"></div>
+    <p class="cover-quote">각 장이 남긴 아홉 개의 워크시트는 부록 A에 있습니다.</p>
+    <div class="cover-meta">
+      <span>웹에서 읽기 · ksangki.github.io/ax-system</span>
+      <span class="mono dim">EPUB · 저장소 epub/ 폴더</span>
+    </div>
+    <p class="cover-by">AX 3부작 — 『AX를 만들다』(실전기) · 『나는 이 게임을 안다』(진단) · 이 책(처방)</p>
+  </div>
+  <div class="page-num mono">056 / 56</div>
+  <div class="page-section mono">CLOSING / 02</div>
+  <div class="page-footer"><span>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는 체계</span><span>김상기 · ksangki/ax-system</span></div>
+</section>
+</main>
 <script>
-const slides=[...document.querySelectorAll('section.slide')];
-slides.forEach((s,i)=>{const n=document.createElement('div');n.className='num';n.textContent=(i+1)+' / '+slides.length;s.appendChild(n)});
+const slides=[...document.querySelectorAll('.slide')];
+const fill=document.getElementById('progress');
 let cur=0;
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){cur=slides.indexOf(e.target);document.getElementById('counter').textContent=(cur+1)+' / '+slides.length}}),{threshold:.6});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  cur=slides.indexOf(e.target);
+  fill.style.width=((cur+1)/slides.length*100)+'%';
+}}),{threshold:.55});
 slides.forEach(s=>io.observe(s));
+function go(i){i=Math.max(0,Math.min(slides.length-1,i));slides[i].scrollIntoView({behavior:'smooth',block:'start'});}
 addEventListener('keydown',e=>{
-  if(['ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();slides[Math.min(cur+1,slides.length-1)].scrollIntoView({behavior:'smooth'})}
-  if(['ArrowUp','PageUp'].includes(e.key)){e.preventDefault();slides[Math.max(cur-1,0)].scrollIntoView({behavior:'smooth'})}
+ if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1);}
+ if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1);}
+ if(e.key==='Home'){e.preventDefault();go(0);}
+ if(e.key==='End'){e.preventDefault();go(slides.length-1);}
 });
 </script>
 </body>
