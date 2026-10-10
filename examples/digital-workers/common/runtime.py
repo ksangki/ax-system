@@ -50,7 +50,7 @@ class Run:
         self.approve = approve
         self.run_id = f"{agent_id}-{datetime.date.today():%Y%m%d}-{uuid.uuid4().hex[:6]}"
         self.items = 0           # 처리 건수 — 8장 환산의 분자
-        self.human_touches = 0   # 사람이 승인한 횟수 — 8장 자율성 계수의 재료
+        self.human_touches = 0   # 사람이 개입한 횟수(승인·넘김) — 8장 자율성 계수의 재료
 
         status = self.entry.get("status")
         if status != "active":
@@ -152,7 +152,7 @@ class Run:
             "items": self.items, "human_touches": self.human_touches,
         })
         self.audit("run_end", items=self.items, cost_usd=round(cost, 4), stop_reason=stop)
-        print(f"\n  처리 {self.items}건 · 사람 승인 {self.human_touches}회 · "
+        print(f"\n  처리 {self.items}건 · 사람 개입 {self.human_touches}회 · "
               f"토큰 입력 {usage['input'] + usage['cache_read'] + usage['cache_write']:,} / "
               f"출력 {usage['output']:,} · 약 ${cost:.3f}")
 

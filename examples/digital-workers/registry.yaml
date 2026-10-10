@@ -83,16 +83,16 @@ agents:
   actions:
     list_open_tickets: read
     read_ticket_log: read
-    propose_triage: auto          # 분석안 작성은 되돌릴 수 있다 → 자율
-    assign_ticket: approve        # 실제 배정은 다른 팀의 일을 움직인다 → 건건이 승인
+    propose_triage: auto          # 분석안은 고쳐 쓸 수 있다 → 자율
+    assign_ticket: auto           # 잘못 배정해도 다시 배정할 수 있다 → 자율
     send_customer_notice: suggest # 대외 발송은 되돌릴 수 없다 → 제안만
-  human_checkpoints: 담당 팀 배정 직전(승인), 고객 공지 문안(제안 목록을 관제 담당이 검토)
+  human_checkpoints: 판정할 수 없는 티켓은 '판정 보류(사람 확인)'로 관제 담당에게 넘긴다. 고객 공지는 제안 목록을 관제 담당이 검토해 직접 발송한다.
   audit: logs/audit.jsonl (분석·배정·제안 각각 1줄)
   continuity: 부담당 — 서비스운영팀 야간 관제 담당. 끄면 티켓은 사람이 직접 분류하는 원래 절차로 돌아간다.
   review:
     aal: A3
     floor_days: 90
-    triggers: [오배정 2건 이상/월, 새 도구 추가, 개입률 변화 ±20%p]
+    triggers: [재배정 2건 이상/월, 새 도구 추가, 개입률 변화 ±20%p]
     retire_criteria: 3개월 연속 성과 인정분(FTE)이 운영 비용에 못 미치면 폐기 후보
 
 - identity:

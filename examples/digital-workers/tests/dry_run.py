@@ -4,7 +4,7 @@
 
 Claude 대신 미리 정한 도구 호출 순서(SCRIPTS)를 흉내 내는 가짜 클라이언트를 끼운다.
 에이전트의 판단은 검증하지 않는다. 검증하는 것은 그 바깥의 체계다:
-등록부 확인, 행위 허가(auto·approve·suggest·미등록), 형식 검증, 감사·비용 로그, 폐기 실행.
+등록부 확인, 행위 허가(auto·approve·suggest·미등록), 사람에게 넘김, 형식 검증, 감사·비용 로그, 폐기 실행.
 실행 후 logs/·outputs/·registry.yaml을 원래대로 되돌린다.
 """
 import pathlib
@@ -41,7 +41,12 @@ SCRIPTS = {
                                "root_cause_hypothesis": "auth-api v2.31 배포 후 서명 키 누락",
                                "evidence": "token-signer: key id 'k-2026-10' not found", "confidence": "높음",
                                "team": "계정플랫폼팀"}),
-           ("assign_ticket", {"ticket_id": "T-1001", "team": "계정플랫폼팀"}),          # approve
+           ("assign_ticket", {"ticket_id": "T-1001", "team": "계정플랫폼팀"}),          # auto
+           ("propose_triage", {"ticket_id": "T-1008", "severity": "S2", "category": "보안/개인정보",
+                               "root_cause_hypothesis": "프로필 캐시 키 충돌 의심",
+                               "evidence": "cache key collision suspected", "confidence": "낮음",
+                               "team": "판정 보류(사람 확인)"}),                          # 사람에게 넘김
+           ("assign_ticket", {"ticket_id": "T-1008", "team": "판정 보류(사람 확인)"}),  # 배정 불가
            ("send_customer_notice", {"ticket_id": "T-1001", "message": "로그인 장애 안내"})],  # suggest
     "a4": [("read_usage", {}), ("read_baselines", {}),
            ("compute_fte", {"agent_id": "AGT-003"}), ("compute_fte", {"agent_id": "AGT-005"})],

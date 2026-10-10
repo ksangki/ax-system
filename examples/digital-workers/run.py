@@ -2,7 +2,7 @@
 
     python run.py a1              # ① AI 과제 판별
     python run.py a2              # ② SOP 변환
-    python run.py a3              # ③ 장애 티켓 1차 분석 (승인 요청이 터미널에 뜬다)
+    python run.py a3              # ③ 장애 티켓 1차 분석
     python run.py a4              # ④ 성과 측정
     python run.py a5              # ⑤ 폐기 점검 (승인 요청이 터미널에 뜬다)
     python run.py all --approve yes   # 다섯 개를 순서대로, 승인은 전부 '예'로

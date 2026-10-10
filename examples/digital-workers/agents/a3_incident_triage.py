@@ -1,10 +1,13 @@
 """③ 장애 티켓 1차 분석 에이전트 — 5·6·7장.
 
 이 예제의 중심이다. 도구는 다섯 개를 쥐여 주지만(할 수 있는 것),
-등록부는 그중 하나만 자율로, 하나는 승인으로, 하나는 제안만 허용한다(해도 되는 것).
-  propose_triage        auto    — 분석안 작성은 되돌릴 수 있다
-  assign_ticket         approve — 다른 팀의 일을 움직인다
-  send_customer_notice  suggest — 대외 발송은 되돌릴 수 없다
+무엇을 해도 되는지는 등록부가 정한다(해도 되는 것). 7장 표 9의 네 기능으로 보면:
+  조회  list_open_tickets · read_ticket_log  read    — 읽기만
+  해석·선택  propose_triage                  auto    — 분석안은 고쳐 쓸 수 있다
+  집행  assign_ticket                        auto    — 잘못 배정해도 다시 배정할 수 있다
+  집행  send_customer_notice                 suggest — 나간 공지는 돌아오지 않는다
+같은 집행이라도 되돌릴 수 있느냐에 따라 허용 수준이 갈린다.
+판정할 수 없는 티켓은 '판정 보류(사람 확인)'로 사람에게 넘기고, 그 넘김을 사람 개입으로 센다(8장).
 
 분석안은 4장의 원칙대로 코드가 형식을 검증한다. 모델의 판단을 믿기 전에,
 산출물이 절차서의 출력 형식을 지켰는지부터 결정론적으로 본다.
@@ -105,11 +108,15 @@ def build_tools(run: Run):
                       confidence=confidence, team=team, assigned=False)
         triaged[ticket_id] = record
         run.count()
+        if team == "판정 보류(사람 확인)":
+            run.human_touches += 1  # 사람에게 넘긴 건 — 8장 자율성 계수에서 사람 개입으로 센다
+            run.audit("handoff_to_human", ticket_id=ticket_id)
+            return f"분석안 저장: {ticket_id} — 관제 담당에게 넘겼습니다. 배정하지 마세요."
         return f"분석안 저장: {ticket_id}"
 
     @beta_tool
     def assign_ticket(ticket_id: str, team: str) -> str:
-        """티켓을 담당 팀 큐에 실제로 배정한다. 등록부상 사람 승인이 필요하다.
+        """티켓을 담당 팀 큐에 실제로 배정한다.
 
         Args:
             ticket_id: 티켓 ID (먼저 propose_triage로 분석안이 있어야 한다)
