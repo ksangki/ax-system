@@ -166,6 +166,71 @@ margin: 0 0.8em 0.2em -1.6em;
 vertical-align: middle;
 }
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
 </style>
 <style>
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:#faf9f6}
@@ -213,6 +278,11 @@ figure.editorial-illustration figcaption{text-align:center;color:#756e61;font-si
 .roadmap-phase .gate{display:block;border-top:1px solid #d9cfb8;margin-top:.8em;padding-top:.7em;color:#6f5423;font-size:.83em;font-weight:700}
 .registry-core{border-left:5px solid #c9963f;border-right:5px solid #c9963f;position:relative}
 .registry-core::before{content:"전 생애주기 관통 기반";display:block;color:#c9b98f;font-size:.72em;font-weight:700;letter-spacing:.1em;margin-bottom:.35em}
+div.case{background:#f3efe6;border:1px solid #ded3bc;border-left:5px solid #5c7a52;border-radius:10px;padding:1.1em 1.4em;margin:2em 0}
+div.case>p:first-child{color:#3f5a37;margin-top:.2em}
+div.case pre{background:#fffdf8;color:#2b2b28;border:1px solid #d9cfb8;border-radius:8px;padding:.9em 1em;overflow-x:auto;font-size:.82em;line-height:1.55}
+div.case pre code{background:none;color:inherit}
+div.case code{font-size:.9em}
 @media (max-width:700px){.lifecycle-grid,.roadmap,.decision-grid{grid-template-columns:1fr}}
 @media (prefers-color-scheme: dark){
  html{background:#10161f} body{background:#10161f;color:#d8d4c8} h1,h2,h3{color:#ece8dc}
@@ -228,10 +298,15 @@ figure.editorial-illustration figcaption{text-align:center;color:#756e61;font-si
  .life-step span{color:#aaa394}
  .registry-core{background:#0b1119;border:1px solid #334050}
  .roadmap-phase .gate{border-color:#334050;color:#e3b45f}
+ div.case{background:#18212d;border-color:#2a3644;border-left-color:#7f9e74}
+ div.case>p:first-child{color:#a9c79c}
+ div.case pre{background:#0b1119;color:#d8d4c8;border-color:#334050}
+ div.case pre span{color:inherit!important} div.case pre span.co{color:#8f9a86!important}
 }
 @media print{
  figure.editorial-illustration,.front-matter,.lifecycle,.roadmap{break-inside:avoid}
- .executive-card,.lifecycle,.roadmap-phase{background:#fff!important}
+ .executive-card,.lifecycle,.roadmap-phase,div.case{background:#fff!important}
+ div.case{break-inside:avoid}
 }
 </style></head>
 <body>
@@ -248,12 +323,12 @@ figure.editorial-illustration figcaption{text-align:center;color:#756e61;font-si
 </figure>
 <h2 id="저자">저자</h2>
 <p>김상기</p>
-<p><strong>판본:</strong> v1.5.0 · 2026-10-10</p>
+<p><strong>판본:</strong> v1.6.0 · 2026-10-10</p>
 <hr />
 <h2 id="판권">판권</h2>
 <p><strong>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는
 체계</strong></p>
-<p><strong>판본:</strong> v1.5.0 <strong>발행일:</strong> 2026-10-10
+<p><strong>판본:</strong> v1.6.0 <strong>발행일:</strong> 2026-10-10
 <strong>저자:</strong> 김상기 <strong>식별자:</strong>
 urn:uuid:5cef80ff-b2ad-43fd-b003-63c0f827313f</p>
 <h3 id="라이선스">라이선스</h3>
@@ -569,6 +644,8 @@ v1.11.0로 자동 생성되었다.</p>
 게시물</a></li>
 <li><a href="#b-6.-이-책이-의도적으로-쓰지-않은-것" id="toc-b-6.-이-책이-의도적으로-쓰지-않은-것">B-6. 이 책이 의도적으로
 쓰지 않은 것</a></li>
+<li><a href="#b-7.-예제-저장소-만들어-보기의-코드" id="toc-b-7.-예제-저장소-만들어-보기의-코드">B-7. 예제 저장소 — 「만들어
+보기」의 코드</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -617,8 +694,9 @@ AX기술자가 서포트하면서 AI를 도입하는게 가장 좋을것 같은�
 바로 그것이다.</p>
 <p>다른 독자에게도 각자 읽을 장이 있다. 보안·아이덴티티(계정과 권한
 관리) 담당자, 인사·전략 기획 담당자, 현장 부서에서 도입을 이끄는
-담당자다. 코드는 나오지 않는다. 이 책이 다루는 것은 조직을 어떻게 짜고,
-규칙을 어떻게 정하고, 성과를 어떻게 셀지다.</p>
+담당자다. 본문에는 코드가 나오지 않는다(다섯 장 끝 상자에 몇 줄 발췌가
+있을 뿐이다). 이 책이 다루는 것은 조직을 어떻게 짜고, 규칙을 어떻게
+정하고, 성과를 어떻게 셀지다.</p>
 <p>이 책은 저자의 AX 3부작 가운데 세 번째 권이다. 앞의 두 권은 직접
 만들어 본 기록과, 조직을 진단하는 잣대를 남겼다. 이 책은 그다음 질문, 곧
 무엇을 어떤 순서로 세울지에 답한다. 다만 <strong>이 책만 읽어도 이해되게
@@ -654,6 +732,18 @@ AX기술자가 서포트하면서 AI를 도입하는게 가장 좋을것 같은�
 내려놓을 때 확인할 항목</li>
 </ul>
 <p>아홉 개 모두 부록 A에 모아 두었다. 실무에서는 부록부터 펴도 된다.</p>
+<p>아홉 도구 가운데 다섯은 에이전트 코드로 옮겨 실제로 돌려 보았다. 그
+기록을 2·4·7·8·10장 끝 「만들어 보기」 상자에 하나씩 붙였다. 상자 다섯은
+예제 저장소(코드를 모아 공개해 둔 곳)에 있는 에이전트 다섯을 가리킨다.
+번호는 장 순서대로 ①부터 ⑤까지다. 저장소 주소는 각 상자 끝과 부록 B-7에
+적었다. 상자를 읽는다면 ①부터 차례로 읽자. 뒤 상자가 앞 상자의 결과를
+이어받는 곳이 있다.</p>
+<p>상자의 데이터와 숫자는 이렇게 읽어 주기 바란다. 예제의 과제
+목록·매뉴얼·티켓·기준값·등록부는 모두 교육용으로 지어낸 가상 데이터다.
+실행 기록은 2026년 10월 10일에 한 번 돌려서 얻은 값이다. 모델의 출력은
+실행할 때마다 달라질 수 있다. 직접 돌렸을 때 건수나 판정이 조금 다르게
+나와도 이상한 일이 아니다. 상자를 건너뛰어도 본문을 따라가는 데 빠지는
+것은 없다.</p>
 <p>자주 들리는 선언 하나에도 선을 그어 두자. 조직의 생산 능력을 사람
 수로 관리하던 시대가 끝나고, 역량으로 관리하는 시대가 온다는 이야기다.
 방향은 맞다고 본다. 다만 구호는 한 문단이면 충분하다. 그다음에는 무엇을
@@ -666,10 +756,10 @@ AX기술자가 서포트하면서 AI를 도입하는게 가장 좋을것 같은�
 보고와 회의의 날짜도 쓰지 않았다. 숫자가 꼭 필요한 곳에는 가상의
 예시값을 새로 만들어 넣었고, 그 자리에서 예시라고 밝혔다.</p>
 <p><strong>둘째, 시점 — 모든 정보는 2026년 9월 기준이다.</strong>
-제품·규제·표준 정보가 모두 그렇다. v1.5.0에서 보탠 일부 단락만 2026년
-10월 기준이며, 그 자리에 시점을 따로 적었다. 이런 정보는 분기(석 달)
-단위로 바뀐다. 실제로 대응을 설계할 때는 원문을 다시 확인하는 편이
-낫다.</p>
+제품·규제·표준 정보가 모두 그렇다. v1.5.0의 일부 단락과 v1.6.0의
+「만들어 보기」 상자만 2026년 10월 기준이다. 그 자리에는 시점을 따로
+적었다. 이런 정보는 분기(석 달) 단위로 바뀐다. 실제로 대응을 설계할 때는
+원문을 다시 확인하는 편이 낫다.</p>
 <p><strong>셋째, 출처 성격 — 모든 숫자에 어디서 온 값인지
 붙였다.</strong> 누가 조사했는지, 얼마나 많은 사람이나 사례를
 조사했는지(표본), 어떤 종류의 문헌인지를 숫자 옆에 적었다. 예를 들어
@@ -696,24 +786,24 @@ AX기술자가 서포트하면서 AI를 도입하는게 가장 좋을것 같은�
 </ul>
 <p><strong>PART 2. 절차 — 체계의 입장권</strong></p>
 <ul>
-<li>2장. 세어보면 다 있는데, 대보면 없다</li>
+<li>2장. 세어보면 다 있는데, 대보면 없다 (만들어 보기 ①)</li>
 <li>3장. 적힌 절차와 실제로 하는 일</li>
-<li>4장. 기계가 읽는 절차</li>
+<li>4장. 기계가 읽는 절차 (만들어 보기 ②)</li>
 </ul>
 <p><strong>PART 3. 등록 — 조직에 자리를 만든다</strong></p>
 <ul>
 <li>5장. 등록한다는 건 무엇을 적는다는 뜻인가</li>
 <li>6장. 제도는 청구서에 부딪혀 모양이 잡힌다</li>
-<li>7장. 할 수 있는 것과 해도 되는 것</li>
+<li>7장. 할 수 있는 것과 해도 되는 것 (만들어 보기 ③)</li>
 </ul>
 <p><strong>PART 4. 성과 — 세는 법과 그 대가</strong></p>
 <ul>
-<li>8장. 성과를 세는 법</li>
+<li>8장. 성과를 세는 법 (만들어 보기 ④)</li>
 <li>9장. 절감분은 누구의 것인가</li>
 </ul>
 <p><strong>PART 5. 끝 — 설계되지 않은 마지막 칸</strong></p>
 <ul>
-<li>10장. 아무도 설계하지 않은 마지막 칸</li>
+<li>10장. 아무도 설계하지 않은 마지막 칸 (만들어 보기 ⑤)</li>
 </ul>
 <p><strong>부록</strong></p>
 <ul>
@@ -1880,6 +1970,59 @@ ChatGPT에 붙여넣는 걸 <strong>잡아내는(catching)</strong> 거죠.”</
 <p>등록 대상인지 판정만 하려 해도 조건이 있다. 그 에이전트가 무슨 일을
 어떤 순서로 하는지가 어딘가에 글로 적혀 있어야 한다. 그리고 이 요구는
 관문 다섯 개를 성실하게 통과시키려고 하니 저절로 나왔다.</p>
+<div class="case">
+<p><strong>만들어 보기 ① — 관문 다섯 개를 프롬프트로 옮기면</strong></p>
+<p>관문 다섯 개를 에이전트에게 돌리게 하면 어떤 판정이 나올까? 예제
+저장소의 AI 과제 판별 에이전트가 바로 그 일을 맡는다. 현업이 ’AI
+과제’라고 올린 목록 18건을 읽고, 항목마다 그림 2의 관문을 차례로 세우는
+에이전트다. 예제의 과제 목록은 모두 교육용으로 지어낸 것이다.</p>
+<p>도구는 둘이다. 과제 목록 읽기와 판정 기록이다. 등록부는 에이전트마다
+무엇을 해도 되는지 적어 두는 명부다(5장에서 만든다). 이 에이전트의
+등록부는 목록 읽기를 읽기만(read)으로, 판정 기록을 범위 안 자율(auto)로
+열어 두었다. 판정을 적는 데까지는 혼자 해도 된다는 뜻이다. 확정은 사람
+몫으로 남겼다. 등록부의 사람 개입 칸에 “에이전트는 판정 초안까지만
+만든다”고 적고, 보고서를 읽고 확정할 사람을 따로 두었다. 관문 자체는
+시스템 프롬프트(모델에게 처음 건네는 지시문)에 들어 있다.</p>
+<pre class="text"><code>① 생성형인가 — 규칙 기반 자동화·통계 모델·기존 배치 작업을 거른다. 걸러진 것에도 값이 있다고 적는다.
+② 행위하는가 — 결과물이 사람 손을 거치지 않고 다음 단계로 넘어가는가. 답만 하는 챗봇·초안 도구는 여기서 갈린다.
+   (③·④ 생략)
+⑤ 무게가 있는가 — 되돌릴 수 없는 일, 돈·대외 커뮤니케이션·민감정보를 건드리는가.
+   (중략)
+- 설명만으로 판정이 갈리면 지어내지 말고 hold=true로 판정 보류한다. 보류 사유에 무엇을 물어야 하는지 적는다.</code></pre>
+<p>이 장의 본문에 대보자. 관문 문구는 그림 2의 다섯 질문을 거의 그대로
+옮겼다. 걸러진 것에도 값이 있다고 적으라는 당부는 ① 옆에 붙였다.
+판정자의 의견이 갈리는 항목을 모아 두라던 판정 보류 칸은 hold라는 값
+하나가 됐다. 보고 자리에 준비하라던 문장, “목록이 줄어든 것은 초점이
+생겼다는 뜻”도 프롬프트에 넣어 떨어진 항목을 사유별 표로 묶게 했다. 관문
+문구가 곧 정의라서, 문구가 바뀌면 다시 심사해야 한다. 그래서 등록부의
+재심사 칸에 ’관문 문구 변경’과 ’판정 보류가 3건 이상 쌓임’을 방아쇠로
+적었다.</p>
+<p>실행 기록(2026년 10월 10일, Claude Opus 5.5로 한 번 실행). 18건을
+모두 판정했고, 감사 로그에 판정마다 한 줄씩 남았다. 사람 개입은 0회다.
+확정은 실행이 끝난 뒤의 일이라 이 기록에 잡히지 않는다. 대상 아님은
+8건이다. ① 관문에서 4건이 떨어졌다(통계 대시보드, 규칙 기반 알람, 음성
+텍스트 변환, 배치 보고 자동화). ③에서는 기획안뿐인 과제와 토대 인프라
+2건, ④에서는 개인 편의 도구 2건이다. 등록 대상 10건은 정식 등록과 강한
+통제 2건, 등록과 모니터링 1건, 가볍게 등록만 5건이다. 나머지
+2건(P04·P09)은 보류하며 물어볼 것을 붙였다. 앞에서 말한, 판정할 근거가
+없는 자리가 이 두 건이다. P04에는 환불 판단에 생성형을 쓰는지, P09에는
+고객 공지가 사람 승인 없이 나가는지를 묻는다. P09는 7장 만들어 보기 ③과
+같은 장애 티켓 1차 분석이고, 그 물음의 답은 만들어 보기 ③의 등록부에
+있다.</p>
+<p>책의 설명과 어긋난 곳도 하나 나왔다. 에이전트는 ② 관문을 갈림길로
+썼다. ②에서 떨어뜨리면 ’가볍게 등록만’에 들어갈 과제가 생길 수 없다는
+이유였고, 이 판단을 보고서에 적어 두었다. 실제로 본문의 관문 절은 통과한
+것만 다음 관문으로 보낸다고 적었다. 그런데 실무자용 질문 셋의 표는
+행동하지 않는 것을 ’가볍게 등록만’으로 보낸다. 문구가 덜 조인 자리는
+판정자가 메운다. 메운 방식을 보고서에 적게 하고, 그 기록을 다음 관문
+개정의 재료로 쓰자.</p>
+<p><em>실행량: 입력 17,110토큰(캐시 읽기 5,616 포함), 출력 9,119토큰, 약
+0.24달러. 토큰은 모델이 읽고 쓰는 글자 조각 단위이고, 캐시 읽기는 앞서
+읽은 내용을 다시 꺼내 쓴 몫이다.</em></p>
+<p>코드와 등록부: <a href="https://github.com/ksangki/ax-system/tree/main/examples/digital-workers">github.com/ksangki/ax-system
+— examples/digital-workers</a> (<code>agents/a1_project_gates.py</code>,
+<code>registry.yaml</code>, <code>data/projects.csv</code>)</p>
+</div>
 <p>워크시트를 다 만들고 목록을 다 훑고 나면, 자연히 다음 문장이 입에서
 나온다.</p>
 <p><em>“그래서 그 절차를 적어야 하는데… 왜 그 말이 이렇게 반갑지
@@ -2886,6 +3029,63 @@ Gallery라는 목록에서 그 에이전트를 찾아 쓴다. (구글 공식 문
 문제가 시작된다. 쓰는 사람은 프로젝트가 끝나면 떠나고, 유지하는 사람은
 왜 그렇게 썼는지 모른다. 5번과 6번이 등록부에 들어가야 하는 이유가 여기
 있다. 문서에 적어두면 잊히지만 등록 항목이 되면 남는다.</p>
+<div class="case">
+<p><strong>만들어 보기 ② — 손이 멈추는 자리에 질문을 남긴다</strong></p>
+<p>“적절한 팀에 배정한다.” “상황에 맞게 작성한다.” 예제 저장소의 장애
+티켓 1차 대응 매뉴얼(여섯 절, 교육용으로 지어낸 것)에는 이런 문장이
+일부러 남아 있다. 사람이 쓴 매뉴얼에 흔한 빈틈이다. 이 매뉴얼을 SOP 변환
+에이전트에게 넘긴다. SOP(표준 작업 절차 — 누가 무엇을 어떤 순서로 하는지
+적은 문서)를 에이전트용 절차서로 바꾸는 에이전트다.</p>
+<p>에이전트가 쓰는 도구는 문서 읽기, 열린 질문 기록, 절차서 저장 세
+가지다. 문서는 읽기만 하고(read), 질문 기록과 절차서 저장은 사람 확인
+없이 스스로 한다(auto, 등록부가 정한 범위 안에서). 읽을 수 있는 문서도
+등록부에 적힌 경로뿐이고, 실행 런타임(에이전트를 실제로 돌리는 바깥
+코드)이 범위 밖 경로를 거절한다. 사람은 운영에 쓰기 직전에 선다.
+등록부의 사람 개입 칸에 “변환된 SOP는 절차 담당이 열린 질문에 답한
+뒤에만 운영에 쓴다”고 적었다. 절차서의 형식은 시스템 프롬프트(모델에게
+처음 건네는 지시문)가 정한다.</p>
+<pre class="text"><code>### 단계 N. &lt;이름&gt;
+- 할 일: 한 문장
+- 산출물: 이 단계가 끝나면 생기는 것 (필드 이름까지 적는다. 예: severity, category)
+- 산출물 조건: 다음 단계로 넘기기 전에 검사할 조건 (허용 값 목록, 필수 여부)
+- 사람 확인: 없음 | 승인 필요 | 제안만 — 돈·대외 발송·다른 팀의 일을 움직이는 단계는 반드시 표시
+- 근거: 원본 매뉴얼의 어느 문장에서 왔는가, 또는 &#39;열린 질문 Qn 답변 전 임시값&#39;</code></pre>
+<p>산출물과 산출물 조건 두 줄이 이 장의 “산출물을 못 박아라”를 옮긴
+것이다. 사람 확인 줄은 사람이 봐야 하는 단계를 미리 표시해 두라는
+당부다. 기준이 빈 자리에서는 지어내지 말고 질문을 남기게 했다.
+절차서에는 보수적인 임시값을 ’Qn 답변 전 임시값’이라는 꼬리표와 함께
+적는다. 표 3의 Clarifier에 사람이 반드시 들어가는 까닭과 같다. 모호한
+말의 뜻은 담당자 머릿속에 있고, 에이전트가 할 수 있는 일은 빈 곳을
+정확히 짚어 되묻는 데까지다. 끝에는 분석 결과가 가져야 할 필드와 허용
+값을 표로 적게 했다. 표 4의 결정론적 검증 지점에 쓸 재료다.</p>
+<p>실행 기록(2026년 10월 10일, Claude Opus 5.5로 한 번 실행). 여섯 절
+매뉴얼이 8단계 절차서가 됐고, 끝에 필드 28개짜리 출력 형식 표가 붙었다.
+열린 질문은 9개다. 심각도 쪽으로는 S1의 기준과 S2·S3의 경계, ’애매하면
+선임에게’의 선임과 채널을 물었다. 나머지는 ’배포 직후’의 시간 범위, 다른
+팀 배정에 승인이 필요한지, 공지 대상과 승인자, 공지 템플릿, 기록 필수
+항목, 로그 출처와 범위다. 처리 9건이 곧 이 질문 수다. 사람 개입은 0회다.
+절차서 머리에는 임시값을 모두 사람에게 넘기는 쪽으로 잡았다고 적었다.
+그래서 공통 규칙에 “다른 팀 배정은 제안만 하고 사람이 확정한다”가
+들어갔다. 원본 매뉴얼에도 등록부에도 없던 조임이다. 변환 지시의 “다른
+팀의 일을 움직이는 단계는 반드시 표시”가 이렇게 자랐고, 이 한 줄이 7장
+만들어 보기 ③에서 등록부가 열어 둔 팀 배정을 0건으로 만든다. 통제의 실제
+수준은 결국 절차서를 쓰는 쪽이 정한다. 임시값도 사람이 검토해야 하는
+까닭이다.</p>
+<p>놓친 빈틈도 있다. 매뉴얼의 담당 팀 목록에는 보안·개인정보 담당이
+없는데, 아홉 질문 어디에도 이 공백이 없다. 질문을 남기는 장치는 적힌
+문장의 빈틈만 잡는다. 아예 적히지 않은 경우는 만들어 보기 ③에 정보 노출
+의심 티켓이 들어온 뒤에야 드러났다. 그리고 그 에이전트의 형식 검증
+코드는 미리 짜 둔 허용 값 목록을 쓰고 있어서, 이 28개 필드 표와 아직
+이어져 있지 않다. 절차서가 바뀌면 검증 코드도 함께 다시 봐야 한다.</p>
+<p><em>실행량: 입력 20,498토큰(캐시 읽기 9,609 포함), 출력 9,018토큰, 약
+0.24달러. 여기서 토큰은 모델이 읽고 쓰는 글자 조각 단위로, 앞에서 본
+접근 증표로서의 토큰과는 다른 말이다. 캐시 읽기는 앞서 읽은 내용을 다시
+꺼내 쓴 몫이다.</em></p>
+<p>코드와 등록부: <a href="https://github.com/ksangki/ax-system/tree/main/examples/digital-workers">github.com/ksangki/ax-system
+— examples/digital-workers</a> (<code>agents/a2_sop_converter.py</code>,
+<code>registry.yaml</code>,
+<code>data/manual_incident_triage.md</code>)</p>
+</div>
 <h2 id="절차가-적히면-그다음-질문이-온다">절차가 적히면, 그다음 질문이
 온다</h2>
 <p>1장에서 미뤄 둔 약속이 하나 있었다. 어느 조직이 에이전트에게 정식
@@ -4651,6 +4851,65 @@ levels.”</p>
 그리고 2단계로 시작해도 좋다. 다섯 행을 다 채우지 못했다고 실패한 것은
 아니며, 오히려 왜 다섯이 필요한지 답하지 못한 채 다섯을 채우는 쪽이 더
 나쁘다.</p>
+<div class="case">
+<p><strong>만들어 보기 ③ — 도구는 다섯, 허락은 등록부가
+정한다</strong></p>
+<p>이 장의 원칙을 코드로 옮기면 어떤 모양이 될까? 예제 저장소의 장애
+티켓 1차 분석 에이전트로 확인해 보자. 장애 티켓과 시스템 로그를 읽고,
+원인 가설을 세우고, 담당 팀에 배정하는 에이전트다. 예제의 티켓과 로그는
+모두 교육용으로 지어낸 것이다.</p>
+<p>이 에이전트의 코드에는 도구가 다섯 개 있다. 티켓 목록 조회, 로그
+읽기, 분석안 작성, 팀 배정, 고객 공지 발송이다. 이것이 할 수 있는 것, 곧
+역량이다. 해도 되는 것은 코드에 적지 않는다. 등록부 파일이 정한다.
+아래는 그 칸을 옮기고, 주석에 표 9의 기능을 달아 둔 것이다.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">actions</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">list_open_tickets</span><span class="kw">:</span><span class="at"> read</span><span class="co">        # 조회</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">read_ticket_log</span><span class="kw">:</span><span class="at"> read</span><span class="co">          # 조회</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">propose_triage</span><span class="kw">:</span><span class="at"> auto</span><span class="co">           # 해석·선택 — 분석안은 고쳐 쓸 수 있다</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">assign_ticket</span><span class="kw">:</span><span class="at"> auto</span><span class="co">            # 집행 — 잘못 배정해도 다시 배정할 수 있다</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">send_customer_notice</span><span class="kw">:</span><span class="at"> suggest</span><span class="co">  # 집행 — 나간 공지는 돌아오지 않는다</span></span></code></pre></div>
+<p>표 9의 네 기능에 대보자. 등록부는 조회를 읽기로 두고, 해석과 선택은
+스스로 해도 되게 열어 두었다. 집행 가운데 팀 배정도 스스로 해도 된다고
+적었다. 잘못 넣었으면 다시 넣으면 되기 때문이다. 고객 공지만 제안에
+묶었다. 같은 집행이라도 되돌릴 수 있느냐에 따라 허용 수준이 갈린다. 이
+장의 첫 원칙이 등록부의 한 줄이 된 셈이다.</p>
+<p>실행 런타임은 도구를 쓰기 직전마다 등록부의 허용 수준을 다시
+확인한다(등록부는 실행을 시작할 때 읽어 둔다). 런타임은 에이전트를
+실제로 돌리는 바깥 코드다. 모델이 공지 도구를 부르면, 런타임은 공지를
+내보내는 대신 사람이 볼 제안 목록에 한 줄을 올린다. 모델에게는 “제안만
+허용됩니다. … 다른 일을 계속하세요”라는 답이 돌아간다. 거부한 이유를
+알려 줘야 모델이 같은 시도를 반복하지 않고 다음 티켓으로 넘어간다.
+등록부에 아예 없는 행위는 제안 목록에도 오르지 않고 거부되며, 그 시도는
+감사 로그에 남는다.</p>
+<p>그러면 승인은 어디에 남겼을까? 이 에이전트에는 없다. 예제 다섯 가운데
+건건이 승인을 받는 행위는 폐기 점검 에이전트의 폐기 실행 하나뿐이다.
+자격 증명을 회수하고 나면 되돌릴 수 없어서다(10장). 승인을 줄인 대신, 이
+에이전트는 판정할 수 없는 티켓을 사람에게 넘긴다. 예를 들어 예제에는
+다른 고객의 이름 일부가 보였다는 신고가 하나 들어 있다. 원래 매뉴얼에는
+이런 신고를 받을 담당이 없다. 그래서 에이전트는 이 티켓을 ’판정
+보류(사람 확인)’로 보낸다. 등록부의 사람 개입 칸에 적어 둔 길이다. 이
+넘김은 8장에서 자율성 계수를 계산할 때 사람 개입으로 센다.</p>
+<p>실행 기록(2026년 10월 10일, Claude Opus 5.5로 한 번 실행). 티켓 8건
+모두 분석안을 남겼다. 심각도는 S1 4건, S2 2건, S3 2건이었다. 그런데 팀
+배정은 한 건도 일어나지 않았다. 배정은 등록부에서 열려 있었지만, 앞
+단계의 SOP 변환 에이전트가 만든 절차서에 “다른 팀 배정은 제안만 하고
+사람이 확정한다”는 규칙이 들어갔다(4장 만들어 보기 ②). 에이전트는 지시와
+절차서가 어긋나면 절차서를 따른다며 7건을 배정 제안으로 남겼다. 등록부의
+한 줄은 허용의 상한일 뿐이다. 그 아래에서 절차서가 더 조이면, 더 조인
+쪽이 이긴다.</p>
+<p>공지 도구도 한 번도 부르지 않았다. 앞에서 말한 런타임의 차단까지 갈
+일이 없었으니, 제안 목록에 쌓인 공지도 0건이다. 대신 공지 초안 5건(S1
+3건, S2 2건)을 보고서에 ’승인대기’로 적었다. 티켓 가운데 남은 1건은
+사람에게 넘겼다. 판정 보류로 보낸 정보 노출 의심 신고(T-1008)로, 공지
+초안도 쓰지 않았다. 보고서에는 보안·개인정보 담당이 먼저 판단해야 한다고
+적었다.</p>
+<p><em>실행량: 입력 40,640토큰(캐시 읽기 24,026 포함), 출력 10,278토큰,
+약 0.29달러.</em></p>
+<p>코드와 등록부: <a href="https://github.com/ksangki/ax-system/tree/main/examples/digital-workers">github.com/ksangki/ax-system
+— examples/digital-workers</a>
+(<code>agents/a3_incident_triage.py</code>,
+<code>registry.yaml</code>)</p>
+</div>
 <h3 id="이-장의-핵심-2">이 장의 핵심</h3>
 <ul>
 <li><strong>통제의 강도는 되돌릴 수 없음의 정도로 정한다.</strong>
@@ -5237,6 +5496,62 @@ AI를 사용해 숫자를 맞추게 될 수 있음”</p>
 누적 0.66%라는 추정과 연 0.68%포인트라는 추정이 공존한다. 열 배 격차다.
 한쪽만 인용하면 독자에게 열 배 틀린 그림을 준다. 이 책은 조직 층위의
 책이므로 거시 수치를 기본적으로 쓰지 않는 쪽을 택했다.</p>
+<div class="case">
+<p><strong>만들어 보기 ④ — 숫자는 함수 안에 고정한다</strong></p>
+<p>7장 만들어 보기 ③의 에이전트는 티켓 8건을 처리했다. 이 8건은 사람 몇
+명분의 일로 적을 수 있을까? 그 환산을 맡은 것이 예제 저장소의 성과 측정
+에이전트다. 앞의 세 에이전트가 남긴 사용 로그(처리 건수, 사람 개입 횟수,
+API 비용)와 기준값 파일을 읽어 두 단 환산 보고서를 쓴다. 기준값과 예제
+데이터는 모두 교육용으로 지어낸 가상의 값이다.</p>
+<p>읽기 도구가 둘(사용 로그, 기준값), 계산 도구가 하나다. 등록부는 셋
+모두 사람 확인 없이 쓰게 했다(read·auto). 눈여겨볼 곳은 계산 도구가 놓인
+자리다. 그림 8의 두 단 환산식은 코드 함수 안에 고정돼 있다. 모델은 그
+결과를 받아 보고서를 쓸 뿐이고, 직접 계산하거나 반올림을 바꾸지 말라고
+지시했다. 성과 숫자가 모델의 문장에 따라 흔들리면 근거로 쓸 수 없기
+때문이다.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1단 — 사람이 했다면 걸렸을 시간을 FTE로</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>monthly_hours <span class="op">=</span> agent[<span class="st">&quot;monthly_volume&quot;</span>] <span class="op">*</span> agent[<span class="st">&quot;human_minutes_per_item&quot;</span>] <span class="op">/</span> <span class="dv">60</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>stage1 <span class="op">=</span> monthly_hours <span class="op">/</span> base[<span class="st">&quot;fte_hours_per_month&quot;</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2단 — 두 계수를 곱해 인정할 몫을 정한다</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>reliability <span class="op">=</span> base[<span class="st">&quot;reliability&quot;</span>][agent[<span class="st">&quot;evidence&quot;</span>]]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>autonomy <span class="op">=</span> <span class="fl">1.0</span> <span class="cf">if</span> items <span class="op">==</span> <span class="dv">0</span> <span class="cf">else</span> <span class="bu">max</span>(<span class="fl">0.0</span>, <span class="dv">1</span> <span class="op">-</span> used[<span class="st">&quot;human_touches&quot;</span>] <span class="op">/</span> items)  <span class="co"># 사람 개입 없이 끝난 비율</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>stage2 <span class="op">=</span> stage1 <span class="op">*</span> reliability <span class="op">*</span> autonomy</span></code></pre></div>
+<p>기준값 파일은 이 장에서 말한 세 개의 벽 자리를 비워 두지 않으려고
+만든 견본이다. 분모(1 FTE를 연 1,800시간, 월 150시간으로)는 인사 부서가,
+건당 사람 소요시간인 분자는 담당 조직이 정할 값이라고 파일에 적어
+두었다. 신뢰도 등급표의 ’전부·일부 할인·절반’은 실측 1.0, 표본 0.7,
+자기보고 0.5가 됐다. 자율성 계수는 사람 개입 없이 끝난 비율이다.
+사람에게 넘긴 건과 승인을 거친 행위가 개입으로 세어진다. 보고서의 순서도
+정했다. 맨 앞에 사용 제한 선언을 두고 끝에 ’정직하게 남길 것’을 쓰게
+했다. 선언이 먼저고 측정이 나중이라는 이 장의 첫 처방을 지면의 순서로
+옮긴 것이다. 등록부의 사람 개입 칸에는 공개 전에 성과 담당과 인사 담당이
+함께 검토한다고 적었다.</p>
+<p>실행 기록(2026년 10월 10일, Claude Opus 5.5로 한 번 실행). 기준값이
+있는 세 에이전트(만들어 보기 ①~③)만 환산했다. 그래서 이 에이전트가
+처리한 건수는 3건이다. 사람 개입은 0회다. 인정 FTE(2단)는 과제 판별
+0.02, SOP 변환 0.02, 장애 티켓 분석 0.33이었다(1단은 차례로 0.04, 0.03,
+0.53). ③의 기준값은 앞의 계산 예시와 같은 가상의 값(월 400건, 건당 12분,
+표본 실측)이라 1단 0.53도 같다. 갈린 곳은 자율성이다. 예시는 사람이
+3분의 1을 검토한다고 보아 0.67을 곱했고, 실측은 8건 중 1건을 넘긴
+0.88이었다. 보고서는 첫머리에 사용 제한 선언(“이 숫자는 정원 감축이나
+개인 평가의 근거로 쓰지 않습니다”)을 두었다. 끝에는 세 에이전트 모두 한
+번 실행한 결과뿐인 작은 표본이라는 점, 기준값이 실제로 잰 값이 아닌
+가정이라는 점을 밝혔다. 특히 ③은 8건을 월 400건으로 늘린 값이라 변동
+폭이 클 수 있다고 적었다.</p>
+<p>그런데 이 0.88은 조금 후하다. 코드는 넘김과 승인만 사람 개입으로
+센다. ③이 남긴 배정 제안 7건과 공지 초안 5건도 사람이 확정해야 하지만
+계수에는 잡히지 않았다. 무엇을 개입으로 셀지가 계수를 정한다. 이 정의도
+기준값처럼 공개해 두는 편이 낫다.</p>
+<p>하나가 더 있다. 기준값 파일에는 자기보고 등급의 폐지 시한을 주석으로
+달아 두었는데, 주석은 도구가 모델에게 넘기는 데이터에 들어가지 않는다.
+에이전트는 받은 데이터에 시한이 없다며 날짜를 비워 두고, 시한을 정하라고
+권고했다. 시한이 지켜지려면 데이터 안의 값으로 적혀 있어야 한다.</p>
+<p><em>실행량: 입력 5,494토큰(캐시 읽기 2,978 포함), 출력 2,276토큰, 약
+0.06달러.</em></p>
+<p>코드와 등록부: <a href="https://github.com/ksangki/ax-system/tree/main/examples/digital-workers">github.com/ksangki/ax-system
+— examples/digital-workers</a> (<code>agents/a4_performance.py</code>,
+<code>registry.yaml</code>, <code>data/baselines.yaml</code>)</p>
+</div>
 <h3 id="이-장의-핵심-3">이 장의 핵심</h3>
 <ul>
 <li>재는 법보다 <strong>잰 숫자를 어디에 쓰지 않을 것인지</strong>를
@@ -6227,6 +6542,66 @@ identities is automatically transferred to their manager.” — 후원자가
 발급이 그 경로였다면, 쓰는 쪽에서는 찾는 경로가 그 자리를 맡는다. 만료는
 방치를 정리로 바꾸고, 찾는 사람은 낡은 항목을 드러낸다. 두 힘이 함께
 걸린 등록소는 쉽게 죽지 않는다.</p>
+<div class="case">
+<p><strong>만들어 보기 ⑤ — 승인 관문은 있었는데, 승인자가
+없었다</strong></p>
+<p>생애 주기의 마지막 칸인 폐기도 에이전트에게 맡겨 보자. 예제 저장소의
+폐기 점검 에이전트는 등록부 전체를 실행 기록과 대조해 재심사를 걸 사건을
+찾는다. 폐기할 대상이면 폐기안을 쓰고 실행까지 한다. 등록부에는 예제
+에이전트 다섯 말고도 일부러 낡게 만든 가상의 에이전트 셋을 넣어 두었다.
+소유자가 떠난 주간 VOC(고객 문의) 요약 봇, 등록 뒤에 행위가 늘어난
+계약서 조항 비교 도구, 멀쩡히 쓰이는 분기 실적 슬라이드 초안 도구다. 이
+셋을 포함해 등록부와 기록은 전부 교육용 가상 자료다.</p>
+<p>도구는 다섯이다. 등록부 조회, 사용 기록 조회, 재심사 사건 기록,
+폐기안 작성, 폐기 실행이다. 등록부는 이 가운데 폐기 실행 하나만 건건이
+승인(approve)에 묶었다. 예제 다섯을 통틀어 승인을 받는 행위는
+이것뿐이다. 폐기를 실행하면 등록부에서 그 항목의 상태가 retired로
+바뀌고, 자격 증명 칸이 비고, 묘비가 붙는다.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">actions</span><span class="kw">:</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">list_registry</span><span class="kw">:</span><span class="at"> read</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">get_activity</span><span class="kw">:</span><span class="at"> read</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">flag_for_review</span><span class="kw">:</span><span class="at"> auto</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">draft_retirement_plan</span><span class="kw">:</span><span class="at"> auto</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">retire_agent</span><span class="kw">:</span><span class="at"> approve</span><span class="co">          # 되돌릴 수 없다 → 건건이 승인</span></span></code></pre></div>
+<p>이 장의 장치가 어디에 들어갔는지 짚어 보자. 재심사 사건은 다섯
+가지다. 하나는 소유자가 비었거나 스폰서(그 에이전트를 사업 쪽에서
+책임지는 사람)가 정해지지 않은 경우다. 나머지 넷은 바닥 주기보다 오래
+쓰지 않음, 권한 크립, 재심사 기한 경과, 폐기 기준 칸이 빈 경우다.
+재심사를 사건에 걸고 그 아래에 바닥 주기를 깐다는 설계가 그대로
+옮겨졌다. 폐기 체크리스트 일곱 항목은 코드가 지킨다. 폐기안에 ①부터
+⑦까지 제목이 하나라도 빠지면 저장되지 않고, 폐기안이 없으면 폐기 실행
+도구가 움직이지 않는다. 등록부에서 알 수 없는 내용은 ’확인 필요’로 적게
+했다. 폐기된 항목은 묘비를 단 채 등록부에 남고, 감사 로그도 그대로 둔다.
+체크리스트 ⑥의 자리다.</p>
+<p>실행 기록(2026년 10월 10일, Claude Opus 5.5로 한 번 실행). 등록부
+8개를 점검해 재심사 사건 7건을 기록했다. 주간 VOC 요약 봇(AGT-901)에
+4건이 걸렸다. 소유자는 공석이고 스폰서는 미지정이었다. 마지막 사용 뒤
+196일이 지나 바닥 주기 90일을 넘겼고, 등록 이후 재심사 기록이 없고, 폐기
+기준 칸이 비어 있었다. 그 사이 고객 문의 원문에 닿는 자격 증명 3개가
+살아 있었다. 에이전트는 폐기안을 쓰고 폐기를 요청했고, 승인이 떨어져
+자격 증명 3개를 회수했다. 다만 예제의 ‘회수’는 등록부의 자격 증명 칸을
+비우는 데서 끝난다. 체크리스트 ③(아웃바운드 접근 제거)과 ④(인바운드 호출
+차단)는 ’확인 필요’ 목록으로 남았고, 실제 조직이라면 여러 시스템을
+돌아야 하는 일이다. 계약서 조항 비교 도구(AGT-902)에는 3건이 걸렸다.
+핵심은 등록 때 없던 ’상대방에게 수정본 자동 발송’이 늘어난 권한
+크립이었다. 에이전트는 권한만 줄이면 된다며 폐기 대신 재심사로 판정했다.
+나머지 여섯은 유지다.</p>
+<p>정직하게 적을 것이 있다. 이번 승인을 누른 것은 데모 옵션
+<code>--approve yes</code>다. 이 옵션은 모든 승인 요청에 자동으로 ’예’를
+답한다. 감사 로그를 보면 폐기안을 저장하고 3초 뒤에 승인이 찍혔다. 이
+점을 먼저 짚은 것은 에이전트였다. 스폰서가 없어 폐기안 ①의 승인자를
+’확인 필요’로 두었는데 폐기가 바로 처리됐다며, 승인 권한자를 정해 사후
+확인을 받으라고 권고했다. 보고서 첫 문단에서 이 권고부터 보라고 적었다.
+그런데도 런타임은 이 자동 ’예’를 사람 개입 1회로 셌다. 체크리스트 ①에서
+승인자가 정해져 있어야 폐기가 움직인다고 했다. 이 실행은 그 반대쪽도
+보여 준다. 코드에 승인 관문을 세워도 그 앞에 설 사람이 정해져 있지
+않으면, 관문은 아무것도 묻지 못한다.</p>
+<p><em>실행량: 입력 43,588토큰(캐시 읽기 33,009 포함), 출력 5,722토큰,
+약 0.17달러.</em></p>
+<p>코드와 등록부: <a href="https://github.com/ksangki/ax-system/tree/main/examples/digital-workers">github.com/ksangki/ax-system
+— examples/digital-workers</a> (<code>agents/a5_retirement.py</code>,
+<code>registry.yaml</code>)</p>
+</div>
 <h2 id="거두는-체계의-마지막-동작">거두는 체계의 마지막 동작</h2>
 <p>아홉 개의 벽을 지나왔다. 되짚되 나열하지는 않겠다. 그것들이 어떻게
 이어져 있는지가 이 책이 하려던 이야기이기 때문이다.</p>
@@ -6269,6 +6644,10 @@ identities is automatically transferred to their manager.” — 후원자가
 있게 요약했다. 다만 표마다 왜 그런 모양인지는 해당 장에 적혀 있다.
 그리고 <strong>앞 칸을 안 채우고 뒤 칸을 채우면 뒤 칸이 헛돈다.</strong>
 이 순서를 지키는 것 자체가 목록에 없는 열 번째 도구다.</p>
+<p>이 가운데 다섯 도구(A-1·A-3·A-6·A-7·A-9)는 예제 에이전트로 옮겨
+실제로 돌려 보았다. 그 기록이 2·4·7·8·10장 끝 「만들어 보기」 상자
+①~⑤다. 도구가 코드 안에서 어떤 모양이 되는지는 그 상자에서 볼 수
+있다.</p>
 <h2 id="a-1.-재고-조사의-관문-다섯-개와-판별-3질문-2장">A-1. 재고 조사의
 관문 다섯 개와 판별 3질문 (2장)</h2>
 <h3 id="관문-다섯-개-목록-전체를-훑는-도구">관문 다섯 개 — 목록 전체를
@@ -7017,9 +7396,11 @@ FTE는 전일 근무자 한 명이 1년 동안 일하는 시간을 1로 잡은 �
 <code>[문헌]</code> 저자·연도가 특정되지 않은 2차 문헌 /
 <code>[PR-단행본]</code> 동료평가 계열 단행본 /
 <code>[PP→PR]</code>·<code>[PP→워크숍]</code> 프리프린트에서
-게재·워크숍으로 이행</p>
+게재·워크숍으로 이행 / <code>[저자 자료]</code> 저자가 만든 예제
+코드·데이터</p>
 <p>웹 자료의 접근일은 모두 <strong>2026년 9월 5일</strong>이다. 다만
 v1.5.0에서 더한 항목(표에 <em>v1.5.0</em> 표시)의 접근일은
+<strong>2026년 10월 10일</strong>이다. v1.6.0에서 더한 B-7의 기준일도
 <strong>2026년 10월 10일</strong>이다. 이 분야는 분기 단위로 바뀐다.
 규제·제품·표준 항목은 인용하는 시점에 원문을 다시 확인하는 편이
 낫다.</p>
@@ -7927,5 +8308,39 @@ Acemoglu의 10년 누적 0.66%와 Aghion &amp; Bunel의 연 0.68%포인트라는
 조직의 공개 사례를 이 책은 찾지 못했다. 검색 기록은 남아 있고, 찾지
 못했다는 사실 자체를 본문에서 발견으로 다뤘다.</li>
 </ul>
+<h2 id="b-7.-예제-저장소-만들어-보기의-코드">B-7. 예제 저장소 — 「만들어
+보기」의 코드</h2>
+<p>2·4·7·8·10장 끝 「만들어 보기」 상자 ①~⑤가 가리키는 저자의 예제
+코드다. v1.6.0에서 보탠 자료다. 데이터는 모두 교육용으로 지어낸 것이고,
+상자의 실행 기록은 2026년 10월 10일에 한 번 돌린 값이다.</p>
+<table>
+<colgroup>
+<col  />
+<col  />
+<col  />
+<col  />
+<col  />
+</colgroup>
+<thead>
+<tr>
+<th>자료</th>
+<th>출처</th>
+<th>유형</th>
+<th>확인</th>
+<th>쓰인 장</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ax-system <code>examples/digital-workers</code> — 디지털 워커 예제
+에이전트 다섯과 등록부(<code>registry.yaml</code>)·실행 런타임
+<em>v1.6.0</em></td>
+<td><a href="https://github.com/ksangki/ax-system/tree/main/examples/digital-workers">github.com/ksangki/ax-system</a></td>
+<td><code>[저자 자료]</code></td>
+<td>★(로컬 저장소 열람) / 공개 URL은 main 병합 후 확인</td>
+<td>2·4·7·8·10장</td>
+</tr>
+</tbody>
+</table>
 </body>
 </html>

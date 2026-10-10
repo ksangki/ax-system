@@ -11,8 +11,9 @@
 ## 읽기
 
 - **웹 버전**: [ksangki.github.io/ax-system](https://ksangki.github.io/ax-system/)
-- **EPUB**: [v1.5.0 다운로드](epub/디지털-워커의-시대,-AI-에이전트를-조직의-성과로-만드는-체계-v1.5.0.epub) (이전 판: [epub/](epub/))
+- **EPUB**: [v1.6.0 다운로드](epub/디지털-워커의-시대,-AI-에이전트를-조직의-성과로-만드는-체계-v1.6.0.epub) (이전 판: [epub/](epub/))
 - **책 소개**: [BOOK.md](BOOK.md)
+- **예제 코드**: [examples/digital-workers](examples/digital-workers/) — 책의 체계를 에이전트 다섯과 등록부 하나로 돌려 보는 예제 (교육용 가상 데이터)
 - **발표 자료**: [1시간 발표용 슬라이드 56장](https://ksangki.github.io/ax-system/presentation/)
 
 ## 차례
@@ -32,6 +33,6 @@
 
 ## 책 정보
 
-- 저자: 김상기 · 웹·EPUB v1.5.0 (2026, 최신 동향 보강판) · 한국어 · EPUB 3 (epubcheck 검증)
+- 저자: 김상기 · 웹·EPUB v1.6.0 (2026, 「만들어 보기」 예제판) · 한국어 · EPUB 3 (epubcheck 검증)
 - 라이선스: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ko)
 - 제작: [book-writer 하네스](https://github.com/tobyilee/book-writer) v1.11.0
