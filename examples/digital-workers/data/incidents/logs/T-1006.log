@@ -1,0 +1,2 @@
+14:59:50 log-collector WARN /data disk usage 85% (threshold 85%)
+14:59:50 log-collector INFO retention job last run: 3 days ago (expected daily)

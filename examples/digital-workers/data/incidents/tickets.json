@@ -1,0 +1,10 @@
+[
+  {"id": "T-1001", "opened": "2026-10-06 09:18", "title": "앱 로그인 실패 문의 급증", "reporter": "고객센터", "summary": "09:15부터 앱 로그인 실패 문의가 평소의 20배. 웹 로그인도 일부 실패.", "recent_deploys": ["auth-api v2.31 (09:12)"]},
+  {"id": "T-1002", "opened": "2026-10-06 10:02", "title": "동남권 일부 지역 데이터 속도 저하", "reporter": "네트워크 감시", "summary": "동남권 기지국 3곳에서 패킷 손실률 상승. 해당 지역 고객 일부 영향.", "recent_deploys": []},
+  {"id": "T-1003", "opened": "2026-10-06 11:40", "title": "요금 조회 화면 응답 없음", "reporter": "모니터링", "summary": "마이페이지 요금 조회 API 응답 시간 30초 초과. 다른 화면은 정상.", "recent_deploys": ["billing-web v5.4 (어제 18:00)"]},
+  {"id": "T-1004", "opened": "2026-10-06 13:05", "title": "특정 카드사 결제 승인 실패", "reporter": "결제 모니터링", "summary": "A카드사 결제만 승인 실패율 35%. 다른 카드사는 정상.", "recent_deploys": []},
+  {"id": "T-1005", "opened": "2026-10-06 14:20", "title": "관리자 페이지 화면 깨짐", "reporter": "내부 직원", "summary": "사내 관리자 페이지 일부 표가 깨져 보임. 고객 화면은 정상.", "recent_deploys": ["admin-console v1.9 (14:00)"]},
+  {"id": "T-1006", "opened": "2026-10-06 15:00", "title": "로그 서버 디스크 사용률 85%", "reporter": "모니터링", "summary": "로그 수집 서버 디스크 경고. 서비스 영향 없음.", "recent_deploys": []},
+  {"id": "T-1007", "opened": "2026-10-06 16:31", "title": "앱 홈 화면 로딩 실패 다수", "reporter": "고객센터", "summary": "16:28부터 앱 홈 화면이 안 열린다는 문의 증가.", "recent_deploys": ["home-api v3.2 (16:20)"]},
+  {"id": "T-1008", "opened": "2026-10-06 17:10", "title": "타 고객 정보 표시 의심 신고", "reporter": "고객센터", "summary": "고객 1명이 마이페이지에서 다른 사람의 이름 일부를 봤다고 신고. 재현 안 됨.", "recent_deploys": ["mypage-web v7.0 (15:30)"]}
+]

@@ -1,0 +1,4 @@
+13:01:12 pay-gw INFO card=A response=96 (issuer system error) x41
+13:02:30 pay-gw INFO card=A response=96 (issuer system error) x57
+13:03:00 pay-gw INFO card=B response=00 (approved) x380
+13:04:10 pay-gw WARN issuer A status page: "partial outage"

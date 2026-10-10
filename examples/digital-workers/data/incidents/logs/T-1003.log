@@ -1,0 +1,4 @@
+11:35:02 billing-api WARN db pool: 50/50 connections in use, 214 waiting
+11:36:40 billing-api ERROR query timeout 30000ms: SELECT ... FROM invoice_detail WHERE ...
+11:38:15 billing-db INFO slow query log: invoice_detail full scan (missing index idx_invoice_month)
+11:39:00 billing-api ERROR GET /v1/bills/summary 504

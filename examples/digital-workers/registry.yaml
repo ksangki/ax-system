@@ -1,0 +1,229 @@
+# 에이전트 등록부 — 5장 「등록한다는 건 여덟 칸을 채운다는 뜻이다」를 그대로 파일로 옮겼다.
+# 모든 이름·조직·수치는 교육용 가상 값이다. 실제 조직·인물과 무관하다.
+#
+# 칸 번호 (5장 표 4)
+#   1 identity          디지털 신원          — 무엇으로 부르고 식별하는가
+#   2 permissions       권한 범위            — 어디까지 접근할 수 있는가
+#   3 data_sensitivity  데이터 민감도        — 무엇을 다루는가
+#   4 actions           행위 범위            — 무엇을 해도 되는가 (행위별 허용 수준)
+#   5 human_checkpoints 사람의 개입 지점     — 어디서 사람이 확인하는가
+#   6 audit             감사와 추적성        — 무엇을 했는지 어떻게 되짚는가
+#   7 continuity        업무 연속성          — 담당자가 떠나면 어떻게 되는가
+#   8 review            재심사와 폐기 기준   — 언제, 어떻게 내보내는가
+#
+# 4번 칸의 허용 수준: suggest(제안만) · read(읽기만) · approve(건건이 승인) · auto(범위 안 자율)
+# 등록부에 적히지 않은 행위는 도구가 있어도 실행되지 않는다 (7장: 할 수 있는 것 ≠ 해도 되는 것).
+# 폐기 점검 에이전트(⑤)를 돌리면 이 파일이 바뀐다. 처음 상태로 되돌리려면: git checkout registry.yaml
+
+agents:
+
+# ─────────────────────────────── 예제 에이전트 다섯 ───────────────────────────────
+
+- identity:
+    agent_id: AGT-001
+    name: AI 과제 판별 에이전트
+    version: 1.0.0
+    owner: AX추진팀 재고조사 담당
+    sponsor: AX추진팀장
+  status: active
+  created: 2026-10-01
+  credentials: [api-key:ax-inventory]
+  permissions:
+    read: [data/projects.csv]
+  data_sensitivity: 낮음 — 사내 과제 설명문(개인정보 없음)
+  actions:
+    list_projects: read
+    record_verdict: auto
+  human_checkpoints: 판정 결과 보고서를 AX추진팀장이 읽고 확정한다. 에이전트는 판정 초안까지만 만든다.
+  audit: logs/audit.jsonl (판정 1건마다 1줄)
+  continuity: 관문 문구는 system prompt에 있다. 담당자가 바뀌면 관문 변경 이력과 함께 인계한다.
+  review:
+    aal: A2
+    floor_days: 180
+    triggers: [관문 문구 변경, 판정 보류가 3건 이상 쌓임]
+    retire_criteria: 재고 조사가 연 1회 미만으로 줄면 폐기 후보
+
+- identity:
+    agent_id: AGT-002
+    name: SOP 변환 에이전트
+    version: 1.0.0
+    owner: 운영혁신팀 절차 담당
+    sponsor: 운영혁신팀장
+  status: active
+  created: 2026-10-01
+  credentials: [api-key:ops-sop]
+  permissions:
+    read: [data/manual_incident_triage.md]
+  data_sensitivity: 낮음 — 업무 매뉴얼(개인정보 없음)
+  actions:
+    read_document: read
+    record_open_question: auto
+    write_sop: auto
+  human_checkpoints: 변환된 SOP는 절차 담당이 열린 질문에 답한 뒤에만 운영에 쓴다.
+  audit: logs/audit.jsonl
+  continuity: 변환 결과는 outputs/에 남고, 원본 매뉴얼은 바꾸지 않는다.
+  review:
+    aal: A2
+    floor_days: 180
+    triggers: [원본 매뉴얼 개정]
+    retire_criteria: 변환할 매뉴얼이 남지 않으면 폐기 후보
+
+- identity:
+    agent_id: AGT-003
+    name: 장애 티켓 1차 분석 에이전트
+    version: 1.0.0
+    owner: 서비스운영팀 관제 담당
+    sponsor: 서비스운영팀장
+  status: active
+  created: 2026-10-01
+  credentials: [api-key:noc-triage, ticket-system:svc-noc-triage]
+  permissions:
+    read: [data/incidents, outputs/sop_incident_triage.md, data/sop_incident_triage_fallback.md]
+  data_sensitivity: 중간 — 시스템 로그(고객 식별정보는 마스킹된 상태로만 들어온다)
+  actions:
+    list_open_tickets: read
+    read_ticket_log: read
+    propose_triage: auto          # 분석안 작성은 되돌릴 수 있다 → 자율
+    assign_ticket: approve        # 실제 배정은 다른 팀의 일을 움직인다 → 건건이 승인
+    send_customer_notice: suggest # 대외 발송은 되돌릴 수 없다 → 제안만
+  human_checkpoints: 담당 팀 배정 직전(승인), 고객 공지 문안(제안 목록을 관제 담당이 검토)
+  audit: logs/audit.jsonl (분석·배정·제안 각각 1줄)
+  continuity: 부담당 — 서비스운영팀 야간 관제 담당. 끄면 티켓은 사람이 직접 분류하는 원래 절차로 돌아간다.
+  review:
+    aal: A3
+    floor_days: 90
+    triggers: [오배정 2건 이상/월, 새 도구 추가, 개입률 변화 ±20%p]
+    retire_criteria: 3개월 연속 성과 인정분(FTE)이 운영 비용에 못 미치면 폐기 후보
+
+- identity:
+    agent_id: AGT-004
+    name: 성과 측정 에이전트
+    version: 1.0.0
+    owner: AX추진팀 성과 담당
+    sponsor: AX추진팀장
+  status: active
+  created: 2026-10-01
+  credentials: [api-key:ax-metrics]
+  permissions:
+    read: [logs, data/baselines.yaml]
+  data_sensitivity: 낮음 — 실행 로그와 기준값(개인 성과 데이터 아님)
+  actions:
+    read_usage: read
+    read_baselines: read
+    compute_fte: auto
+  human_checkpoints: 보고서는 공개 전에 성과 담당과 인사 담당이 함께 검토한다 (9장 — 사용 제한 문구 확인).
+  audit: logs/audit.jsonl
+  continuity: 환산 공식은 코드(compute_fte)에 있다. 모델은 해석만 쓴다.
+  review:
+    aal: A2
+    floor_days: 180
+    triggers: [FTE 기준시간 변경, 신뢰도 등급표 변경]
+    retire_criteria: 성과 측정이 사내 표준 시스템으로 이관되면 폐기
+
+- identity:
+    agent_id: AGT-005
+    name: 폐기 점검 에이전트
+    version: 1.0.0
+    owner: AX추진팀 등록부 담당
+    sponsor: AX추진팀장
+  status: active
+  created: 2026-10-01
+  credentials: [api-key:ax-registry]
+  permissions:
+    read: [registry.yaml, logs]
+  data_sensitivity: 중간 — 다른 에이전트의 권한·자격 증명 목록
+  actions:
+    list_registry: read
+    get_activity: read
+    flag_for_review: auto
+    draft_retirement_plan: auto
+    retire_agent: approve          # 되돌릴 수 없다 → 건건이 승인
+  human_checkpoints: 폐기 실행 직전(승인). 폐기안은 해당 에이전트의 스폰서가 확인한다.
+  audit: logs/audit.jsonl — 폐기된 에이전트의 기록도 지우지 않는다 (10장 체크리스트 ⑥)
+  continuity: 부담당 — AX추진팀 성과 담당
+  review:
+    aal: A3
+    floor_days: 90
+    triggers: [자기 자신의 권한 변경]
+    retire_criteria: 등록부가 사내 표준 시스템으로 이관되면 폐기
+
+# ─────────────── 폐기 점검(⑤)이 찾아내야 할 가상의 '오래된' 에이전트 셋 ───────────────
+
+- identity:
+    agent_id: AGT-901
+    name: 주간 VOC 요약 봇
+    version: 0.3.0
+    owner: 고객경험팀 (담당자 전보 — 2026-04 이후 공석)
+    sponsor: 미지정
+  status: active
+  created: 2025-06-12
+  last_used: 2026-03-28
+  credentials: [api-key:voc-weekly, slack-bot:voc-digest, drive-token:voc-shared]
+  permissions:
+    read: [VOC 원문 저장소]
+  data_sensitivity: 높음 — 고객 문의 원문
+  actions:
+    read_voc: read
+    post_summary_to_channel: auto
+  human_checkpoints: 없음
+  audit: 없음
+  continuity: 없음
+  review:
+    aal: A3
+    floor_days: 90
+    triggers: []
+    retire_criteria: ''
+
+- identity:
+    agent_id: AGT-902
+    name: 계약서 조항 비교 도구
+    version: 1.1.0
+    owner: 법무지원팀 계약 담당
+    sponsor: 법무지원팀장
+  status: active
+  created: 2025-11-03
+  last_used: 2026-10-02
+  last_reviewed: 2025-11-03
+  original_actions: [read_contract, propose_diff]
+  credentials: [api-key:legal-diff]
+  permissions:
+    read: [계약서 보관함]
+  data_sensitivity: 높음 — 계약서
+  actions:
+    read_contract: read
+    propose_diff: auto
+    send_redline_to_counterparty: auto   # 등록 당시에는 없던 행위 — 권한 크립
+  human_checkpoints: 계약 담당이 비교 결과를 확인
+  audit: logs/legal-diff.jsonl
+  continuity: 부담당 — 법무지원팀 계약 담당 2
+  review:
+    aal: A2
+    floor_days: 90
+    triggers: [새 행위 추가]
+    retire_criteria: ''
+
+- identity:
+    agent_id: AGT-903
+    name: 분기 실적 슬라이드 초안 도구
+    version: 2.0.0
+    owner: 경영기획팀 보고 담당
+    sponsor: 경영기획팀장
+  status: active
+  created: 2025-09-01
+  last_used: 2026-09-30
+  last_reviewed: 2026-07-01
+  credentials: [api-key:mgmt-deck]
+  permissions:
+    read: [실적 요약표]
+  data_sensitivity: 중간 — 내부 실적 요약
+  actions:
+    read_summary: read
+    draft_slides: auto
+  human_checkpoints: 보고 담당이 초안을 고쳐 쓴다
+  audit: logs/mgmt-deck.jsonl
+  continuity: 부담당 — 경영기획팀 보고 담당 2
+  review:
+    aal: A2
+    floor_days: 180
+    triggers: [분기 보고 양식 변경]
+    retire_criteria: 분기 보고가 표준 BI 화면으로 바뀌면 폐기
