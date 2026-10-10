@@ -1,0 +1,32 @@
+# 성과 환산 기준값 — 8장 「두 단 환산과 세 개의 벽」
+# 모든 값은 교육용 가상 값이다. 실제 조직에서는 첫째 줄(분모)을 인사 부서가, 건당 시간(분자)을
+# 담당 조직이 정하고 공개한다. 이 파일은 그 자리를 비워 두지 않기 위한 견본이다.
+
+fte_hours_per_year: 1800      # 1 FTE의 연간 근무시간 — 인사 부서가 정할 값 (벽 1: 분모)
+fte_hours_per_month: 150
+
+# 신뢰도 계수 — 숫자의 출처에 따라 인정 비율을 달리한다
+reliability:
+  실측: 1.0       # 시스템 로그·처리 기록
+  표본: 0.7       # 시간일지·직접 관찰 등 표본 실측
+  자기보고: 0.5   # 담당자 추정 — 폐지 시한: 2027-06-30
+
+# 기준선 — 이 보고서가 무엇과 비교하는지 (8장: 증강 기준선 vs 시너지 기준선)
+baseline: 증강 기준선 (같은 일을 사람이 혼자 할 때와 비교)
+
+agents:
+  AGT-001:
+    task: AI 과제 1건 관문 판정
+    human_minutes_per_item: 6      # 벽 2: 분자
+    evidence: 자기보고
+    monthly_volume: 60
+  AGT-002:
+    task: 매뉴얼 빈틈 1건 발견·질문화
+    human_minutes_per_item: 15
+    evidence: 자기보고
+    monthly_volume: 20
+  AGT-003:
+    task: 장애 티켓 1건 1차 분석
+    human_minutes_per_item: 12
+    evidence: 표본
+    monthly_volume: 400

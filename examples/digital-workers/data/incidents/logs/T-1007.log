@@ -1,0 +1,5 @@
+16:20:11 deploy home-api v3.2 completed
+16:27:58 home-api ERROR upstream lookup failed: dns resolve timeout 'content-cdn.internal'
+16:28:02 resolver-02 ERROR SERVFAIL for zone internal (forwarder unreachable)
+16:28:30 home-api ERROR GET /v1/home 502 (x3,100/min)
+16:29:10 resolver-01 ERROR SERVFAIL for zone internal (forwarder unreachable)

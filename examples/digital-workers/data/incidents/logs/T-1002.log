@@ -1,0 +1,4 @@
+09:58:10 ran-mon WARN cell SE-2231 packet loss 7.8% (baseline 0.3%)
+09:58:40 ran-mon WARN cell SE-2232 packet loss 6.9%
+09:59:05 ran-mon WARN cell SE-2240 packet loss 8.4%
+10:00:12 transport WARN link SE-AGG-07 CRC errors rising

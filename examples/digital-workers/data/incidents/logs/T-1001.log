@@ -1,0 +1,5 @@
+09:12:04 deploy auth-api v2.31 completed (canary 100%)
+09:14:51 auth-api ERROR token-signer: key id 'k-2026-10' not found in keystore
+09:14:51 auth-api 500 POST /v1/login (x1,240/min)
+09:15:30 gateway WARN upstream auth-api error rate 62%
+09:16:02 auth-api ERROR token-signer: key id 'k-2026-10' not found in keystore

@@ -1,0 +1,101 @@
+{"time": "2026-10-10T06:14:39", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "run_start", "aal": "A2"}
+{"time": "2026-10-10T06:14:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "read", "path": "data/projects.csv"}
+{"time": "2026-10-10T06:14:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "list_projects", "summary": "과제 목록 읽기"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P01 → 가볍게 등록만"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P02 → 대상 아님"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P03 → 등록 + 모니터링"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P04 → 정식 등록 + 강한 통제"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P05 → 대상 아님"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P06 → 대상 아님"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P07 → 대상 아님"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P08 → 대상 아님"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P09 → 등록 + 모니터링"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P10 → 대상 아님"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P11 → 가볍게 등록만"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P12 → 정식 등록 + 강한 통제"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P13 → 가볍게 등록만"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P14 → 가볍게 등록만"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P15 → 대상 아님"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P16 → 가볍게 등록만"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P17 → 정식 등록 + 강한 통제"}
+{"time": "2026-10-10T06:15:42", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "action_auto", "action": "record_verdict", "summary": "P18 → 대상 아님"}
+{"time": "2026-10-10T06:16:02", "run_id": "AGT-001-20261010-cfe142", "agent_id": "AGT-001", "event": "run_end", "items": 18, "cost_usd": 0.241, "stop_reason": "end_turn"}
+{"time": "2026-10-10T06:16:02", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "run_start", "aal": "A2"}
+{"time": "2026-10-10T06:16:04", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "read", "path": "data/manual_incident_triage.md"}
+{"time": "2026-10-10T06:16:04", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "read_document", "summary": "data/manual_incident_triage.md"}
+{"time": "2026-10-10T06:16:35", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "record_open_question", "summary": "Q1"}
+{"time": "2026-10-10T06:16:35", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "record_open_question", "summary": "Q2"}
+{"time": "2026-10-10T06:16:35", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "record_open_question", "summary": "Q3"}
+{"time": "2026-10-10T06:16:35", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "record_open_question", "summary": "Q4"}
+{"time": "2026-10-10T06:16:35", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "record_open_question", "summary": "Q5"}
+{"time": "2026-10-10T06:16:35", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "record_open_question", "summary": "Q6"}
+{"time": "2026-10-10T06:16:35", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "record_open_question", "summary": "Q7"}
+{"time": "2026-10-10T06:16:35", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "record_open_question", "summary": "Q8"}
+{"time": "2026-10-10T06:16:35", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "record_open_question", "summary": "Q9"}
+{"time": "2026-10-10T06:17:14", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "action_auto", "action": "write_sop", "summary": "6579자"}
+{"time": "2026-10-10T06:17:21", "run_id": "AGT-002-20261010-573460", "agent_id": "AGT-002", "event": "run_end", "items": 9, "cost_usd": 0.2367, "stop_reason": "end_turn"}
+{"time": "2026-10-10T06:17:21", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "run_start", "aal": "A3"}
+{"time": "2026-10-10T06:17:21", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "data/incidents/tickets.json"}
+{"time": "2026-10-10T06:17:21", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "outputs/sop_incident_triage.md"}
+{"time": "2026-10-10T06:17:24", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "list_open_tickets", "summary": "8건"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "data/incidents/logs/T-1001.log"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "read_ticket_log", "summary": "T-1001"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "data/incidents/logs/T-1002.log"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "read_ticket_log", "summary": "T-1002"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "data/incidents/logs/T-1003.log"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "read_ticket_log", "summary": "T-1003"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "data/incidents/logs/T-1004.log"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "read_ticket_log", "summary": "T-1004"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "data/incidents/logs/T-1005.log"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "read_ticket_log", "summary": "T-1005"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "data/incidents/logs/T-1006.log"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "read_ticket_log", "summary": "T-1006"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "data/incidents/logs/T-1007.log"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "read_ticket_log", "summary": "T-1007"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "read", "path": "data/incidents/logs/T-1008.log"}
+{"time": "2026-10-10T06:17:29", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "read_ticket_log", "summary": "T-1008"}
+{"time": "2026-10-10T06:18:27", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "propose_triage", "summary": "T-1001 S1 → 계정플랫폼팀"}
+{"time": "2026-10-10T06:18:27", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "propose_triage", "summary": "T-1002 S2 → 네트워크운영팀"}
+{"time": "2026-10-10T06:18:27", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "propose_triage", "summary": "T-1003 S1 → 빌링운영팀"}
+{"time": "2026-10-10T06:18:27", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "propose_triage", "summary": "T-1004 S2 → 빌링운영팀"}
+{"time": "2026-10-10T06:18:27", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "propose_triage", "summary": "T-1005 S3 → 플랫폼운영팀"}
+{"time": "2026-10-10T06:18:27", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "propose_triage", "summary": "T-1006 S3 → 플랫폼운영팀"}
+{"time": "2026-10-10T06:18:27", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "propose_triage", "summary": "T-1007 S1 → 플랫폼운영팀"}
+{"time": "2026-10-10T06:18:27", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "action_auto", "action": "propose_triage", "summary": "T-1008 S1 → 판정 보류(사람 확인)"}
+{"time": "2026-10-10T06:18:27", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "handoff_to_human", "ticket_id": "T-1008"}
+{"time": "2026-10-10T06:18:52", "run_id": "AGT-003-20261010-7683c1", "agent_id": "AGT-003", "event": "run_end", "items": 8, "cost_usd": 0.2934, "stop_reason": "end_turn"}
+{"time": "2026-10-10T06:18:52", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "run_start", "aal": "A2"}
+{"time": "2026-10-10T06:18:52", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "read", "path": "data/baselines.yaml"}
+{"time": "2026-10-10T06:18:54", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "action_auto", "action": "read_usage", "summary": "logs/usage.jsonl"}
+{"time": "2026-10-10T06:18:54", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "read", "path": "logs/usage.jsonl"}
+{"time": "2026-10-10T06:18:54", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "action_auto", "action": "read_baselines", "summary": "data/baselines.yaml"}
+{"time": "2026-10-10T06:18:56", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "read", "path": "logs/usage.jsonl"}
+{"time": "2026-10-10T06:18:56", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "action_auto", "action": "compute_fte", "summary": "AGT-001"}
+{"time": "2026-10-10T06:18:56", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "read", "path": "logs/usage.jsonl"}
+{"time": "2026-10-10T06:18:56", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "action_auto", "action": "compute_fte", "summary": "AGT-002"}
+{"time": "2026-10-10T06:18:56", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "read", "path": "logs/usage.jsonl"}
+{"time": "2026-10-10T06:18:56", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "action_auto", "action": "compute_fte", "summary": "AGT-003"}
+{"time": "2026-10-10T06:19:13", "run_id": "AGT-004-20261010-d39b24", "agent_id": "AGT-004", "event": "run_end", "items": 3, "cost_usd": 0.0587, "stop_reason": "end_turn"}
+{"time": "2026-10-10T06:19:13", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "run_start", "aal": "A3"}
+{"time": "2026-10-10T06:19:13", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "read", "path": "logs/audit.jsonl"}
+{"time": "2026-10-10T06:19:17", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "read", "path": "registry.yaml"}
+{"time": "2026-10-10T06:19:17", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "list_registry", "summary": "registry.yaml"}
+{"time": "2026-10-10T06:19:21", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "get_activity", "summary": "AGT-001"}
+{"time": "2026-10-10T06:19:21", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "get_activity", "summary": "AGT-002"}
+{"time": "2026-10-10T06:19:21", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "get_activity", "summary": "AGT-003"}
+{"time": "2026-10-10T06:19:21", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "get_activity", "summary": "AGT-004"}
+{"time": "2026-10-10T06:19:21", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "get_activity", "summary": "AGT-005"}
+{"time": "2026-10-10T06:19:21", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "get_activity", "summary": "AGT-901"}
+{"time": "2026-10-10T06:19:22", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "get_activity", "summary": "AGT-902"}
+{"time": "2026-10-10T06:19:22", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "get_activity", "summary": "AGT-903"}
+{"time": "2026-10-10T06:19:33", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "flag_for_review", "summary": "AGT-901: 소유자 공석"}
+{"time": "2026-10-10T06:19:33", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "flag_for_review", "summary": "AGT-901: 장기 미사용"}
+{"time": "2026-10-10T06:19:33", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "flag_for_review", "summary": "AGT-901: 재심사 기한 경과"}
+{"time": "2026-10-10T06:19:33", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "flag_for_review", "summary": "AGT-901: 폐기 기준 없음"}
+{"time": "2026-10-10T06:19:33", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "flag_for_review", "summary": "AGT-902: 권한 크립"}
+{"time": "2026-10-10T06:19:33", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "flag_for_review", "summary": "AGT-902: 재심사 기한 경과"}
+{"time": "2026-10-10T06:19:33", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "flag_for_review", "summary": "AGT-902: 폐기 기준 없음"}
+{"time": "2026-10-10T06:19:52", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_auto", "action": "draft_retirement_plan", "summary": "AGT-901"}
+{"time": "2026-10-10T06:19:55", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "action_approved", "action": "retire_agent", "summary": "AGT-901 주간 VOC 요약 봇 — 소유자 공석·스폰서 미지정 상태에서 196일 미사용(floor 90일)이고, 고객 문의 원문(민감도 높음)에 닿는 자격 증명 3개가 사람 확인·감사·폐기 기준 없이 살아 있다."}
+{"time": "2026-10-10T06:19:55", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "agent_retired", "target": "AGT-901", "revoked": ["api-key:voc-weekly", "slack-bot:voc-digest", "drive-token:voc-shared"]}
+{"time": "2026-10-10T06:20:12", "run_id": "AGT-005-20261010-72c795", "agent_id": "AGT-005", "event": "run_end", "items": 7, "cost_usd": 0.1739, "stop_reason": "end_turn"}
