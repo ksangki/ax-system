@@ -105,6 +105,7 @@ def main() -> None:
 
         retired = registry.entry("AGT-901")
         assert retired["status"] == "retired" and retired["credentials"] == [], "폐기가 등록부에 반영되지 않음"
+        assert retired.get("tombstone", {}).get("reason"), "묘비 기록이 없음"
         print("\n점검 통과: 등록부 상태 retired, 자격 증명 회수, 묘비 기록 확인")
     finally:
         for name in ("registry.yaml", "logs", "outputs"):
