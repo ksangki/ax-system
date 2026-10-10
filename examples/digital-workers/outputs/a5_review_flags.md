@@ -1,0 +1,7 @@
+- **AGT-901** · 소유자 공석 — 등록부 owner가 '고객경험팀 (담당자 전보 — 2026-04 이후 공석)'이고 sponsor는 '미지정'이다.
+- **AGT-901** · 장기 미사용 — 등록부 last_used 2026-03-28 이후 196일이 지나 floor_days 90을 넘었고, 감사 로그상 실행 기록은 0건이다.
+- **AGT-901** · 재심사 기한 경과 — 마지막 재심사 후 485일이 지나 floor_days 90을 넘었다(last_reviewed 칸 없음, 2025-06-12 등록 이후 재심사 기록 없음).
+- **AGT-901** · 폐기 기준 없음 — 8번 칸 retire_criteria가 빈 문자열이다.
+- **AGT-902** · 권한 크립 — original_actions는 read_contract·propose_diff 두 개였으나 현재 send_redline_to_counterparty(auto, 상대방에게 수정본 발송)가 추가되어 있다.
+- **AGT-902** · 재심사 기한 경과 — last_reviewed 2025-11-03 이후 341일이 지나 floor_days 90을 넘었다.
+- **AGT-902** · 폐기 기준 없음 — 8번 칸 retire_criteria가 빈 문자열이다.

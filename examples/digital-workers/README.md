@@ -55,6 +55,10 @@ python run.py all --approve yes     # 승인을 전부 '예'로 (데모용)
 
 처음 상태로 되돌리기: `rm -f logs/*.jsonl outputs/* && git checkout registry.yaml`
 
+저장소의 `logs/`·`outputs/`에는 [실행 기록](#실행-기록)의 2026-10-10 실행 결과가 그대로 들어 있다
+(책의 「만들어 보기」 상자 숫자의 원본). 직접 돌리면 이 파일들이 덮어쓰이고 이어 쌓인다.
+기록본으로 되돌리기: `git checkout -- logs outputs registry.yaml`
+
 ## 비용
 
 가격은 Claude Opus 5.5 기준 100만 토큰당 입력 $4, 출력 $20 (캐시 읽기 $0.20)이다.
