@@ -15,6 +15,7 @@
 - **책 소개**: [BOOK.md](BOOK.md)
 - **예제 코드**: [examples/digital-workers](examples/digital-workers/) — 책의 체계를 에이전트 다섯과 등록부 하나로 돌려 보는 예제 (교육용 가상 데이터)
 - **발표 자료**: [1시간 발표용 슬라이드 56장](https://ksangki.github.io/ax-system/presentation/)
+- **오프닝 영상**: [60초 모션그래픽](https://ksangki.github.io/ax-system/media/opening.mp4) — 웹 버전 첫 화면에도 실려 있다
 
 ## 차례
 
