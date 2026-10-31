@@ -329,14 +329,20 @@ div.case code{font-size:.9em}
 </figure>
 <h2 id="저자">저자</h2>
 <p>김상기</p>
-<p><strong>판본:</strong> v1.6.0 · 2026-10-10</p>
+<p><strong>판본:</strong> v1.6.1 · 2026-10-31</p>
 <hr />
 <h2 id="판권">판권</h2>
 <p><strong>디지털 워커의 시대, AI 에이전트를 조직의 성과로 만드는
 체계</strong></p>
-<p><strong>판본:</strong> v1.6.0 <strong>발행일:</strong> 2026-10-10
+<p><strong>판본:</strong> v1.6.1 <strong>발행일:</strong> 2026-10-31
 <strong>저자:</strong> 김상기 <strong>식별자:</strong>
 urn:uuid:5cef80ff-b2ad-43fd-b003-63c0f827313f</p>
+<p><strong>정오(v1.6.1, 2026-10-31):</strong> 8장에서 인용한 데미러
+등(NBER w35275)의 수치를 2026년 9월 개정판 초록 기준으로 바로잡았다.
+커밋 누적 효과 +40·140·180% → +30·180·240%, 프로젝트 +50% → +80%,
+대체탄력성 0.25 → 0.23으로 고쳤고, 초록에 없는 “약 6분의 1” 표현을 뺐다.
+실제 릴리스 +30%와 “과업 수준 이득을 조직 성과로 곱하지 마라”는 결론은
+그대로다. 다른 내용은 v1.6.0과 같다.</p>
 <h3 id="라이선스">라이선스</h3>
 <p>이 책은 <strong>CC BY-NC-SA 4.0</strong> 라이선스로 배포된다 — <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative
 Commons 저작자표시-비영리-동일조건변경허락 4.0 국제</a>.</p>
@@ -5165,19 +5171,20 @@ Systems』에 게재됐다 — 2025년.)</p>
 것만 바뀌었다.</strong> 이메일은 혼자 쓴다. 문서도 대체로 혼자 쓴다.
 회의는 여럿이 한다. 조율이 필요한 이득은 실현되지 않았다.</p>
 <p>같은 방향을 다른 각도에서 보여주는 연구도 있다. 데미러 등의
-연구(전미경제연구소 워킹페이퍼)는 개발 도구의 효과가 최종 산출물까지
-내려오면서 얼마나 줄어드는지를 추적했다. 커밋은 코드 변경을 저장소에
-올리는 단위다. 커밋 누적 효과는 자동완성 도구에서 +40%, 대화형
-에이전트에서 +140%, 자율 에이전트에서 +180%까지 올라간다. 그런데
-프로젝트 수로는 +50%, 실제 릴리스로는 +30%가 된다. <strong>과업 수준
-이득의 약 6분의 1만 최종 산출물로 통과한 셈이다.</strong></p>
-<p>같은 연구가 추정한 대체탄력성은 0.25다. 대체탄력성은 한쪽을 다른
-쪽으로 얼마나 쉽게 바꿔 쓸 수 있는지를 나타내는 값이다. 값이 낮다는 것은
-AI와 인간이 서로의 빈 곳을 메워 주는 강한 보완재라는 뜻이다. 한쪽이 늘면
-병목이 다른 쪽으로 옮겨간다.</p>
+연구(전미경제연구소 워킹페이퍼, 2026년 9월 개정판)는 개발 도구의 효과가
+최종 산출물까지 내려오면서 얼마나 줄어드는지를 추적했다. 커밋은 코드
+변경을 저장소에 올리는 단위다. 커밋 누적 효과는 자동완성 도구에서 +30%,
+대화형 에이전트에서 +180%, 자율 에이전트에서 +240%까지 올라간다. 그런데
+자율 에이전트의 +240%는 프로젝트 수로는 +80%, 실제 릴리스로는 +30%로
+줄어든다. <strong>커밋에서 보인 이득은 최종 산출물인 릴리스까지 내려오면
+일부만 남는다.</strong></p>
+<p>같은 연구가 추정한 AI와 사람 노력 사이의 대체탄력성은 0.23이다.
+대체탄력성은 한쪽을 다른 쪽으로 얼마나 쉽게 바꿔 쓸 수 있는지를 나타내는
+값이다. 값이 낮다는 것은 AI와 인간이 서로의 빈 곳을 메워 주는 강한
+보완재라는 뜻이다. 한쪽이 늘면 병목이 다른 쪽으로 옮겨간다.</p>
 <p>그래서 실무 규칙이 하나 나온다. <strong>과업 수준 이득을 조직 성과로
 곱하지 마라.</strong> “코드 작성이 두 배 빨라졌으니 개발 조직 산출도 두
-배”라는 계산은 6분의 1 지점에서 무너진다. 병목은 조율이 필요한 인간
+배”라는 계산은 릴리스 단계에서 무너진다. 병목은 조율이 필요한 인간
 공정에 있고, 그 공정은 도구를 바꿔도 잘 안 바뀐다.</p>
 <p>이 관찰은 환산표의 설계에도 직접 영향을 준다. 에이전트 단위로 잰
 절감을 그대로 합산하지 마라. 같은 흐름 안의 에이전트 셋이 각각 30%씩
@@ -7782,19 +7789,22 @@ Developer Productivity. <a href="https://arxiv.org/abs/2507.09089">arXiv:2507.09
 <code>[PP]</code> △ — 표본 16명. 같은 팀의 2026-02 후속과 반드시 병기
 32. Dillon, E. et al. (2025). 대규모 현장 실험(n=7,137) — 이메일 시간
 −31%, 회의 시간 변화 없음. <em>NBER 워킹페이퍼</em> 33795.
-<code>[WP]</code> △ 33. Demirer, M. et al. (2026). 개발 도구 효과의
-산출물 감쇠와 대체탄력성 0.25. <em>NBER 워킹페이퍼</em> 35275.
-<code>[WP]</code> △ 34. Vaccaro, M., Almaatouq, A., &amp; Malone, T.
-(2024). When combinations of humans and AI are useful: A systematic
-review and meta-analysis. <em>Nature Human Behaviour</em>, 8(12).
-<code>[PR]</code> △ — 2020-01~2023-06 게재 논문 대상. 인용 시 기준선
-병기·이질성 명시 필수. 본문 8장이 지면에서 뺀 세부값: 이질성 I² 시너지
-97.7%·증강 93.8% / 생성 과업 +0.19는 p=0.180, 95% CI [−0.09, 0.48],
-k=34로 0과 유의차 없음 / 과업 유형 간 차이 F(1,104)=7.84, p=0.006 35.
-Hemmer, P., Schemmer, M., Kühl, N., Vössing, M., &amp; Satzger, G.
-(2025). Complementarity in Human-AI Collaboration: Concept, Sources, and
-Evidence. <em>European Journal of Information Systems</em>.
-<code>[PR]</code> △ — <a href="https://arxiv.org/abs/2404.00029">arXiv:2404.00029</a>로 공개된 뒤
+<code>[WP]</code> △ 33. Demirer, M., Musolff, L., &amp; Yang, L. (2026).
+Writing Code vs. Shipping Code: Productivity Effects Across Generations
+of AI Coding Tools. <em>NBER 워킹페이퍼</em> 35275 (2026-05 발행,
+2026-09 개정). <a href="https://www.nber.org/papers/w35275">nber.org/papers/w35275</a>
+<code>[WP]</code> △ — v1.6.1에서 개정판 초록 수치(커밋 +30·180·240%,
+프로젝트 +80%, 릴리스 +30%, 대체탄력성 0.23)로 바로잡았다 34. Vaccaro,
+M., Almaatouq, A., &amp; Malone, T. (2024). When combinations of humans
+and AI are useful: A systematic review and meta-analysis. <em>Nature
+Human Behaviour</em>, 8(12). <code>[PR]</code> △ — 2020-01~2023-06 게재
+논문 대상. 인용 시 기준선 병기·이질성 명시 필수. 본문 8장이 지면에서 뺀
+세부값: 이질성 I² 시너지 97.7%·증강 93.8% / 생성 과업 +0.19는 p=0.180,
+95% CI [−0.09, 0.48], k=34로 0과 유의차 없음 / 과업 유형 간 차이
+F(1,104)=7.84, p=0.006 35. Hemmer, P., Schemmer, M., Kühl, N., Vössing,
+M., &amp; Satzger, G. (2025). Complementarity in Human-AI Collaboration:
+Concept, Sources, and Evidence. <em>European Journal of Information
+Systems</em>. <code>[PR]</code> △ — <a href="https://arxiv.org/abs/2404.00029">arXiv:2404.00029</a>로 공개된 뒤
 게재 확인(2026-09-12 검증). 정보 비대칭과 역량 비대칭을 상보성의 두
 원천으로 정리 36. Bessen, J. (2015-03). 현금인출기와 창구직, 19세기
 역직기 사례. IMF <em>Finance &amp; Development</em> 2015년 3월호 기고문.
